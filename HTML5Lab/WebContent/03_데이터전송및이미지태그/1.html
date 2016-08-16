@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<!-- 폼 관련 태그
+		 : 사용자의 정보를 서버로 전달하기 위한 용도로 사용
+	 	
+	 	<form> 태그 
+	 	 : 데이터 처리 문서의 주소(action)와 데이터 전달 방식(method)을 속성으로 갖음
+	 		1) method 속성
+	 			- get방식 : 사용자 정보가 url뒤에 붙어서 서버로 전송되는 방식, 길이의 제한, 보안에 취약
+	 			- post 방식 : 사용자 정보가 문서의 header에 기록이 되어 서버로 정보가 전송되는 방식
+	 			                          보안에 강함
+	        2) action 속성
+	        	- 서버에서 사용자의 정보를 처리할 문서의 위치를 지정
+	        	- 더미로 할때 #으로 표시, 실제 액션 없음
+	        	
+	 	<input> 태그
+	 	 : type 속성을 이용해서 사용자의 다양한 정보를 얻을 수 있음
+	 -->
+<head>
+<meta charset="EUC-KR">
+<title>폼 관련 태그</title>
+</head>
+<body>
+	<form action="#" method="get">
+	 이름 : <input type="text" name="uname"/><br/>
+	 아이디 : <input type="text" name="uid"/><br/>
+	 비밀번호 : <input type="password" name="upw"/><br/>
+	 연락처 : <input type="text" name="uphone1" size="5"/> - 
+	       <input type="text" name="uphone2" size="5"/> - 
+	       <input type="text" name="uphone3" size="5"/><br/>
+	사진 : <input type="file" name="upic"/><br/> 	
+	성별 : <input type="radio" name="gender" value="m"/>남
+	     <input type="radio" name="gender" value="w"/>여 <br/> 
+	     <!-- radio 타입은 이름을 동일하게 지정, 옵션은 value로 설정 -->
+	사용언어 : <input type="checkbox" name="lan" value="eng"/>영어
+			<input type="checkbox" name="lan" value="kor"/>한국어
+			<input type="checkbox" name="lan" value="chn"/>중국어 <br/>
+			<!-- checkbox 타입은 이름도 동일하게 지정, 옵션은 value로 설정, 중복 선택 가능 -->
+	자기소개 : <textarea rows="5" cols="20">간단하게 입력하세요</textarea><br/>  	
+	국적 : <select>
+			<option>KOREA</option>
+			<option>CHINA</option>
+			<option>USA</option>
+			<option>JAPAN</option>
+		 </select><br/>	
+         좋아하는 음식 : <select multiple="multiple">
+               		<option>김치</option>
+               		<option>불고기</option>
+               		<option>파전</option>
+               		<option>비빔밤</option>
+               </select><br/>
+          <!-- select 타입은 multiple 속성으로 중복 선택 가능 -->
+    <input type="submit"> <!-- form 안에 있는 입력 내용을 서버로 전송하는 버튼 -->
+	</form>
+	
+</body>
+</html>
