@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<!-- 
+		후손 및 자손 선택자 
+		: HTML 태그의 계층 구조를 이요해서 CSS3를 적용할 때 사용
+			1) 후손 선택자  
+				: 특정 HTML 태그 아래에 있는 모든 태그 요소를 선택할 수 있음
+				  Ex) div li {}
+				  
+			2) 자손 선택자
+				: 특정 HTML 태그의 바로 아래에 있는 특정 태그요소를 선택할 수 있음
+				  Ex) div > h1 {}	
+	-->
+<head>
+	<meta charset="EUC-KR">
+	<title>Insert title here</title>
+	<style>
+		#header, #wrap, #footer{
+			border: 1px solid #cccccc;
+			width: 500px;
+		}
+		
+		div li{ /*후손 선택자, li태그 아래에 있는 태그에 모두 적용*/
+			background-color: red;
+		}
+		
+		div p{
+			font-size: 25px;
+		}
+		
+		div > h1{
+			font-weight: bold;
+			color: yellow;
+		}
+	</style>
+</head>
+<body>
+	<div id="header">
+		<div class="logo">
+			<h1>LOGO</h1>
+		</div>
+		
+		<div class="copy">
+			<h2>2016 리우데자네이루 올림픽</h2>
+		</div>
+	</div>
+	
+	<div id="wrap">
+		<p>하계올림픽으로 올림픽 역사상 최초로 남아메리카 지역에서 열리는 올림픽</p>
+		<ul>
+			<li><p>2016년8월 5일~2016년 8월 21일</p></li>
+			<li><h1>브라질/리우데자네이루</h1></li>
+			<li><p>A New World(새로운 세계)</p></li>
+			<li><h1>207개국</h1></li>
+			<li><p>11,239명</p></li>
+			<li><h1>28개종목, 306개 세부 종목</h1></li>
+			<li><p>에스타디우 두 마라카낭</p></li>
+		</ul>
+	</div>
+	
+	<div id="footer">
+		<h1>Footer</h1>
+	</div>
+</body>
+</html>
