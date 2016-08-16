@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<!--  
+		태그 선택자 : html 요소의 태그를 선택할 때 사용
+		아이디 선택자 : html 요소의 아이디를 선택할 때 사용,id별로 유일하게 적용
+				   => '#'+ id명
+		클래스 선택자 : html 요소의 클래스를 선택할 때 사용 ,공통으로 적용가능
+				   => '.'+ 클래스 명
+	 --> 
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+	<title>Insert title here</title>
+	<style type="text/css"> 
+		#header{
+			width: 500px;
+			background-color: #ffd800;	
+			border: 1px solid #808080;  /*복수로 속성을 줄 때는 띄어쓰기로 적용*/
+			text-align: center; 
+		}
+		
+		#wrap{
+			width: 500px;
+			background-color: #66dbf6;	
+			border: 2px solid #808080;  
+			text-align: center; 
+			overflow: hidden;
+		}
+		
+		#content{
+			width: 350px;
+			border: 1px solid red;
+			float: left;
+		}
+		
+		#side_banner{
+			border: 1px solid red;
+			float: left;
+		}
+		
+		#footer{
+			width: 500px;
+			background-color: #ffd800;
+			border: 3px solid #808080;
+			text-align: center;
+		}
+		
+		ul li.menu{
+			color: #350a5b;
+			font-weight: bold;
+			font-size: 30px;			
+		}
+	</style>
+</head>
+<body>
+	<div id="header">
+		<h1>HEADER</h1>	
+	</div>
+	
+	<div id="wrap">
+		<div id="content">
+			<h1>CONTENT</h1>
+			<ul>
+				<li class="menu">메뉴1</li>
+				<li>메뉴2</li>
+				<li class="menu">메뉴3</li>
+				<li>메뉴4</li>
+				<li class="menu">메뉴5</li>
+			</ul>
+			<ol>
+				<li class="menu">메뉴1</li>
+				<li>메뉴2</li>
+				<li class="menu">메뉴3</li>
+				<li>메뉴4</li>
+				<li class="menu">메뉴5</li>
+			</ol>
+		</div>
+		
+		<div id="side_banner">
+			<h1>BANNER</h1>
+			<a href="https://www.google.co.kr/" target="_blank">
+				<img src="https://www.google.co.kr/logos/doodles/2016/south-korea-national-day-2016-5661184230424576-hp.jpg">
+			</a>
+		</div>
+	</div>
+		
+	<div id="footer">
+		<h1>FOOTER</h1>
+	</div>
+</body>
+</html>
