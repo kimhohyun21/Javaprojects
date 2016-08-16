@@ -1,8 +1,58 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+	<!--  
+		태그 선택자 : html 요소의 태그를 선택할 때 사용
+		아이디 선택자 : html 요소의 아이디를 선택할 때 사용,id별로 유일하게 적용
+				   => '#'+ id명
+		클래스 선택자 : html 요소의 클래스를 선택할 때 사용 ,공통으로 적용가능
+				   => '.'+ 클래스 명
+	 --> <!--복수로 속성을 줄 때는 띄어쓰기로 적용-->
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+	<title>Insert title here</title>
+	<style type="text/css"> 
+		#header{
+			width: 500px;
+			background-color: #ffd800;	
+			border: 1px solid #808080;  
+			text-align: center; 
+		}
+		
+		#wrap{
+			width: 500px;
+			background-color: #66dbf6;	
+			border: 2px solid #808080;  
+			text-align: center; 
+			overflow: hidden;
+		}
+		
+		#content{
+			width: 350px;
+			border: 1px solid red;
+			float: left;
+		}
+		
+		#side_banner{
+			border: 1px solid red;
+			float: left;
+		}
+		
+		#footer{
+			width: 500px;
+			background-color: #ffd800;
+			border: 3px solid #808080;
+			text-align: center;
+		}
+		
+		.menu1{
+			color: #1822e2;
+			font-weight: bold;
+		}
+		
+		.menu1, .menu3, .menu5{
+			font-size: 20px;
+		} 
+	</style>
 </head>
 <body>
 	<div id="header">
@@ -17,7 +67,7 @@
 				<li class="menu2">menu2</li>
 				<li class="menu3">menu3</li>
 				<li class="menu4">menu4</li>
-				<li class="menu4">menu5</li>
+				<li class="menu5">menu5</li>
 			</ul>
 		</div>
 		
