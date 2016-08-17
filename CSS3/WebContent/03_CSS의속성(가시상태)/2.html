@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<!--  
+		display 속성
+			1) none : 브라우저 화면에서 html 요소를 제거
+			2) block : block 타입으로 출력
+			3) inline : inline 타입으로 출력
+			4) inline-block : inline타입과 동일 weight, height을 속성으로 가짐
+		
+		visibility 속성
+			1) visible : html 요소를 출력함(default)
+			2) hidden : html 요소를 출력하지 않음 => 공간은 유지함  
+	 -->
+<head>
+	<meta charset="EUC-KR">
+	<title>Insert title here</title>
+	<style type="text/css">
+		#display_none div:nth-child(1){ /*content1 선택*/
+			width: 100px;
+			height: 100px;
+			background-color: #ff0000;
+			color: #ffffff;
+			font-weight: bold;
+			text-align: center;
+			display: inline; /*띠구조로 옆으로 보여짐*/
+		}	
+		
+		#display_none div:nth-child(2){ 
+			width: 100px;
+			height: 100px;
+			background-color: #00ff00;
+			color: #ffffff;
+			font-weight: bold;
+			text-align: center;
+			display: inline;
+		}	
+		
+		#display_none div:nth-child(3){ 
+			width: 100px;
+			height: 100px;
+			background-color: #0000ff;
+			color: #ffffff;
+			font-weight: bold;
+			text-align: center;
+			display: none; /*화면에서 아예 사라짐, 자리까지 없어짐*/
+			
+		}
+			
+		#display_none div:nth-child(4){ 
+			width: 100px;
+			height: 100px;
+			background-color: #0000ff;
+			color: #ffffff;
+			font-weight: bold;
+			text-align: center;
+			display: block;/*블럭 형태로 아래쪽으로 층구조을 이루며 보여짐*/
+		}	
+		
+		#visibility_hidden div:nth-child(1){ 
+			width: 100px;
+			height: 100px;
+			background-color: #ff0000;
+			color: #ffffff;
+			font-weight: bold;
+			text-align: center;
+			display:; /* default 속성은 block타입*/
+			visibility:; /* default 속성은 visible타입*/
+		}
+		
+		#visibility_hidden div:nth-child(2){ 
+			width: 100px;
+			height: 100px;
+			background-color: #00ff00;
+			color: #ffffff;
+			font-weight: bold;
+			text-align: center;
+			display:; 
+			visibility: hidden;			
+		}
+		
+		#visibility_hidden div:nth-child(3){ 
+			width: 100px;
+			height: 100px;
+			background-color: #0000ff;
+			color: #ffffff;
+			font-weight: bold;
+			text-align: center;
+			display:; 
+			visibility:;			
+		}	
+	</style>
+</head>
+<body>
+	<div id="display_none">
+		<div>content1</div>
+		<div>content2</div>
+		<div>content3</div>
+		<div>content4</div>
+	</div>
+	<hr/>
+	
+	<div id="visibility_hidden">
+		<div>content1</div>
+		<div>content2</div>
+		<div>content3</div>
+	</div>
+</body>
+</html>

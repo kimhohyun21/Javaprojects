@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<!-- 
+		opacity 속성
+		: html 요소의 투명도 조절함.
+		  0.0~1.0
+		  === ===
+		     투명 불투명(default)
+	 -->
+<head>
+	<meta charset="EUC-KR">
+	<title>Insert title here</title>
+	<style type="text/css">
+		ul li{
+			display: inline-block; /*형태는 블록이지만 층구조가 아닌 옆으로 띠구조로 출력됨*/
+			width:200px;
+			height:100px;
+			text-align: center;
+			background-color: #dddddd;
+		}
+		
+		ul li:nth-child(2){
+			background-color: #dddddd;
+			opacity: 0.7;
+		}
+		
+		ul li:nth-child(3){
+			background-color: #dddddd;
+			opacity: 0.3;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li>세인트루이스 카디널스</li>
+		<li>마무리 투수 오승환</li>
+		<li>Fighting Korea!!</li>
+	</ul>
+</body>
+</html>
