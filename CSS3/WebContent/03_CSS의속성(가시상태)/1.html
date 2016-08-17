@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<!-- 
+		CSS3에서 주로 사용되는 단위 : px, em, pt
+		1) px: 절대적인 속성 크기를 설정함
+		2) em: 기존 크기와 비교하여 상대적으로 속성 크기를 설정함
+		3) pt: 절대 크기  
+	 -->
+<head>
+	<meta charset="EUC-KR">
+	<title>Insert title here</title>
+	<style type="text/css">
+		li{list-style: none;}
+		 
+		#px li:nth-child(1){ /*첫번째 li 선택*/	}
+		#px li:nth-child(2){font-size: 12px;}
+		#px li:nth-child(3){font-size: 16px;}
+		#px li:nth-child(4){font-size: 24px;}
+		#px li:nth-child(5){font-size: 32px;}
+		
+		
+		#em li:nth-child(1){ /*첫번째 li 선택*/	}
+		#em li:nth-child(2){font-size: .5em;}
+		#em li:nth-child(3){font-size: 1em;}
+		#em li:nth-child(4){font-size: 1.5em;}
+		#em li:nth-child(5){font-size: 2em;}
+		
+		#pt li:nth-child(1){ /*첫번째 li 선택*/	}
+		#pt li:nth-child(2){font-size: 12pt;}
+		#pt li:nth-child(3){font-size: 16pt;}
+		#pt li:nth-child(4){font-size: 24pt;}
+		#pt li:nth-child(5){font-size: 32pt;}
+		
+	</style>
+</head>
+<body>
+	<div>
+		<p>px 단위 - 절대 크기</p>
+		<ul id="px">
+			<li>HTML5 - default</li>
+			<li>HTML5 - 12px</li>
+			<li>HTML5 - 16px</li>
+			<li>HTML5 - 24px</li>
+			<li>HTML5 - 32px</li>
+		</ul>
+		<br/>
+		
+		<p>em 단위 - 상대 크기</p>
+		<ul id="em">
+			<li>HTML5 - default</li>
+			<li>HTML5 - .5em</li>
+			<li>HTML5 - 1em</li>
+			<li>HTML5 - 1.5em</li>
+			<li>HTML5 - 2em</li>
+		</ul>
+		<br/>
+		
+		<p>pt 단위 - 절대 크기</p>
+		<ul id="pt">
+			<li>HTML5 - default</li>
+			<li>HTML5 - 12pt</li>
+			<li>HTML5 - 16pt</li>
+			<li>HTML5 - 24pt</li>
+			<li>HTML5 - 32pt</li>
+		</ul>
+	</div>
+</body>
+</html>

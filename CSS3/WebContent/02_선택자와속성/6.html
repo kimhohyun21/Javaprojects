@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<!-- 
+		동위, 반응, 상태 선택자
+		1) 동위 선택자 : 동등한 위치에 있는 태그요소를 선택함.
+		   Ex) h3~div => <h3>태그 뒤에 위치하는 모든 <div> 태그
+		       h3+div => <h3>태그 바로 뒤에 위치하는 <div> 태그
+		
+		2) 반응 선택자 : 사용자의 반응에 따라 html태그 요소 선택됨.
+		   Ex) : hover => 마우스가 태그 위에 올라왔을 때 선택됨
+		
+		3) 상태 선택자 : 태그 요소의 상태에 따라서 선택됨
+		   Ex) : focus => 초점이 맞추어진 상태
+		       : checked => check가 된 상태
+	 -->
+<head>
+	<meta charset="EUC-KR">
+	<title>Insert title here</title>
+	<style type="text/css">
+		h3~div{
+			font-size: 10px;
+			color: blue;
+		}
+		
+		h3+div{
+			font-size: 20px;
+			font-weight: bold;
+			color: red;
+		}
+		
+/*  		#title~div{
+			font-size: 2em;
+			font-weight: bolder;
+			color: #ff0000;
+		}  */
+		
+		.hoverSel:hover{
+			font-size: 2em;
+			color: blue;
+			font-weight: bolder;
+		}
+		
+		input:checked{
+			font-size: 2em;
+			background: #ffffff;
+		}
+		
+		input{
+			font-size: 1em;
+			background: #ffffff;
+		}
+		
+		input:focus{
+			font-size: 2em;
+			background: #dddddd;
+		}		
+	</style>
+</head>
+<body>
+	<!-- 동위 선택자 -->
+	<h3 id="title">동위 선택자 (+,~)</h3>
+	<div>div01</div>
+	<div>div02</div>
+	<div>div03</div>
+	<div>div04</div>
+	<div>div05</div>
+	
+	<br/>
+	<!-- 반응 선택자 -->
+	<div class="hoverSel">반응선택자</div>
+	
+	<br/>
+	<!-- 상태 선택자 -->
+	<div>
+		아이디 : <input type="text">
+	</div>
+	
+</body>
+</html>
