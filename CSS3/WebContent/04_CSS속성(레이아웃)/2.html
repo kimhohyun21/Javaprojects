@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<!-- 
+		CSS3 레이아웃 : margin & padding 속성
+			2) margin: 태그 요소의 외곽 여백 설정
+				=> 값 설정 순서: margin-top, margin-right, margin-bottom, margin-left 
+			
+			3) padding: 태그 요소의 내부 여백 설정
+				=> 값 설정 순서: padding-top, padding-right, padding-bottom, padding-left 
+						 
+	 -->
+<head>
+	<meta charset="EUC-KR">
+	<title>Insert title here</title>
+	<style type="text/css">
+		body{
+			margin: 0;
+		}
+		
+		div{
+			width: 200px; height: 200px;
+			color: #ffffff;
+			font-weight: bold;
+			text-align: center;
+		}
+		
+		#content1{
+			background-color: red;
+		}
+		
+		#content2{
+			background-color: green;
+			margin: 10px 10px 10px 10px;
+		}
+		
+		#content3{
+			background-color: blue;
+			padding: 10px 10px 10px 10px; /*padding은 border와 요소 사이의 공간이기 때문에 크기가 커지면 요소의 크기에도 영향을 끼침*/
+		}
+		
+		#content4{
+			background-color: blue;
+			margin: 10px 10px 10px 10px;
+			padding: 10px 10px 10px 10px;
+		}
+	</style>
+</head>
+<body>
+	<div id="content1">200*200</div>
+	<div id="content2">200*200<br/>margin</div>
+	<div id="content3">200*200<br/>padding</div>
+	<div id="content4">200*200<br/>margin<br/>padding</div>
+</body>
+</html>

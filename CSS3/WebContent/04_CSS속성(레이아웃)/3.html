@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<!-- 
+		CSS3 레이아웃 : 테두리 관련 속성
+			4) box-sizing
+			5) border
+	 -->	
+<head>
+	<meta charset="EUC-KR">
+	<title>Insert title here</title>
+	<style type="text/css">
+		body{
+			margin:0;
+			background-color: #dddddd;
+		}
+		
+		div{
+			width: 200px; 
+			height: 200px;
+			margin: 10px;
+			padding: 10px;
+			border: 10px solid #ff8d00;
+		}
+		
+		div:nth-child(1){
+			margin:0;
+			border:0;  /*요소의 자체 크기에 포함되어 계산*/
+			padding:0; /*요소의 자체 크기에 포함되어 계산*/
+			background-color: #ff0000;		
+		}
+		
+		div:nth-child(2){
+			background-color: #00ff00;
+			box-sizing: border-box; /*내부 테두리 설정, border와 padding이 내부에 생성, 요소의 크기가 작아짐*/		
+		}
+		
+		div:nth-child(3){
+			background-color: #0000ff;
+			box-sizing: center-box;	/*외부 테두리 설정, border와 padding이 외부에 생성, 요소의 크기가 커짐*/	
+		}
+	</style>
+</head>
+<body>
+	<div>200*200</div>
+	<div>200*200</div>
+	<div>200*200</div>
+</body>
+</html>
