@@ -77,7 +77,29 @@ public class EmpDAO {
 	
 	public EmpVO empDetailData(int empno){
 		EmpVO vo=new EmpVO();
+		try{
+			getConnection();
+			String sql="SELECT * FROM emp WHERE empno=?";
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, empno);
+			rs=ps.executeQuery();
+			while(rs.next()){
+				vo.setEmpno(rs.getInt(1));
+				vo.setEname(rs.getString(2));				
+				vo.setJob(rs.getString(3));
+				vo.setMgr(rs.getInt(4));
+				vo.setHiredate(rs.getDate(5));
+				vo.setSal(rs.getInt(6));
+				vo.setComm(rs.getInt(7));
+				vo.setDeptno(rs.getInt(8));
+			}
+			rs.close();
 			
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}finally{
+			disConnection();
+		}	
 		return vo;
 	}
 }
