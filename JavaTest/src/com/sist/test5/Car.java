@@ -4,16 +4,16 @@ public class Car {
 	String maker;
 	String model;
 	String color;
-	int curSpeed;
+	int curSpeed;		
 	
-	public Car(){
-		maker="hyundae";
-		model="genesis";
-		color="silver";
-		curSpeed=10;	
-
+	public Car(String maker, String model, String color, int curSpeed) {
+		super();
+		this.maker = maker;
+		this.model = model;
+		this.color = color;
+		this.curSpeed = curSpeed;
 	}
-	
+
 	public void speedUp(){
 		curSpeed++;
 	}
