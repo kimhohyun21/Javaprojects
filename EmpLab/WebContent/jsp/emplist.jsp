@@ -12,7 +12,7 @@
 </head>
 <body>
 	<center>
-		<h3>사원목목</h3>
+		<h3>사원목록</h3>
 		<table border=0 width=450>
 		<tr bgcolor=#ccccff>
 			<th>사번</th>
@@ -24,7 +24,7 @@
 			for(EmpVO vo:list){
 		%>
 			<tr>
-				<td><%=vo.getEmpno() %></td>
+				<td><%=vo.getEmpno() %></td>      <!-- jsp파일은 java와 html을 동시에 작성이 가능함 -->
 				<td><%=vo.getEname() %></td>
 				<td><%=vo.getJob() %></td>
 				<td><%=vo.getHiredate() %></td>
