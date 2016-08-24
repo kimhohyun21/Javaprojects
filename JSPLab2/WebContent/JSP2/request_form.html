@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!-- 
+	@GET과 POST 방식의 차이점
+		1)GET 
+			- 서버에 있는 정보를 가져오려고 설계된 방법
+			  (HTML, 이미지 등을 웹브라우저에서 가져오기 등)
+			- URL에 값이 노출되기 때문에 보안에 문제가 생길 수 있음
+			- 서버에는 최대 240byte까지 데이터를 전달할 수 있음
+		2) POSt
+			- 서버로 정보를 올리려고 설계된 방법
+			  (HTML 폼에 입력한 내용을 서버에 전달하기 등)
+			- 서버에 전달할 수 있는 데이터 크기는 제한이 없음
+			- URL에 매개변수가 표시되지 않음
+ -->
+<html>
+<head>
+	<meta charset="EUC-KR">
+	<title>Request Test Form</title>
+	<script type="text/javascript">
+		document.cookie="test=Okay";
+	</script>
+	<style>
+		h3{
+			text-align:center;
+		}
+		table{			
+			margin:auto; 
+			width:400px;
+			cellspasing:1px						
+		}
+		tr, td{
+			padding:5px
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<h3>Request Test Form</h3>
+		<hr width="400"/>
+		<form action="request_result.jsp" method="post" name="frm">
+			<table border="1">
+				<tr>
+					<td width="30%">이름</td>
+					<td>
+						<input type="text" size="10" name="name">
+					</td>
+				</tr>
+				<tr>
+					<td width="30%">직업</td>
+					<td>
+						<select name="job">
+							<option>프로그래머</option>
+							<option>회사원</option>
+							<option>전문직</option>
+							<option>학생</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td width="30%">관심분야</td>
+					<td>
+						<input type="checkbox" name="interest" value="정치">정치
+						<input type="checkbox" name="interest" value="사회">사회
+						<input type="checkbox" name="interest" value="정보통신">정보통신
+					</td>
+				</tr>
+				<tr >
+					<td align="center" colspan="2">
+						<input type="submit" value="확인">
+						<input type="reset" value="취소">
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>

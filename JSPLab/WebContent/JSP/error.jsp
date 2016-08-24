@@ -7,6 +7,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h3>Error 발생(0으로 나눌 수 없다.)</h3>
+	<h2>처리중 문제가 발생했습니다.</h2>
+	<hr/>
+	<table>
+		<tr bgcolor="pink">
+			<td>
+				관리자에게 문의해 주세요. (010-0000-0000)<br/>
+				빠른 시일 내에 복구하겠습니다.
+				<hr/>
+			</td>			
+		</tr>
+	</table>
 </body>
 </html>
