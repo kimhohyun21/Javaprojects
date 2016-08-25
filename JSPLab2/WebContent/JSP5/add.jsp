@@ -11,7 +11,18 @@
 		String productName=request.getParameter("product");				
 		
 		ArrayList<String> list=(ArrayList)session.getAttribute("productList");
-		list.add(productName);			
+		
+		/* 선생님 답
+		//==> Array 리스트에 productList의 세션 값을 가져오는데 이 값이 널이면 새로 생성하고 다시 셋해준다.
+		ArrayList<String> list=(ArrayList)session.getAttribute("productList");
+		
+		if(list==null){
+			list=new ArrayList<>();
+			session.setAttribute("productList", list); // list를 그대로 속성 값으로 반영 가능
+		}
+		*/
+		
+		list.add(productName);	
 	%>
 </head>
 <body>
