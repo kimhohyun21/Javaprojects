@@ -10,7 +10,7 @@
 <body>
 	<%-- 페이지(파일) 이동 --%>
 	<%
-		response.sendRedirect("input.jsp"); // 실행하면 지정된 페이지로 바로 이동
+		response.sendRedirect("input.jsp"); //실행하면 지정된 페이지로 바로 이동
 	%>
 </body>
 </html>
