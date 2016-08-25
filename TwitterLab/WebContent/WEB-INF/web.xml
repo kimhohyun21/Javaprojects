@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
-  <display-name>BasicObjectLab</display-name> 
-   
-  <context-param>
-  	<param-name>url</param-name>
-  	<param-value>jdbc:oracle:thin:@211.238.142.88</param-value>
-  </context-param>
-   <context-param>
-  	<param-name>username</param-name>
-  	<param-value>scott</param-value>
-  </context-param>
-   <context-param>
-  	<param-name>pwd</param-name>
-  	<param-value>tiger</param-value>
-  </context-param> 
-   
+  <display-name>TwitterLab</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
