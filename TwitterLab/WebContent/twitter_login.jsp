@@ -23,12 +23,7 @@
 		    	= application 내장 객체를 이용해서 모든 사용자가 사용할 수 있는 임시 저장소로 활용
 		    			
  --%>
- <%
- 	String id=response.getWriter().toString();
- 	if(id==null){
- 		out.println("<script>alert('아이디를 입력하세요.')</script>");
- 	}
- %>
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
