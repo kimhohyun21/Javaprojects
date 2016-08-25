@@ -17,7 +17,7 @@
 		선택한 상품 목록
 		<hr/>
 		<%
-			ArrayList list=(ArrayList)session.getAttribute("productList2");
+			ArrayList list=(ArrayList)session.getAttribute("productList");
 		
 			if(list==null){
 				out.println("<script>alert('선택한 상품이 없습니다.')</script>");

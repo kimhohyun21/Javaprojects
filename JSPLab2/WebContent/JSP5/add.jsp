@@ -9,9 +9,9 @@
 		request.setCharacterEncoding("EUC-KR");
 		
 		String productName=request.getParameter("product");				
+		
 		ArrayList<String> list=(ArrayList)session.getAttribute("productList");
-		list.add(productName);
-		session.setAttribute("productList2", list);		
+		list.add(productName);			
 	%>
 </head>
 <body>
