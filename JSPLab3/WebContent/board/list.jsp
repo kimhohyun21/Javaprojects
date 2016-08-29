@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR" import="java.util.*, com.sist.dao.*, java.text.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%
-	String strPage=request.getParameter("page");
+<%	
+	request.setCharacterEncoding("EUC-KR");
+	
+	String strPage=request.getParameter("page");	
 	if(strPage==null){
 		strPage="1";
 	}
@@ -32,6 +34,17 @@
 			color: green;	
 		}
 	</style>
+	<script type="text/javascript">
+	function find(){
+		var f=document.ff;
+		if(f.ss.value==""){
+			alert("검색어를 입력해주세요.");
+			f.ss.focus();
+			return;
+		}
+		f.submit();
+	}
+</script>
 </head>
 <body>
 	<div align="center">
@@ -39,7 +52,7 @@
 		<table width="700" border="0" id="insert">
 			<tr>
 				<td align="left">
-					<a href="insert.jsp"><img src="img/bt_write.jpg" border="0"></a>
+					<a href="main.jsp?content=1"><img src="img/bt_write.jpg" border="0"></a>
 				</td>
 			</tr>
 		</table>
@@ -58,7 +71,7 @@
 				if(i%2==0) color="white"; else color="#cccccf";
 		%>
 			<tr bgcolor="<%=color %>" height="27" id="dataTr">
-				<td width="10%" align="center">				
+				<td width="10%" align="center">									
 					<%=count-- %>				
 				</td>				
 				<td width="45%" align="left">				
@@ -81,7 +94,7 @@
 					<%
 						}else{	
 					%>
-						<a href="content.jsp?no=<%=vo.getNo()%>"><%=vo.getSubject() %></a>
+						<a href="main.jsp?no=<%=vo.getNo()%>"><%=vo.getSubject() %></a>
 					<%
 						}
 						SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
@@ -114,7 +127,7 @@
 		<table border="0" width="700" id="table_footer">
 			<tr>
 				<td align="left">
-					<form action="find.jsp" method="post" id="ff">
+					<form action="main.jsp?fpage=1" method="post" id="ff" name="ff">
 						Search:
 						<select name="fs">
 							<option value="name">이름</option>
@@ -122,7 +135,7 @@
 							<option value="content">내용</option>
 						</select>
 						<input type="text" name="ss" id="ss" size="20">
-						<input type="button" value="찾기" id="findBtn">
+						<input type="button" value="찾기" id="findBtn" onclick="find()">
 						<span id="print">
 							
 						</span>
@@ -134,7 +147,7 @@
 					<%						
 						for(i=1;i<=totalPage;i++){		
 					%>
-						<a href="main.jsp?page=<%=i %>"><%=i %></a>						
+						<a href="main.jsp?page=<%=i %>">[<%=i %>]</a>						
 					<%
 						}
 					%>

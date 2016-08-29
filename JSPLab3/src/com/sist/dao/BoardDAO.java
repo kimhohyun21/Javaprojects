@@ -190,5 +190,164 @@ public class BoardDAO {
 			disConnection();
 		}
 	}
+	
+	//게시글 상세보기
+	public BoardVO contentDetail(String no, int type){
+		BoardVO vo=new BoardVO();
+		try{
+			getConnection();
+			
+			//조회수 증가
+			if(type==1){
+				String sql="UPDATE replyBoard SET hit=hit+1 WHERE no=?";
+				ps=conn.prepareStatement(sql);
+				ps.setString(1, no);
+				ps.executeUpdate();
+				ps.close();
+			}
+			
+			//내용 출력
+			String sql="SELECT no,name,subject,regDate,hit,content "
+						+ "FROM replyBoard WHERE no=?";
+			
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, no);
+			rs=ps.executeQuery();
+			rs.next();
+			
+			vo.setNo(rs.getInt(1));
+			vo.setName(rs.getString(2));
+			vo.setSubject(rs.getString(3));
+			vo.setRegDate(rs.getDate(4));
+			vo.setHit(rs.getInt(5));
+			vo.setContent(rs.getString(6));			
+			
+			rs.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			disConnection();
+		}
 		
+		
+		return vo;
+	}
+	
+	//상세보기 번호 값 지정 함수
+	public int coutNo(String no){
+		int countno=0;
+		try{
+			getConnection();
+			
+			String sql="SELECT count(*) "
+						+ "FROM (SELECT*FROM replyBoard WHERE no Between 1 AND ?)";
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, no);
+			rs=ps.executeQuery();
+			rs.next();
+			
+			countno=rs.getInt(1);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			disConnection();
+		}
+		
+		return countno;
+	}
+	
+	//게시판 검색
+	public List<BoardVO> contentFind(String fs, String ss, int fpage){
+		List<BoardVO> flist=new ArrayList<>();
+
+		try{
+			getConnection();
+			
+			String sql="SELECT no, subject, name, regDate, hit, group_tab "
+					+ "FROM replyBoard "
+					+ "WHERE "+fs+" LIKE '%"+ss+"%'"
+					+ "ORDER BY group_id DESC, group_step ASC";
+			ps=conn.prepareStatement(sql);
+			rs=ps.executeQuery();
+			
+			int i=0;
+			int j=0;
+			int pagecnt=(fpage*10)-10;
+			
+			while(rs.next()){
+				if(i<10 && j>=pagecnt){	
+					BoardVO vo=new BoardVO();
+					vo.setNo(rs.getInt(1));
+					vo.setSubject(rs.getString(2));
+					vo.setName(rs.getString(3));
+					vo.setRegDate(rs.getDate(4));
+					vo.setHit(rs.getInt(5));
+				
+					flist.add(vo);
+					i++;
+				}
+				j++;
+			}
+			
+			rs.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			disConnection();
+		}
+		
+		return flist;
+	}
+	
+	//검색 페이지 개수 구하는 메서드
+	public int findTotalPage(String fs, String ss){
+		int ftotal=0;
+		String ss2="%"+ss+"%";
+
+		try{
+			getConnection();
+				
+			String sql="SELECT CEIL(COUNT(*)/10) "
+						+ "FROM (SELECT no, subject, name, regDate, hit, group_tab "
+						+ "FROM replyBoard WHERE "+fs+" LIKE '%"+ss+"%')"; 
+			ps=conn.prepareStatement(sql);
+			rs=ps.executeQuery();
+			rs.next();
+			ftotal=rs.getInt(1);
+
+			rs.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			disConnection();
+		}
+			
+		return ftotal;
+	}
+		
+	//검색 레코드수를 구하는 메서드
+	public int findRowCount(String fs, String ss){
+		int ftotal=0;
+
+		try{
+			getConnection();
+				
+			String sql="SELECT COUNT(*) "
+						+ "FROM (SELECT no, subject, name, regDate, hit, group_tab "
+						+ "FROM replyBoard WHERE "+fs+" LIKE '%"+ss+"%')"; 
+			ps=conn.prepareStatement(sql);
+			rs=ps.executeQuery();
+			rs.next();
+			ftotal=rs.getInt(1);
+
+			rs.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			disConnection();
+		}
+			
+		return ftotal;
+	}
 }

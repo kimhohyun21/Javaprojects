@@ -18,8 +18,34 @@
 				<td width="200" height="500">
 					&nbsp;
 				</td>
-				<td width="700" height="500" align="center" valign="top">
+				<td width="700" height="500" align="center" valign="top">					
+			<%
+				request.setCharacterEncoding("EUC-KR");
+				String no=request.getParameter("no");
+				String content=request.getParameter("content");
+				String fpage=request.getParameter("fpage");
+				String fs=request.getParameter("fs");
+				String ss=request.getParameter("ss");					
+				
+				if(no!=null){
+			%>
+					<jsp:include page="content.jsp"></jsp:include>
+			
+			<%
+				}else if(content!=null){
+			%>
+					<jsp:include page="insert.jsp"></jsp:include>
+			<%
+				}else if(fpage!=null && fs!=null && ss!=null){
+			%>
+					<jsp:include page="find.jsp"></jsp:include>
+			<%
+				}else{
+			%>
 					<jsp:include page="list.jsp"></jsp:include>
+			<%
+				}					
+			%>	
 				</td>
 			</tr>
 			<tr>

@@ -36,45 +36,46 @@
 <body>
 	<div align="center">
 		<img src="img/write1.jpg" width="500" height="80">
+		<table border="0" height="20"></table>	
 		<form action="insert_ok.jsp" method="post" name="frm">
-			<table border="0" width="500" id="table_content" >
+			<table border="0" width="700" id="table_content" >
 				<tr height="27">
-					<td width="20%" align="center">
+					<td width="30%" align="right">
 						이름
 					</td>
-					<td width="80%" align="left">
+					<td width="70%" align="left">
 						<input type="text" size="10" name="name">
 					</td>
 				</tr>
 				<tr height="27">
-					<td width="20%" align="center">
+					<td width="30%" align="right">
 						이메일
 					</td>
-					<td width="80%" align="left">
+					<td width="70%" align="left">
 						<input type="text" size="45" name="email">
 					</td>
 				</tr>
 				<tr height="27">
-					<td width="20%" align="center">
+					<td width="30%" align="right">
 						제목
 					</td>
-					<td width="80%" align="left">
+					<td width="70%" align="left">
 						<input type="text" size="45" name="subject">
 					</td>
 				</tr>
 				<tr height="27">
-					<td width="20%" align="center">
+					<td width="30%" align="right">
 						내용
 					</td>
-					<td width="80%" align="left">
+					<td width="70%" align="left">
 						<textarea rows="10" cols="50" name="content"></textarea>
 					</td>
 				</tr>
 				<tr height="27">
-					<td width="20%" align="center">
+					<td width="30%" align="right">
 						비밀번호
 					</td>
-					<td width="80%" align="left">
+					<td width="70%" align="left">
 						<input type="password" size="10" name="pwd">
 					</td>
 				</tr>
