@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<!-- 
+	@리터럴(literal): 프로그램 코드 상에서 데이터의 값을 표현하는 방식
+	
+	@JS의 리터럴 
+		1)숫자리터럴 ==> 타입은 Number
+			- 정수(fixed point): 10진수, 16진수로 표현
+			  					Ex) 16진수 : 0x, 0X, 0~9, a(A)~f(F)
+			- 8진수 : 0, 0~7
+			- 부동소수점 (floating point) 
+			- Infinity : 무한대를 나타내는 특수한 숫자 값
+						 Ex) isFinite() ==> false
+			- NaN : 숫자가 아님을 나타내는 특수한 숫자 값, "Number.NaN"으로 표기 가능
+		2)문자열 리터럴
+		3)배열 리터럴
+		4)객체리터럴
+		5)함수 리터럴
+		6)불리언 리터럴
+		7)undefined, null리터럴
+	
+ -->
+<body>
+	<script type="text/javascript">
+		var a=10;
+		document.writeln("a : "+a+"<br/>");
+		document.writeln("typeof a : "+typeof a+"<br/>");
+		document.writeln("isFinite(a): "+isFinite(a)+"<br/>");
+		document.writeln("isNaN(a) : "+isNaN(a)+"<br/>");
+		document.writeln("<br/>");
+		
+		var b=1/0;
+		document.writeln("b : "+b+"<br/>");
+		document.writeln("typeof b : "+typeof b+"<br/>");
+		document.writeln("isFinite(b): "+isFinite(b)+"<br/>");
+		document.writeln("isNaN(b) : "+isNaN(b)+"<br/>");
+		document.writeln("<br/>");
+		
+		var c=5*"4times";
+		document.writeln("c : "+c+"<br/>");
+		document.writeln("typeof c : "+typeof c+"<br/>");
+		document.writeln("isFinite(c): "+isFinite(c)+"<br/>");
+		document.writeln("isNaN(c) : "+isNaN(c)+"<br/>");
+		document.writeln("<br/>");
+		
+	</script>
+</body>
+</html>

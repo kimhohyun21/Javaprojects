@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>자바스크립트2</title>
+<!-- 
+	@자바스크립트 : 변수, 데이터 타입, 리터럴
+		1) 자바스크립트의 출력방식
+			- 인라인 스크립트 방식 : html 내부에 <script> 태그 안에 작성
+			- 외부 스크립트 방식 : <script src="외부.js"> 와 같이 별도의 .js 파일을 작성하여 링크 시킴
+		
+		2) 문장 규칙
+			- 문장 끝에 세미콜론(;)으로 마침
+			- 대소문자 구별함
+			- 문장에서 화이트 스페이스 문자는 무시됨
+		
+		3)변수 선언과 var
+			- var 키워드
+				= js는 값을 저장하기 위한 공간을 확보하기 위해 var키워드르 사용해 변수를 선언
+				  Ex) var 변수명[=초기값]
+				  	  => 선언시 초기값을 미지정 할 경우 : undefined
+			- 값에 의한 데이터 타입 결정
+			 	 var k=10;
+			 	 var h="문자열"
+			 	 var i;
+ -->			  
+</head>
+<body>
+	<script type="text/javascript">
+		//인라인 스크립트 방식
+		document.writeln("&lt;script&gt;태그 아래의 인라인 스크립트에 의한 출력입니다.<br/>");
+		//&lt;내용&gt; ==> 꺽쇠 열고 닫음 표시
+	</script>
+	<script type="text/javascript" src="js2_1.js">
+		//외부 스크립트 방식
+		document.writeln("sdklfjslfj");
+		// src로 js 파일과 연결될 경우는 script 태그 아래의 어떤 내용도 반영되지 않는다
+	</script>
+</body>
+</html>

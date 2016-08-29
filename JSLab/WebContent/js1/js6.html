@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+<!-- 
+	@문자열 리터럴 
+		1)유니코드 문자들을 따옴표('' or "")로 둘러 싸서 표현
+		2)한줄을 넘을 수는 없음
+		3)역슬래시 자체를 출력 => \\ (두번 기술)
+		4)작은 따옴표 출력 => \' (역슬래시와 함께 기술)
+		5)큰따옴표 출력 => \"
+	
+ -->
+</body>
+	<script type="text/javascript">
+		//문자열 리터럴
+		var str1="문자열 리터럴";
+		var str2='작은 따옴표로 만든 문자열에는 "큰 따옴표"를 포함할 수 있다';
+		var str3="큰 따옴표로 만든 문자열에는 '작은 따옴표'를 포함할 수 있다";
+		
+		document.writeln(str1+"<br/>");
+		document.writeln("<br/>");
+		document.writeln(str2+"<br/>");
+		document.writeln("<br/>");
+		document.writeln(str3+"<br/>");
+	
+		var str4='작은 따옴표로 만든 문자열에서 \\\'를 통해 작은 따옴표(\')를 포함할 수 있습니다 '
+			
+		document.writeln("<br/>");	
+		document.writeln(str4+"<br/>");	
+		
+		var str5="큰 따옴표로 만든 문자열에서 \\\"를 통해 큰 따옴표(\")를 포함할 수 있습니다 "
+			
+		document.writeln("<br/>");	
+		document.writeln(str5+"<br/>");	
+		
+		var str6="원주율 \u03c0는 원의 둘레와 지름의 비율입니다."
+		
+		document.writeln("<br/>");	
+		document.writeln(str6+"<br/>");	
+		
+		</script>
+</html>

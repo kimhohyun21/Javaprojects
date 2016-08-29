@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<!-- 
+	@함수리터럴
+		1) 자바스크립트에서의 함수
+			- 객체 프로퍼티에도 할당될 수 있는 실행이 가능한 코드 값
+			- 객체 프로퍼티에 저장된 함수 : 객체의 메서드라고도 함
+			- 함수도 데이터 타입의 하나로 취급 : 변수, 배열, 객체 프로퍼티에 저장할 수 있음
+									   다른 함수의 파라미터(전달인자)로 넘겨줄 수도 있음
+		2) 함수 리터럴
+			- function 키워드에 이어 소괄호(())안에 
+			    함수 호출시 전달하는 인수(argument)에 의해 초기화되는 매개변수(parameter)목록을 작성하고
+			    마지막으로 함수의 몸체 중괄호({})안에 함수가 수행해야할 실행코드, return으로 구성됨 
+			   								
+ -->
+<body>
+	<script type="text/javascript">
+		//함수 리터럴
+		var add=function(op1, op2){
+			return op1+op2;			
+			
+		};
+		
+		document.writeln('add(5,3):'+add(5,3)+'<br/>');
+	</script>
+</body>
+</html>
