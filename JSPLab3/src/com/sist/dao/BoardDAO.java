@@ -7,7 +7,7 @@ public class BoardDAO {
 	private Connection conn;
 	private PreparedStatement ps;
 	private ResultSet rs;
-	private final String URL="jdbc:oracle:thin:@211.238.142.88:1521:ORCL";
+	private final String URL="jdbc:oracle:thin:@localhost:1521:ORCL";
 	private final String USER="scott";
 	private final String PWD="tiger";
 	

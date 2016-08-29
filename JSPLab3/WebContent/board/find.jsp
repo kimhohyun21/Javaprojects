@@ -15,11 +15,7 @@
 	
 	String method = request.getMethod();
 	System.out.println(method);
-	if(method.equals("GET")) {
-		// GET방식일 경우 인코딩을 맞춥니다.
-		fs = new String(fs.getBytes("8859_1"),"UTF-8");
-		ss = new String(ss.getBytes("8859_1"),"UTF-8");
-	} 
+	
 	System.out.println(ss);
 	
 	BoardDAO dao=new BoardDAO();
@@ -58,7 +54,7 @@
 		}
 		f.submit();
 	}
-	
+	alert!(encodeURIComponent(ss))
 </script>
 </head>
 <body>
@@ -142,7 +138,7 @@
 		<table border="0" width="700" id="table_footer">
 			<tr>
 				<td align="left">
-					<form action="main.jsp?fpage=<%=curPage %>&fs=<%=fs %>" method="post" id="ff" name="ff">
+					<form action="main.jsp?fpage=1&fs=<%=fs %>" method="post" id="ff" name="ff">
 						Search:
 						<select name="fs">
 							<option value="name">이름</option>
