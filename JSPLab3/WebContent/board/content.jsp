@@ -52,7 +52,9 @@
 <body>
 	<%
 		String no=request.getParameter("no");
-	
+		String fs=request.getParameter("fs");
+		String ss=request.getParameter("ss");
+		
 		BoardDAO dao=new BoardDAO();
 		BoardVO vo=new BoardVO();
 		vo=dao.contentDetail(no, 1);
@@ -110,7 +112,7 @@
 			<tr height="27">
 				<td colspan="4" align="right">
 					<a href="reply.jsp?no=<%=vo.getNo()%>"><img src="img/reply.gif" border="0"></a>
-					<a href="update.jsp?no=<%=vo.getNo()%>"><img src="img/modify.gif" border="0"></a>
+					<a href="main.jsp?update=1&no=<%=vo.getNo()%>&fs=<%=fs %>&ss=<%=ss %>"><img src="img/modify.gif" border="0"></a>
 					<a><img src="img/delete.gif" border="0" id="delBtn"></a>
 					<a href="main.jsp"><img src="img/list.gif" border="0"></a>
 				</td>

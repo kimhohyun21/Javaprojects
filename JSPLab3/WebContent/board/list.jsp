@@ -8,13 +8,19 @@
 	if(strPage==null){
 		strPage="1";
 	}
-	int curPage=Integer.parseInt(strPage);
+	int curPage=Integer.parseInt(strPage);	
 	
 	BoardDAO dao=new BoardDAO();
 	List<BoardVO> list=dao.boardListData(curPage);
 	int totalPage=dao.boardTotalPage();
 	int count=dao.boardRowCount();
 	count=count-((curPage*10)-10);
+	
+	if(curPage<0){
+		curPage=1;
+	}else if(curPage>totalPage){
+		curPage=totalPage;
+	}
 %>
 <html>
 <head>
@@ -34,17 +40,23 @@
 			color: green;	
 		}
 	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<script type="text/javascript">
-	function find(){
-		var f=document.ff;
-		if(f.ss.value==""){
-			alert("검색어를 입력해주세요.");
-			f.ss.focus();
-			return;
-		}
-		f.submit();
-	}
-</script>
+		$(function(){
+			$('#findBtn').click(function(){
+				var ss=$('#ss').val();
+				
+				$('#print').html("");
+				
+				if(ss==""){
+					$('#print').html("<font color=red>검색어를 입력하세요.</font>");
+					$('#ss').focus();
+					return;
+				}
+				$('#ff').submit();			
+			})
+		});
+	</script>
 </head>
 <body>
 	<div align="center">
@@ -142,19 +154,28 @@
 					</form>	
 				</td>
 				<td align="right">
-					<img src="img/btn_pageFirst.gif">
-					<img src="img/btn_pagePrev.gif">
+					<a href="main.jsp?page=1">
+						<img src="img/btn_pageFirst.gif">
+					</a>
+					<a href="main.jsp?page=<%=curPage-1 %>">
+						<img src="img/btn_pagePrev.gif">
+					</a>
 					<%						
 						for(i=1;i<=totalPage;i++){		
 					%>
 						<a href="main.jsp?page=<%=i %>">[<%=i %>]</a>						
 					<%
-						}
+						}					
 					%>
-					<img src="img/btn_pageNext.gif">
-					<img src="img/btn_pageLast.gif">
+					<a href="main.jsp?page=<%=curPage+1 %>">
+						<img src="img/btn_pageNext.gif">
+					</a>
+					<a href="main.jsp?page=<%=totalPage %>">
+						<img src="img/btn_pageLast.gif">
+					</a>					
 					&nbsp;&nbsp;
 					<%=curPage %>page / <%=totalPage %>pages
+					<%System.out.println(curPage); %>
 				</td>
 			</tr>
 		</table>

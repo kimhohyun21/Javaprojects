@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>커뮤니티 게시판</title>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>Ŀ�´�Ƽ �Խ���</title>
 </head>
 <body>
 	<div align="center">
@@ -17,20 +17,24 @@
 			<tr>
 				<td width="200" height="500">
 					&nbsp;
-				</td>
+				</td>				
 				<td width="700" height="500" align="center" valign="top">					
 			<%
-				request.setCharacterEncoding("UTF-8");
+				request.setCharacterEncoding("EUC-KR");
 				String no=request.getParameter("no");
 				String content=request.getParameter("content");
 				String fpage=request.getParameter("fpage");
 				String fs=request.getParameter("fs");
-				String ss=request.getParameter("ss");					
+				String ss=request.getParameter("ss");
+				String update=request.getParameter("update");
 				
-				if(no!=null){
+				if(update!=null){
 			%>
-					<jsp:include page="content.jsp"></jsp:include>
-			
+					<jsp:include page="update.jsp"></jsp:include>
+			<%
+				}else if(no!=null){
+			%>
+					<jsp:include page="content.jsp"></jsp:include>	
 			<%
 				}else if(content!=null){
 			%>

@@ -15,8 +15,10 @@
 	
 	String method = request.getMethod();
 	System.out.println(method);
-	
-	System.out.println(ss);
+	if(method.equals("GET")){
+		ss=new String(ss.getBytes("UTF-8"), "UTF-8");
+		System.out.println(ss);
+	}	
 	
 	BoardDAO dao=new BoardDAO();
 	List<BoardVO> flist=dao.contentFind(fs, ss, curPage);
@@ -44,26 +46,42 @@
 			color: green;	
 		}
 	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<script type="text/javascript">
-	function find(){
-		var f=document.ff;
-		if(f.ss.value==""){
-			alert("검색어를 입력해주세요.");
-			f.ss.focuse();
-			return;
-		}
-		f.submit();
-	}
-	alert!(encodeURIComponent(ss))
-</script>
+		$(function(){
+			$('#findBtn').click(function(){
+				var ss=$('#ss').val();
+				
+				$('#print').html("");
+				
+				if(ss==""){
+					$('#print').html("<font color=red>검색어를 입력하세요.</font>");
+					$('#ss').focus();
+					return;
+				}
+				$('#ff').submit();			
+			})
+		});
+		//자바스크립트 경고창 방법
+		/* function find(){
+			var f=document.ff;
+			if(f.ss.value==""){
+				alert("검색어를 입력하세요.");
+				f.ss.focuse();
+				return;
+			}
+			f.submit();
+		} */
+	</script>
 </head>
 <body>
 	<div align="center">
-		<img src="img/board.jpg" height="80" width="500">
+	<img src="img/board.jpg" height="80" width="500">
 		<table width="700" border="0" id="insert">
 			<tr>
-				<td align="left">
+				<td align="left" width="30%">
 					<a href="main.jsp?content=1"><img src="img/bt_write.jpg" border="0"></a>
+					<td align="right">검색된 내용 <%=count %>개</td>
 				</td>
 			</tr>
 		</table>

@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+<title>답글쓰기</title>
 </head>
 <body>
-
+	
 </body>
 </html>

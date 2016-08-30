@@ -1,12 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="EUC-KR" import="com.sist.dao.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
-</html>
+<%
+	request.setCharacterEncoding("EUC-KR");
+	String no=request.getParameter("no");
+	int num=Integer.parseInt(no);
+	String name=request.getParameter("name");
+	String email=request.getParameter("email");
+	String subject=request.getParameter("subject");
+	String content=request.getParameter("content");
+	String pwd=request.getParameter("pwd");
+	
+	BoardVO vo=new BoardVO();
+	vo.setNo(num);
+	vo.setName(name);
+	vo.setEmail(email);
+	vo.setSubject(subject);
+	vo.setContent(content);
+	vo.setPwd(pwd);
+	
+	BoardDAO dao=new BoardDAO();
+	boolean bCheck=dao.contentUpdate(vo);
+	
+	if(bCheck==false){
+		out.println("<script>alert('비밀번호가 일치하지 않습니다.');</script>");
+		out.println("<script>history.back();</script>");
+	}else{
+		response.sendRedirect("main.jsp");
+	}
+%>

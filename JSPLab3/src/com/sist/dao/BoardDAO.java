@@ -7,7 +7,7 @@ public class BoardDAO {
 	private Connection conn;
 	private PreparedStatement ps;
 	private ResultSet rs;
-	private final String URL="jdbc:oracle:thin:@localhost:1521:ORCL";
+	private final String URL="jdbc:oracle:thin:@211.238.142.88:1521:ORCL";
 	private final String USER="scott";
 	private final String PWD="tiger";
 	
@@ -207,7 +207,7 @@ public class BoardDAO {
 			}
 			
 			//내용 출력
-			String sql="SELECT no,name,subject,regDate,hit,content "
+			String sql="SELECT no,name,NVL(email, ' '),subject,regDate,hit,content "
 						+ "FROM replyBoard WHERE no=?";
 			
 			ps=conn.prepareStatement(sql);
@@ -217,10 +217,11 @@ public class BoardDAO {
 			
 			vo.setNo(rs.getInt(1));
 			vo.setName(rs.getString(2));
-			vo.setSubject(rs.getString(3));
-			vo.setRegDate(rs.getDate(4));
-			vo.setHit(rs.getInt(5));
-			vo.setContent(rs.getString(6));			
+			vo.setEmail(rs.getString(3));
+			vo.setSubject(rs.getString(4));
+			vo.setRegDate(rs.getDate(5));
+			vo.setHit(rs.getInt(6));
+			vo.setContent(rs.getString(7));			
 			
 			rs.close();
 		}catch(Exception e){
@@ -233,7 +234,48 @@ public class BoardDAO {
 		return vo;
 	}
 	
-	//상세보기 번호 값 지정 함수
+	//수정하기 (modify)
+	public boolean contentUpdate(BoardVO vo){
+		boolean bCheck=false;
+		try{
+			//읽어오기
+			getConnection();
+			
+			String sql="SELECT pwd FROM replyBoard WHERE no=?";
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, vo.getNo());
+			rs=ps.executeQuery();
+			rs.next();
+			
+			String db_pwd=rs.getString(1);
+			
+			if(db_pwd.equals(vo.getPwd())){
+				//수정하기
+				bCheck=true;
+				sql="UPDATE replyBoard SET name=?, email=?, subject=?, content=? "
+					+ "WHERE no=?";
+				ps=conn.prepareStatement(sql);
+				ps.setString(1, vo.getName());
+				ps.setString(2, vo.getEmail());
+				ps.setString(3, vo.getSubject());
+				ps.setString(4, vo.getContent());
+				ps.setInt(5, vo.getNo());
+				ps.executeUpdate();
+				
+			}else{
+				bCheck=false;
+			}			
+			rs.close();		
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			disConnection();
+		}
+		
+		return bCheck;
+	}
+	
+	//상세보기 번호 값 지정 메서드
 	public int coutNo(String no){
 		int countno=0;
 		try{
@@ -266,9 +308,10 @@ public class BoardDAO {
 			
 			String sql="SELECT no, subject, name, regDate, hit, group_tab "
 					+ "FROM replyBoard "
-					+ "WHERE "+fs+" LIKE '%"+ss+"%'"
+					+ "WHERE "+fs+" LIKE '%'||?||'%' "  //||문자열 결합 연산자 
 					+ "ORDER BY group_id DESC, group_step ASC";
 			ps=conn.prepareStatement(sql);
+			ps.setString(1, ss);
 			rs=ps.executeQuery();
 			
 			int i=0;
