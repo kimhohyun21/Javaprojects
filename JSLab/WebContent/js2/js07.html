@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>switch문</title>
+<!-- 
+	switch문도 java와 동일
+ -->
+</head>
+<body>
+	<script type="text/javascript">
+		var month=2;
+		var dsys;
+		
+		switch(month){
+		case 4:
+		case 6:
+		case 9:
+		case 11:
+			days=30;
+			break;
+		case 2:
+			days=28;
+			break;
+		default :
+			days=31;
+			break;
+		};
+		
+		document.writeln(month+'월의 날짜는 '+days+'일까지 입니다. <br/>');
+	</script>
+</body>
+</html>

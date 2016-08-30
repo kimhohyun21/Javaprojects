@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>산술연산자</title>
+</head>
+<!-- 
+	@자바스크립트의 연산자, 제어문
+		1)산술연산자 :  +, -, *, /, %, ++, --
+ -->
+<body>
+	<script type="text/javascript">
+		var num=2;
+		var str="20";
+		var bool=true;
+		var obj={};
+		
+		document.writeln('num+13 : '+(num+13)+'<br/>'); //연산자 우선순위에 의해서 ++기호 사이에 산술연산이 가능하도록 하려면 ()가 필요 
+		document.writeln('bool+1 : '+(bool+1)+'<br/>'); //피연산가 불리언인 경우 true는 숫자 1로 false는 0으로 변환됨
+		document.writeln('str+13 : '+(str+13)+'<br/>'); //문자열이 있을 경우 +기호가 문자열 접합 연산자로 활용됨
+		document.writeln('obj+10 : '+(obj+10)+'<br/>'); //한쪽이 객체일 경우 +기호가 문자열 접합 연산자로 활용됨
+		
+		var x=3;
+		document.writeln('x : '+x+'<br/>');
+		var y=x++;
+		document.writeln('y : '+y+'<br/>');
+		
+		var x=3;
+		document.writeln('x : '+x+'<br/>');
+		var y=++x;
+		document.writeln('y : '+y+'<br/>');
+		
+	</script>
+</body>
+</html>

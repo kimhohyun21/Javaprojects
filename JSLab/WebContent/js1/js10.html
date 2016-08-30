@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<!-- 
+	@불리언 리터럴
+		1) true 또는 false 값을 가짐
+		2) 산술연산에서 true는 숫자 1로 false는 숫자 0으로 변환됨
+		3) 문자연산에서 true는 "true"문자열로 false는 "false"문자열로 변환
+		4) 논리연산에서 0, undefined, null, NaN, ""값은 false로 변환 
+ -->
+<body>
+	<script type="text/javascript">
+		var score=88;
+		var message="불합격";
+		
+		if(score>=70){
+			message="합격";	
+		}
+		
+		document.writeln(score+"점은 "+message+"입니다."+"<br/>");
+		
+		var a=0;
+		var b=undefined;
+		var c=null;
+		var d=NaN;
+		var e="";
+		
+		document.writeln("!0 => "+!a+"<br/>");
+		document.writeln("!undefined => "+!b+"<br/>");
+		document.writeln("!null => "+!c+"<br/>");
+		document.writeln("!NaN => "+!d+"<br/>");
+		document.writeln('!"" => '+!e+'<br/>');
+		
+	</script>
+</body>
+</html>

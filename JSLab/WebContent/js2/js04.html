@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>논리연산자</title>
+</head>
+<!-- 
+	5) 논리연산자 : &&, ||
+ -->
+<body>
+	<script type="text/javascript">
+		var calculator;
+		
+		calculator && document.writeln('calculator.add(2,3) : '+calculator.add(2,3)+'<br/>');
+		
+		calculator={
+			add : function(op1, op2){
+				return op1+op2;
+			}					
+		};
+		
+		calculator && document.writeln('calculator.add(2,3) : '+calculator.add(2,3)+'<br/>');
+		
+		//||연산
+		calculator.subtract || (calculator.subtract=function(op1, op2){return op1-op2;});
+		document.writeln('<br/>');
+		calculator.subtract && document.writeln('calculater.subtract(2,3) : '+calculator.subtract(2,3)+'<br/>');
+		// ||의 경우는 앞의 조건이 true면 뒤의 조건은 체크하지 않는다
+		// &&의 경우는 true든 false든 양쪽 다 체크해야 함	
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>예외처리</title>
+</head>
+<!-- 
+	@예외처리
+		1) 자바스크립트는 런타임에서 에러가 발생할 때마다 예외를 발생시킴
+		2) throw문을 사용하여 명시적으로 예외를 발생시킬 수도 있음
+		3) try...catch...finally 사용
+		4) 형식
+			try{
+				// 정상적으로 처리되어야할 코드 기술
+			}catch(e){
+				//예외가 발생할 경우에만 실행되는 블록
+				//예외와 관련된 정보로 선언된 변수 e를 참조
+			}finally{
+				//무조건 실행이 필요한 코드를 기술
+			}
+ -->
+<body>
+	<script type="text/javascript">
+		var x=5;
+		var result;
+		
+		try{
+			document.writeln('\u2460 <br/>');
+			result=x*y; //y는 정의되어 있지 않은 변수 ==> 런타임 에러 발생
+			document.writeln('\u2461 '+result+'<br/>');
+		}catch(e){
+			document.writeln('\u2462 '+e+'<br/>');
+		}finally{
+			document.writeln('\u2463 <br/>');
+		}
+		
+		document.writeln('<br/>');
+		
+		try{
+			document.writeln('\u2460 <br/>');
+			result=x/0;
+			document.writeln('\u2461 '+result+'<br/>');
+			throw new Error('0으로 나눌 수 없습니다.'); //예외 객체를 만들어 던짐
+		}catch(e){
+			document.writeln('\u2462 '+e+'<br/>');
+		}finally{
+			document.writeln('\u2463 <br/>');
+		}
+	</script>
+</body>
+</html>

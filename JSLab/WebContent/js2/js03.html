@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>비교연산자</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//비교연산자
+		
+		var x=5;
+		var y=3;
+		var z='5';
+		
+		//숫자열과 문자열을 비교하였을때는 숫자열이 문자열로 변환되어 비교
+		document.writeln('x==y : '+(x==y)+'<br/>');
+		document.writeln('x!=y : '+(x!=y)+'<br/>');
+		document.writeln('x!=z : '+(x!=z)+'<br/>');
+		document.writeln('x<y : '+(x<y)+'<br/>');
+		document.writeln('x<=y : '+(x<=y)+'<br/>');
+		document.writeln('x>y : '+(x>y)+'<br/>');
+		document.writeln('x>=y : '+(x>=y)+'<br/>');
+		
+		//===연산자에서는 비교연산 시 데이터 타입 변환을 미수행함
+		document.writeln('x===z: '+(x===z)+'<br/>');
+		document.writeln('x!==y : '+(x!==y)+'<br/>');
+		document.writeln('x!==z : '+(x!==z)+'<br/>');
+	</script>
+</body>
+</html>
