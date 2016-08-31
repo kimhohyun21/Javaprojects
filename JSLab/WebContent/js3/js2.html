@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<!-- 
+	@함수의 전역스코프와 지역스코프
+		1) scope(스코프) : 코드에서 변수를 참고할 수 있는 해당 변수의 유효범위를 결정하는 개념		
+			- JS의 전역(global)스코프 : 코드 전체에서 접근 가능
+			- JS의 지역(local) 스코프 : 함수내의 코드에서만 접근 가능
+				=> 전역스코프를 가진 변수를 전역변수, 지역스코프를 가진 변수를 지역변수라 함
+-->
+<body>
+	<script type="text/javascript">
+		//전역스코프와 지역스코프
+		//전역스코프를  가진 전역변수
+		var x='global x';
+		var y='global y';
+		
+		function func(){	
+			//지역스코프를 가진 지역 변수 ==> 반드시 var 키워드를 함께 선언해야 함, 표기를 하지 않을 경우 전역변수가 됨
+			var x='local x'; // 이름은 같지만, 위의 함수 밖에 있는 x와 다른 지역변수
+			
+			//var 키워드가 없는 경우 => 전역스코프에 접근하여 동일 이름을 가진 전역변수를 사용함
+			//만약에 동일 이름의 전역변수가 없을 경우 => 새로운 전역 변수로서 등록 됨
+			y='???';
+			
+			document.writeln('x : '+x+'<br/>');
+			document.writeln('y : '+y+'<br/>');
+			
+		};		
+		
+		document.writeln('func()호출 전<br/>');
+		document.writeln('x : '+x+'<br/>');
+		document.writeln('y : '+y+'<br/>');
+		document.writeln('<br/>');
+		
+		document.writeln('func()호출<br/>');
+		//함수 호출
+		func();
+		document.writeln('<br/>');	
+		
+		document.writeln('func()호출 후<br/>');
+		document.writeln('x : '+x+'<br/>');
+		document.writeln('y : '+y+'<br/>'); //==> 함수 안에 전역으로 선언된 값으로 재 할당 됨
+		document.writeln('<br/>');
+		
+	</script>
+</body>
+</html>

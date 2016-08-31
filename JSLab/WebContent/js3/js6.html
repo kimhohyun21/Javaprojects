@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<!-- 
+	@함수의 인자로 함수를 전달
+		1) JS에서 함수는 데이터의 속성을 갖고 있음
+			=> 변수, 객체 프로퍼티에도 저장,함수의 전달 인자로도 사용가능
+ -->
+<body>
+	<script type="text/javascript">
+		//사칙연산 관련 메소드를 가진 객체 정의
+		var calculator={
+			add: function(x,y){return x+y;},
+			subtract: function(x,y){return x-y;},
+			multiply: function(x,y){return x*y;},
+			divide: function(x,y){return x/y;}
+		};
+		
+		/* 함수를 매개변수로 갖는 함수 정의 
+			==> operator에는 위에서 정의된 객체calculator의 메서드를 매개변수 값으로 전달 
+		    ==> oprerand1,2에는 첫번째 매개변수로 전달된 메서드에 사용될 매개변수 값으로 
+		    	calculator에서 정의된 메서드의 return 값을전달
+		 */
+		function operator1(operator, operand1, operand2){
+			return operator(operand1, operand2);
+		};
+		
+		// 메서드의 이름을 매개변수로 갖는 함수 정의
+		function operator2(operatorName, operand1, operand2){
+			//프로퍼티 타입이 함수일 경우 => 메서드 실행
+			if((typeof calculator[operatorName])=='function'){
+				return calculator[operatorName](operand1, operand2);
+			}else{
+				throw new Error('operator2: '+operatorName+'은(는) 함수가 아닙니다.');
+			}
+		};
+		
+		//((3-8)+(2*5))
+	
+		var result1=operator1(calculator.add,operator1(calculator.subtract,3,8),operator1(calculator.multiply,2,5));
+		document.writeln('operator1의 ((3-8)+(2*5))의 값은 '+result1+'<br/>');
+		
+		try{
+			var result2=operator2('add',operator2('subtract',3,8),operator2('multiply',2,5));
+			document.writeln('operator2의 ((3-8)+(2*5))의 값은 '+result2+'<br/>');	
+		}catch(e){
+			document.writeln(e+'<br/>');
+		};
+		
+	</script>
+</body>
+</html>

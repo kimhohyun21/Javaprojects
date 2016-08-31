@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<!-- 
+		@함수의 매개변수와 스코프
+			1) 함수의 매개변수 
+				- 지역스코프를 갖는 지역변수로 사용
+				- 함수를 호출하는 표현식으로부터 그 값을 전달 받음
+			
+			2) 만약 전역스코프의 전역변수 값을 함수의 매개변수로 전달하면 
+				=> 그 값이 함수의 지역스코프 매개변수로 복사가 됨
+				- 전달된 값이 기본형일 경우 => 전역변수와 매개변수는 상호 독립적인 값이 됨
+				- 전달된 값이 참조형일 경우 => 전역변수와 매개변수가 동일객체를 참조하게 됨
+		
+ -->
+<body>
+	<script type="text/javascript">
+		//값을 매개변수로 전달하는 경우 ==> 함수내에서의 매개변수 조작은 원본 값에 아무런 영향을 주지 않는다
+		function swapByValue(x,y){
+			var temp=x; 
+			x=y;
+			y=temp;
+			document.writeln('swap함수 호출 <br/>');	
+			document.writeln('a : '+x+', b : '+y+'<br/>');	
+		};
+		
+		function swapByReference(o){
+			var temp=o.x;
+			o.x=o.y;
+			o.y=temp;
+			document.writeln('obj.x : '+obj.x+', obj.y : '+obj.y+'<br/>');
+		};
+		
+		var a=5;
+		var b=8;
+		var obj={x:5, y:8};
+		
+		document.writeln('swap함수 호출 전 <br/>');
+		document.writeln('a : '+a+', b : '+b+'<br/>');
+		document.writeln('obj.x : '+obj.x+', obj.y : '+obj.y+'<br/>');
+		document.writeln('<br/>');
+		
+		swapByValue(a, b);
+		swapByReference(obj);
+		document.writeln('<br/>');
+		
+		document.writeln('swap함수 호출 후 <br/>');
+		document.writeln('a : '+a+', b : '+b+'<br/>'); //==> 기본형은 함수에 따라 값의 영향을 받지 않음
+		document.writeln('obj.x : '+obj.x+', obj.y : '+obj.y+'<br/>');//==> 참조형은 함수에 의해 바뀐 값이 반영이 됨, 객체 값이 함수에 의해 재정의 됨
+		
+	</script>
+</body>
+</html>

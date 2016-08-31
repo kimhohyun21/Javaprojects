@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<!--
+	@함수의 매개변수와 인자
+		1) JS함수는 함수 정의 시 선언된 매개변수에 상관없이 인자 전달이 가능
+			=> 어떤 데이터 타입의 값이라도 전달 가능
+		2) 선언된 매개변수보다 적은 수의 인자 값들을 전달하면
+			=> 값을 전달 받지 못한 남은 매개변수들은 undefined값을 갖게 됨
+		3) 생략이 가능한 매개 변수들은 매개변수 목록에서 끝에 위치하도록 해서
+			=> 임의로 생략할 수 있게 만드는 것이 중요  
+-->
+<body>
+	<script type="text/javascript">
+		//함수의 생략이 가능한 매개변수
+		function sum(array, start, end){
+			//매개변수 array에 전달된 값이 없을 경우
+			if(!array) array=[]; //만약에 배열이 없다면 빈 배열 할당
+			
+			//매개변수 start에 전달된 값이 없을 경우
+			if(!start) start=0; //0을 할당
+			
+			//매개변수 end에 전달된 값이 없을 경우
+			if(!end) end=array.length;
+			
+			//매개변수 array에 전달된 값이 배열객체일 경우에만 합계 계산
+			if(array instanceof Array){				
+				//매개변수 start와 end에 전달된 값이 숫자일 경우에민 합계 계산
+				if((typeof start)!='number' || (typeof end)!='number'){
+					throw new Error('sum(): 두번째, 세번째 매개변수의 전달 인자는 숫자여야 합니다.');
+				}
+				var result=0;
+				for(var i=start;i<end;i++){
+					//배열 array의 원소가 숫자 타입일 경우만 합계 계산
+					if((typeof array[i])!='number'){
+						throw new Error('sum(): array['+i+']에 저장된 값 '+array[i]+'은(는) 숫자타입이 아닙니다.');
+					}
+					result+=array[i];
+				}			
+				return result;
+			}else{ //매개변수 array에 전달된 값이 배열 개체가 아닐 경우
+				throw new Error('sum(): 첫번째 매개변수의 전달인자가 배열이어야 합니다.');
+			}
+		};
+		
+		var arr1=[1,2,3,4,5];
+		var obj={name:'오해영', phone:'010-1234-5678'};
+		var arr2=[1,2,'3rd',4,5];
+		
+		try{
+			document.writeln('sum(arr1,0,arr1.length): '+sum(arr1,0,arr1.length)+'<br/>');
+			document.writeln('sum(arr1,0,4): '+sum(arr1,0,4)+'<br/>');
+			document.writeln('sum(arr1,0): '+sum(arr1,0)+'<br/>');
+			document.writeln('sum(arr1,2): '+sum(arr1,2)+'<br/>');
+			document.writeln('sum(arr1): '+sum(arr1)+'<br/>');
+			document.writeln('sum(): '+sum()+'<br/>');
+			document.writeln('sum(obj): '+sum(obj)+'<br/>');
+		}catch(e){
+			document.writeln(e+'<br/>');
+		};
+		
+		try{
+			document.writeln('sum(arr1,\'x\',4): '+sum(arr1,'x',4)+'<br/>');
+		}catch(e){
+			document.writeln(e+'<br/>');
+		}
+		
+		try{
+			document.writeln('sum(arr2): '+sum(arr2)+'<br/>');
+		}catch(e){
+			document.writeln(e+'<br/>');
+		}
+	</script>
+</body>
+</html>

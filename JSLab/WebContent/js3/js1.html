@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<!-- 
+	@함수
+		1) 자바 스크립트에서의 함수의 역할
+			- 호출 루틴으로서의 함수 
+				= 호출에 의해 실행되고 매개변수에 전달된 값을 이용 => 미리 정의된 로직을 처리 => 결과 반환 코드 블록
+			- 데이터로서의 함수
+				= 변수, 객체 프로퍼티, 배열원소에 저장될 수 있음
+				= 매개 변수의 전달 값, 다른 함수의 반환 값으로도 사용
+			- 메소드로서의 함수 
+				= 객체 프로퍼티에 저장되어 객체를 통해 호출하는데 사용
+			- 생성자 함수
+				= new 연산자와 함께 사용 => 객체를 생성, 초기화 하는데 사용
+				
+		2) 함수를 정의하는 방법(3가지)
+			- function문을 이용한 정의
+				= 형식) 
+					function 함수명([매개변수 목록]){
+						로직 문장;
+						[return 반환값;]
+					}   	
+			
+			- 함수 리터럴을 이용한 정의
+				= 형식)
+					var 함수명=function([매개변수 목록]){
+						로직 문장;
+						
+					}
+			
+			- Function생성자를 이용한 정의
+				= 형식)
+					var 변수명=new Function(['매개변수 목록', '로직문장', 'return 반환값;']);
+					
+ -->
+<body>
+	<script type="text/javascript">
+		//함수 정의 호출
+		function print(message){
+			document.writeln(message);			
+		};
+		
+		function println(message){
+			document.writeln(message+'<br/>');
+		};
+		
+		//객체를 파라미터로 가진 함수
+		var pointA={x:25, y:40};
+		var pointB={x:50, y:80};
+		
+		function distance(p1, p2){
+			var dx=p2.x-p1.x;
+			var dy=p2.y-p1.y;
+			
+			return Math.sqrt(dx*dx); //자바스크립트도 내장함수가 존재: Math 사용 => math.sqrt(x) : x의 root값을 반환
+		};
+		
+		print('pointA와 pointB 사이의 거리 : ');
+		println(distance(pointA, pointB));
+		
+		//함수 리터럴에 의해 두점을 이용한 사각형의 면적을 반환하는 함수
+		var square=function(leftTop, rightButtom){
+			var width=rightButtom.x-leftTop.x;
+			var height=rightButtom.y-leftTop.y;
+			return width*height;
+		};	
+		
+		print('pointA와 pointB로 구성한 사각형의 넓이: ');
+		println(square(pointA, pointB));
+		
+		//Function 생성자에 의한 함수 정의
+		var triagle=new Function('base','height','return (base*height)/2');
+		
+		print('base와 height로 구성된 삼각형의 넓이 : ');
+		println(triagle(30, 20));
+		
+		
+	</script>
+</body>
+</html>
