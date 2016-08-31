@@ -393,4 +393,100 @@ public class BoardDAO {
 			
 		return ftotal;
 	}
+	
+	//답글 달기
+	public void reply(int rno, BoardVO vo){
+		try{
+			getConnection();
+			conn.setAutoCommit(false); //자동으로 인서트 되지 않게 설정
+			/*
+			 * 답변형 게시글의 변수 ==> 변수 초기값은 모두 0
+			 * 	- group_id : 연관된 글을 모두 묶어주는 컬럼(답변을 묶어주는 번호)
+			 * 	- group_tap : 몇번째 단계의 답글인지 나타내는 컬럼 (답변이미지 출력위치)
+			 * 	- group_step : 글의 정렬 순서를 지정해주는 컬럼
+			 *	
+			 *								id			tab			step
+			 *	새로운 글(50)					50			0			0	
+			 *		|				
+			 *		답변1						50			1			1
+			 *		  |
+			 *		   답변1의 답변				50			2			2
+			 *			|
+			 *			답변 1의 답변의 답변		50			3			3 (중간에 끼어드는 답변)
+			 *		|
+			 *		답변2						50			1			3 => 4									
+			 *		  |
+			 *		   답변 2의 답변				50			2			4 => 5
+			 *
+			 *		UPDATE replyBoard 
+			 *		SET group_step=group_step+1
+			 *		WHERE group_id=? AND group_step>?; /// 지정된 id의 게시글의 모임 중에 step이 중간에 삽입된 글의 이전 글의 step보다 큰 것만 증가 
+			 */
+			
+			String sql="SELECT group_id, group_step, group_tab "
+						+ "FROM replyBoard WHERE no=?";
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, rno); // rno는 DB 컬럼에서는 root를 사용할 예정 : root는 중간에 삭제 되더라도 연속으로 증가하는 글의 순서 
+			rs=ps.executeQuery();
+			rs.next();
+			
+			//변수 받아오기
+			int gid=rs.getInt(1);
+			int gstep=rs.getInt(2);
+			int gtap=rs.getInt(3);
+			rs.close();
+			ps.close();
+			
+			//삽입된 답글로 인해 뒤로 밀리는 글의 group_step 값을 증가 시킴
+			sql="UPDATE replyBoard "
+				 + "SET group_step=group_step+1 "
+				 + "WHERE group_id=? AND group_step>?";
+			
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, gid);
+			ps.setInt(2, gstep); ///????
+			ps.executeUpdate();
+			ps.close();
+			
+			//답글 등록
+			sql="INSERT INTO replyBoard "
+				 + "(no, name, email, subject, content, pwd, group_id, group_step, group_tab, root) "
+				 + "VALUES (rb_no_sec.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, vo.getName());
+			ps.setString(2, vo.getEmail());
+			ps.setString(3, vo.getSubject());
+			ps.setString(4, vo.getContent());
+			ps.setString(5, vo.getPwd());
+			ps.setInt(6, gid);
+			ps.setInt(7, gstep+1);
+			ps.setInt(8, gtap+1);
+			ps.setInt(9, rno);
+			ps.executeUpdate();
+			ps.close();			
+			
+			sql="UPDATE replyBoard SET depth=depth+1 WHERE no=?";
+			ps=conn.prepareStatement(sql);			
+			ps.setInt(1, rno);
+			ps.executeUpdate();
+			
+			conn.commit();
+			System.out.println(sql);
+		}catch(Exception e){
+			try{
+				conn.rollback(); // 에러가 났을 경우 롤백
+			}catch(Exception ex){
+				ex.printStackTrace();
+			}
+			e.printStackTrace();
+		}finally{
+			try{
+				conn.setAutoCommit(true);				
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+			disConnection();
+		}
+	}
 }

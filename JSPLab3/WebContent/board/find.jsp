@@ -1,8 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR" import="java.util.*, com.sist.dao.*, java.text.*, java.net.*"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="java.util.*, com.sist.dao.*, java.text.*, java.net.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%
-	request.setCharacterEncoding("EUC-KR");
+	request.setCharacterEncoding("UTF-8");
 
 	String strPage=request.getParameter("fpage");
 	if(strPage==null){
@@ -30,11 +30,11 @@
 %>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-	<title>¸®½ºÆ® ÆäÀÌÁö</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>ë¦¬ìŠ¤íŠ¸ í˜ì´ì§€</title>
 	<style type="text/css">
 		td, th{
-			font-family: "¸¼Àº °íµñ";
+			font-family: "ë§‘ì€ ê³ ë”•";
 			font-size: 9pt
 		}
 		a{
@@ -55,18 +55,18 @@
 				$('#print').html("");
 				
 				if(ss==""){
-					$('#print').html("<font color=red>°Ë»ö¾î¸¦ ÀÔ·ÂÇÏ¼¼¿ä.</font>");
+					$('#print').html("<font color=red>ê²€ìƒ‰ì–´ë¥¼ ì…ë ¥í•˜ì„¸ìš”.</font>");
 					$('#ss').focus();
 					return;
 				}
 				$('#ff').submit();			
 			})
 		});
-		//ÀÚ¹Ù½ºÅ©¸³Æ® °æ°íÃ¢ ¹æ¹ı
+		//ìë°”ìŠ¤í¬ë¦½íŠ¸ ê²½ê³ ì°½ ë°©ë²•
 		/* function find(){
 			var f=document.ff;
 			if(f.ss.value==""){
-				alert("°Ë»ö¾î¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+				alert("ê²€ìƒ‰ì–´ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
 				f.ss.focuse();
 				return;
 			}
@@ -81,17 +81,17 @@
 			<tr>
 				<td align="left" width="30%">
 					<a href="main.jsp?content=1"><img src="img/bt_write.jpg" border="0"></a>
-					<td align="right">°Ë»öµÈ ³»¿ë <%=count %>°³</td>
+					<td align="right">ê²€ìƒ‰ëœ ë‚´ìš© <%=count %>ê°œ</td>
 				</td>
 			</tr>
 		</table>
 		<table border="0" width="700" id="table_content">
 			<tr bgcolor="#ccccff" height="2">
-				<th width="10%">¹øÈ£</th>
-				<th width="45%">Á¦¸ñ</th>
-				<th width="15%">ÀÌ¸§</th>
-				<th width="20%">ÀÛ¼ºÀÏ</th>
-				<th width="10%">Á¶È¸¼ö</th>
+				<th width="10%">ë²ˆí˜¸</th>
+				<th width="45%">ì œëª©</th>
+				<th width="15%">ì´ë¦„</th>
+				<th width="20%">ì‘ì„±ì¼</th>
+				<th width="10%">ì¡°íšŒìˆ˜</th>
 			</tr>
 		<%
 			int i=0;
@@ -114,7 +114,7 @@
 					<%							
 						}
 						
-						String msg="°ü¸®ÀÚ¿¡ ÀÇÇØ »èÁ¦µÈ °Ô½Ã¹°ÀÔ´Ï´Ù.";
+						String msg="ê´€ë¦¬ìì— ì˜í•´ ì‚­ì œëœ ê²Œì‹œë¬¼ì…ë‹ˆë‹¤.";
 						if(msg.equals(vo.getSubject())){
 							
 					%>
@@ -159,12 +159,12 @@
 					<form action="main.jsp?fpage=1&fs=<%=fs %>" method="post" id="ff" name="ff">
 						Search:
 						<select name="fs">
-							<option value="name">ÀÌ¸§</option>
-							<option value="subject">Á¦¸ñ</option>
-							<option value="content">³»¿ë</option>
+							<option value="name">ì´ë¦„</option>
+							<option value="subject">ì œëª©</option>
+							<option value="content">ë‚´ìš©</option>
 						</select>
 						<input type="text" name="ss" id="ss" size="20">
-						<input type="button" value="Ã£±â" id="findBtn" onclick="find()">
+						<input type="button" value="ì°¾ê¸°" id="findBtn" onclick="find()">
 						<span id="print">
 							
 						</span>

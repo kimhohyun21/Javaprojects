@@ -1,31 +1,31 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-	<title>±Û¾²±â</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>ê¸€ì“°ê¸°</title>
 	<script type="text/javascript">
 		function send(){
-			//°èÃş±¸Á¶==> window ==> document ==> form ==> input
+			//ê³„ì¸µêµ¬ì¡°==> window ==> document ==> form ==> input
 			var f=document.frm;
 			if(f.name.value==""){
-				alert("ÀÌ¸§À» ÀÔ·ÂÇÏ¼¼¿ä");
+				alert("ì´ë¦„ì„ ì…ë ¥í•˜ì„¸ìš”");
 				f.name.focus();
 				return;
 			}
 			if(f.subject.value==""){
-				alert("Á¦¸ñÀ» ÀÔ·ÂÇÏ¼¼¿ä");
+				alert("ì œëª©ì„ ì…ë ¥í•˜ì„¸ìš”");
 				f.subject.focus();
 				return;
 			}
 			if(f.content.value==""){
-				alert("³»¿ëÀ» ÀÔ·ÂÇÏ¼¼¿ä");
+				alert("ë‚´ìš©ì„ ì…ë ¥í•˜ì„¸ìš”");
 				f.content.focus();
 				return;
 			}
 			if(f.pwd.value==""){
-				alert("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä");
+				alert("ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”");
 				f.pwd.focus();
 				return;
 			}
@@ -41,7 +41,7 @@
 			<table border="0" width="700" id="table_content" >
 				<tr height="27">
 					<td width="30%" align="right">
-						ÀÌ¸§
+						ì´ë¦„
 					</td>
 					<td width="70%" align="left">
 						<input type="text" size="10" name="name">
@@ -49,7 +49,7 @@
 				</tr>
 				<tr height="27">
 					<td width="30%" align="right">
-						ÀÌ¸ŞÀÏ
+						ì´ë©”ì¼
 					</td>
 					<td width="70%" align="left">
 						<input type="text" size="45" name="email">
@@ -57,7 +57,7 @@
 				</tr>
 				<tr height="27">
 					<td width="30%" align="right">
-						Á¦¸ñ
+						ì œëª©
 					</td>
 					<td width="70%" align="left">
 						<input type="text" size="45" name="subject">
@@ -65,7 +65,7 @@
 				</tr>
 				<tr height="27">
 					<td width="30%" align="right">
-						³»¿ë
+						ë‚´ìš©
 					</td>
 					<td width="70%" align="left">
 						<textarea rows="10" cols="50" name="content"></textarea>
@@ -73,7 +73,7 @@
 				</tr>
 				<tr height="27">
 					<td width="30%" align="right">
-						ºñ¹Ğ¹øÈ£
+						ë¹„ë°€ë²ˆí˜¸
 					</td>
 					<td width="70%" align="left">
 						<input type="password" size="10" name="pwd">
@@ -81,8 +81,8 @@
 				</tr>
 				<tr height="27">
 					<td colspan="2" align="center">
-						<input type="button" value="±Û¾²±â" onclick="send()">
-						<input type="button" value="Ãë¼Ò" onclick="javascript:history.back()">
+						<input type="button" value="ê¸€ì“°ê¸°" onclick="send()">
+						<input type="button" value="ì·¨ì†Œ" onclick="javascript:history.back()">
 					</td>
 				</tr>				
 			</table>

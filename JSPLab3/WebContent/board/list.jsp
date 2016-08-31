@@ -1,8 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR" import="java.util.*, com.sist.dao.*, java.text.*"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="java.util.*, com.sist.dao.*, java.text.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%	
-	request.setCharacterEncoding("EUC-KR");
+	request.setCharacterEncoding("UTF-8");
 	
 	String strPage=request.getParameter("page");	
 	if(strPage==null){
@@ -10,25 +10,36 @@
 	}
 	int curPage=Integer.parseInt(strPage);	
 	
-	BoardDAO dao=new BoardDAO();
-	List<BoardVO> list=dao.boardListData(curPage);
-	int totalPage=dao.boardTotalPage();
-	int count=dao.boardRowCount();
-	count=count-((curPage*10)-10);
+	String fs=request.getParameter("fs");
+	String ss=request.getParameter("ss");
 	
-	if(curPage<0){
-		curPage=1;
-	}else if(curPage>totalPage){
-		curPage=totalPage;
+	if(fs==null)fs="";
+	if(ss==null)ss="";
+	
+	int totalPage;
+	int count;
+	BoardDAO dao=new BoardDAO();
+	List<BoardVO> list=new ArrayList<>();
+	
+	if(fs=="" && ss==""){		
+		list=dao.boardListData(curPage);
+		totalPage=dao.boardTotalPage();
+		count=dao.boardRowCount();
+	}else{
+		list=dao.contentFind(fs, ss, curPage);		
+		totalPage=dao.findTotalPage(fs, ss);
+		count=dao.findRowCount(fs, ss);
 	}
+		
+	int num=count-((curPage*10)-10);
 %>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-	<title>����Ʈ ������</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>리스트 페이지</title>
 	<style type="text/css">
 		td, th{
-			font-family: "���� ����";
+			font-family: "맑은 고딕";
 			font-size: 9pt
 		}
 		a{
@@ -44,17 +55,25 @@
 	<script type="text/javascript">
 		$(function(){
 			$('#findBtn').click(function(){
+				var i=0;
 				var ss=$('#ss').val();
 				
 				$('#print').html("");
 				
 				if(ss==""){
-					$('#print').html("<font color=red>�˻�� �Է��ϼ���.</font>");
+					$('#print').html("<font color=red>검색어를 입력하세요.</font>");
 					$('#ss').focus();
 					return;
 				}
-				$('#ff').submit();			
+				
+				$('#ff').submit();	
 			})
+			
+			if(i==0){
+				$('#count').show();
+			}else{
+				$('#count').hide();
+			}
 		});
 	</script>
 </head>
@@ -63,18 +82,19 @@
 		<img src="img/board.jpg" height="80" width="500">
 		<table width="700" border="0" id="insert">
 			<tr>
-				<td align="left">
-					<a href="main.jsp?content=1"><img src="img/bt_write.jpg" border="0"></a>
+				<td align="left" width="30%">
+					<a href="main.jsp?insert=1"><img src="img/bt_write.jpg" border="0"></a>
 				</td>
+				<td align="right" style="color:red"><span id="count">검색된 내용 <%=count %>개</span></td>
 			</tr>
 		</table>
 		<table border="0" width="700" id="table_content">
 			<tr bgcolor="#ccccff" height="2">
-				<th width="10%">��ȣ</th>
-				<th width="45%">����</th>
-				<th width="15%">�̸�</th>
-				<th width="20%">�ۼ���</th>
-				<th width="10%">��ȸ��</th>
+				<th width="10%">번호</th>
+				<th width="45%">제목</th>
+				<th width="15%">이름</th>
+				<th width="20%">작성일</th>
+				<th width="10%">조회수</th>
 			</tr>
 		<%
 			int i=0;
@@ -84,7 +104,7 @@
 		%>
 			<tr bgcolor="<%=color %>" height="27" id="dataTr">
 				<td width="10%" align="center">									
-					<%=count-- %>				
+					<%=num-- %>				
 				</td>				
 				<td width="45%" align="left">				
 					<%
@@ -97,7 +117,7 @@
 					<%							
 						}
 						
-						String msg="�����ڿ� ���� ������ �Խù��Դϴ�.";
+						String msg="관리자에 의해 삭제된 게시물입니다.";
 						if(msg.equals(vo.getSubject())){
 							
 					%>
@@ -106,7 +126,7 @@
 					<%
 						}else{	
 					%>
-						<a href="main.jsp?no=<%=vo.getNo()%>"><%=vo.getSubject() %></a>
+						<a href="main.jsp?page=<%=curPage %>&no=<%=vo.getNo()%>&fs=<%=fs %>&ss=<%=ss %>"><%=vo.getSubject() %></a>
 					<%
 						}
 						SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
@@ -139,43 +159,47 @@
 		<table border="0" width="700" id="table_footer">
 			<tr>
 				<td align="left">
-					<form action="main.jsp?fpage=1" method="post" id="ff" name="ff">
+					<form method="get" id="ff" name="ff"> <!-- 찾기 했을 때 현재 list로 값을 다시 받아주기 위해 action 삭제 get방식으로 변경  -->
+						<input type="hidden" name="page" value="1"> <!-- page 값도 파라미터로 넘기기 위해 hidden으로 설정  -->
 						Search:
 						<select name="fs">
-							<option value="name">�̸�</option>
-							<option value="subject">����</option>
-							<option value="content">����</option>
+							<option value="name">이름</option>
+							<option value="subject">제목</option>
+							<option value="content">내용</option>
 						</select>
 						<input type="text" name="ss" id="ss" size="20">
-						<input type="button" value="ã��" id="findBtn" onclick="find()">
-						<span id="print">
-							
-						</span>
+						<input type="button" value="찾기" id="findBtn"> <!-- js로 작성할 경우 onclick="find()" 부여 -->
+						<span id="print"></span> <!-- 검색어 입력 하라는 경고 문구를 jquery혹은 js로 작성하여 출력하는 공간 -->
 					</form>	
 				</td>
 				<td align="right">
 					<a href="main.jsp?page=1">
 						<img src="img/btn_pageFirst.gif">
 					</a>
-					<a href="main.jsp?page=<%=curPage-1 %>">
+					<% 
+						int prevPage=curPage-1;
+						if(prevPage<=0)prevPage=1;
+					%>
+					<a href="main.jsp?page=<%=prevPage %>&fs=<%=fs %>&ss=<%=ss%>">
 						<img src="img/btn_pagePrev.gif">
 					</a>
 					<%						
 						for(i=1;i<=totalPage;i++){		
 					%>
-						<a href="main.jsp?page=<%=i %>">[<%=i %>]</a>						
+						<a href="main.jsp?page=<%=i %>&fs=<%=fs %>&ss=<%=ss%>">[<%=i %>]</a>						
 					<%
-						}					
+						} 
+						int nextPage=curPage+1;
+						if(nextPage>=totalPage)nextPage=totalPage;
 					%>
-					<a href="main.jsp?page=<%=curPage+1 %>">
+					<a href="main.jsp?page=<%=nextPage %>&fs=<%=fs %>&ss=<%=ss%>">
 						<img src="img/btn_pageNext.gif">
 					</a>
-					<a href="main.jsp?page=<%=totalPage %>">
+					<a href="main.jsp?page=<%=totalPage %>&fs=<%=fs %>&ss=<%=ss%>">
 						<img src="img/btn_pageLast.gif">
 					</a>					
 					&nbsp;&nbsp;
 					<%=curPage %>page / <%=totalPage %>pages
-					<%System.out.println(curPage); %>
 				</td>
 			</tr>
 		</table>

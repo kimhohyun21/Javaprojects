@@ -1,13 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR" import="java.util.*, com.sist.dao.*, java.text.*"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="java.util.*, com.sist.dao.*, java.text.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-	<title>»ó¼¼º¸±â</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>ìƒì„¸ë³´ê¸°</title>
 	<style type="text/css">
 		td, th{
-			font-family: "¸¼Àº °íµñ";
+			font-family: "ë§‘ì€ ê³ ë”•";
 			font-size: 10pt
 		}
 		
@@ -28,7 +28,7 @@
 	<script type="text/javascript">
 		var i=0;
 		$(function(){
-			$('#delBtn').click(function(){ //Åä±Û ÇüÅÂÀÇ ±â´É ±¸Çö
+			$('#delBtn').click(function(){ //í† ê¸€ í˜•íƒœì˜ ê¸°ëŠ¥ êµ¬í˜„
 				if(i==0){
 					$('#del').show();
 					i=1;
@@ -40,7 +40,7 @@
 			$('#delButton').click(function(){
 				var pwd=$('#pwd').val();
 				if(pwd==""){
-					$('#print').html("<font color=red>ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä</font>")
+					$('#print').html("<font color=red>ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”</font>")
 					$('#pwd').focus();
 					return;
 				}
@@ -55,6 +55,9 @@
 		String fs=request.getParameter("fs");
 		String ss=request.getParameter("ss");
 		
+		if(fs==null)fs="";
+		if(ss==null)ss="";
+		
 		BoardDAO dao=new BoardDAO();
 		BoardVO vo=new BoardVO();
 		vo=dao.contentDetail(no, 1);
@@ -67,13 +70,13 @@
 		<table border="0" width="700" id="dtable">
 			<tr height="27">
 				<td width="20%" class="td">
-					¹øÈ£
+					ë²ˆí˜¸
 				</td>
 				<td width="30%" align="center">
 					<%=countno %>
 				</td>
 				<td width="20%" class="td">
-					ÀÛ¼ºÀÏ
+					ì‘ì„±ì¼
 				</td>
 				<td width="30%" align="center">
 					<%=vo.getRegDate().toString() %>
@@ -81,13 +84,13 @@
 			</tr>
 			<tr height="27">
 				<td width="20%" class="td">
-					ÀÌ¸§
+					ì´ë¦„
 				</td>
 				<td width="30%" align="center">
 					<%=vo.getName() %>
 				</td>
 				<td width="20%" class="td">
-					Á¶È¸¼ö
+					ì¡°íšŒìˆ˜
 				</td>
 				<td width="30%" align="center">
 					<%=vo.getHit() %>
@@ -95,7 +98,7 @@
 			</tr>
 			<tr height="27">
 				<td width="20%" class="td">
-					Á¦¸ñ
+					ì œëª©
 				</td>
 				<td colspan="3">
 					<%=vo.getSubject() %>
@@ -111,19 +114,19 @@
 		<table border="0" width="700" id="btable">
 			<tr height="27">
 				<td colspan="4" align="right">
-					<a href="reply.jsp?no=<%=vo.getNo()%>"><img src="img/reply.gif" border="0"></a>
+					<a href="main.jsp?reply=1&no=<%=vo.getNo()%>&fs=<%=fs %>&ss=<%=ss %>"><img src="img/reply.gif" border="0"></a>
 					<a href="main.jsp?update=1&no=<%=vo.getNo()%>&fs=<%=fs %>&ss=<%=ss %>"><img src="img/modify.gif" border="0"></a>
 					<a><img src="img/delete.gif" border="0" id="delBtn"></a>
-					<a href="main.jsp"><img src="img/list.gif" border="0"></a>
+					<a href="main.jsp?fs=<%=fs %>&ss=<%=ss %>"><img src="img/list.gif" border="0"></a>
 				</td>
 			</tr>
 			<tr height="40" id="del">
 				<td align="right">
 					<span id="print"></span>
 					<form action="delete.jsp" method="post" id="delFrm">
-						ºñ¹Ğ¹øÈ£ : <input type="password" name="pwd" id="pwd" size="10">
+						ë¹„ë°€ë²ˆí˜¸ : <input type="password" name="pwd" id="pwd" size="10">
 								<input type="hidden" name="no" value="<%=vo.getNo() %>">
-								<input type="button" value="»èÁ¦" id="delButton">
+								<input type="button" value="ì‚­ì œ" id="delButton">
 					</form>
 				</td>
 			</tr>

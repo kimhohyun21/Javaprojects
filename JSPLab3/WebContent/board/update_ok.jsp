@@ -1,8 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR" import="com.sist.dao.*"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="com.sist.dao.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%
-	request.setCharacterEncoding("EUC-KR");
+	request.setCharacterEncoding("UTF-8");
 	String no=request.getParameter("no");
 	int num=Integer.parseInt(no);
 	String name=request.getParameter("name");
@@ -23,7 +23,7 @@
 	boolean bCheck=dao.contentUpdate(vo);
 	
 	if(bCheck==false){
-		out.println("<script>alert('ºñ¹Ğ¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.');</script>");
+		out.println("<script>alert('ë¹„ë°€ë²ˆí˜¸ê°€ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.');</script>");
 		out.println("<script>history.back();</script>");
 	}else{
 		response.sendRedirect("main.jsp");
