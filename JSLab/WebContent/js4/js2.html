@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//생성자 함수의 프로퍼티 메소드
+		function Area(){}
+			
+			//Area 생성자 함수에 삼각형 넓이를 계산하는 메소드 추가
+			//Area 생성자 함수의 프로퍼티로 추가되어 Area 생성자 함수를 통해서만 접근함
+			Area.triangle=function(base,height){
+				return base*height/2;
+			};
+			
+			//Area 생성자 함수에 사각형 넓이를 계산하는 메소드 추가
+			//Area 생성자 함수의 프로퍼티로 추가되어 Area 생성자 함수를 통해서만 접근함
+			Area.rectangle=function(width, height){
+				return width*height;
+			};
+			
+			//Area 생성자 함수에 원 넓이를 계산하는 메소드 추가
+			//Area 생성자 함수의 프로퍼티로 추가되어 Area 생성자 함수를 통해서만 접근함
+			Area.circle=function(r){
+				return Math.pow(r,2)*Math.PI;
+			};
+			
+
+		
+		document.writeln('Area.triangle(10, 6) : '+Area.triangle(10, 6)+'<br/>');
+		document.writeln('Area.rectangle(3, 20) : '+Area.rectangle(3, 20)+'<br/>');
+		document.writeln('Area.circle(5) : '+Area.circle(5).toFixed(2)+'<br/>');
+	</script>
+</body>
+</html>

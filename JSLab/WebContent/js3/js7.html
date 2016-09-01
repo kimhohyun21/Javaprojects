@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<!-- 
+   @익명함수(unnamed function) 
+   	: 이름 없는 함수, 함수 리터럴을 이용해 정의한 함수
+   	   ==> 변수, 객체 프로퍼티에 저장, 함수의 인자, 반환값으로 주로 사용함.
+
+ -->
+<body>
+   <script type="text/javascript">
+      
+      var calculator={
+         operator: function(method,operand1,operand2){
+            if(typeof method == 'function'){
+               if(typeof operand1 != 'number' || typeof operand2 != 'number')
+                  throw new Error('두번째, 세번째 매개변수는 반드시 숫자를 전달해야 합니다.');
+               return method(operand1,operand2);
+            }else{
+               throw new Error('첫번째 매개변수는 함수를 전달해야 합니다.');
+            }
+         }
+      };
+      
+      try {
+         var result1=calculator.operator(function(x,y){return x+y;},2,3);
+         document.writeln('result1 : ' +result1+ '<br/>');
+         
+         var result2=calculator.operator(function(x,y){return x+y;},'2',3);
+         document.writeln('result2 : ' +result2+ '<br/>');
+      } catch (e) {
+         document.writeln(e+ '<br/>');
+      }
+      
+      //익명함수를 정의, 호출해 결과 확인
+      var result3=(function(x,y){return x+y;})(2,3); //익명함수는 뒤에 바로 파라미터 값 적용
+      document.writeln('result3 : ' +result3+ '<br/>');
+   </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<!-- 
+	@ 중첩함수(Inner function)
+		1) JS에서 함수는 다른 함수 안에 중첩되어 정의될수 있음
+		2) 함수외부에서 직접 호출 할 수 없음 ==> OOP의 정보 은닉 가능
+
+ -->
+<body>
+	<script type="text/javascript">
+		function circle(radius){
+			var pi=3.14;
+			
+			//중첩함수 ==> 내부변수에 접근 가능
+			function area(r){
+				return r*r*pi;
+			}
+			
+			//중첩함수는 내부에서만 호출 가능
+			return area(radius);			
+		}	
+		
+		document.writeln('circle(5)의 값은 '+circle(5)+'<br/>')
+	</script>
+</body>
+</html>

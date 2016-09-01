@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<!-- 
+	@객체 생성 정리
+ -->
+<body>
+	<script type="text/javascript">
+		//1. 객체 정의 - 객체 리터럴 이용
+		var empty={};
+		var point={x:20, y:30};
+		var student={
+			name:'오해영',
+			age:20,
+			phone:'010-1234-2345',
+			toString:function(){
+				return '{name : '+this.name
+						+', age : '+this.age
+						+', phone : '+this.phone+'}<br/>';
+			}
+		};
+		
+		document.writeln('student : '+student+'<br/>');
+		
+		//2. 객체정의 - new 연산자, Object() 이용
+		//	==>생성자 함수 호출해서 객체 생성하고 그 객체에 프로퍼티 추가
+		var empty2=new Object();
+		var point2=new Object();
+		point2.x=20;
+		point2.y=30;
+		
+		var student2=new Object();
+		student2.name='또오해영';
+		student2.age=30;
+		student2.phone='010-2345-7688';
+		student2.toString=function(){
+			return '{name : '+this.name
+			+', age : '+this.age
+			+', phone : '+this.phone+'}<br/>';
+		}
+		
+		document.writeln('student2 : '+student2+'<br/>');
+		
+		/*
+			
+		*/
+		
+	</script>
+</body>
+</html>
