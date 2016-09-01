@@ -54,9 +54,8 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
-			$('#findBtn').click(function(){
-				var i=0;
-				var ss=$('#ss').val();
+			$('#findBtn').click(function(){	
+				var ss=$('#ss').val();	
 				
 				$('#print').html("");
 				
@@ -64,16 +63,9 @@
 					$('#print').html("<font color=red>검색어를 입력하세요.</font>");
 					$('#ss').focus();
 					return;
-				}
-				
-				$('#ff').submit();	
+				}			
+				$('#ff').submit();
 			})
-			
-			if(i==0){
-				$('#count').show();
-			}else{
-				$('#count').hide();
-			}
 		});
 	</script>
 </head>

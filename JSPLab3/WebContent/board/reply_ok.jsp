@@ -20,8 +20,10 @@
 	String subject=request.getParameter("subject");
 	String content=request.getParameter("content");
 	String pwd=request.getParameter("pwd");
+	String curPage=request.getParameter("page");
 	String fs=request.getParameter("fs");
 	String ss=request.getParameter("ss");
+	if(curPage==null)curPage="1";
 	if(fs==null)fs="";
 	if(ss==null)ss="";
 	
@@ -33,6 +35,6 @@
 	vo.setPwd(pwd);	
 	
 	dao.reply(rno, vo);
-	response.sendRedirect("main.jsp");
+	response.sendRedirect("main.jsp?page="+curPage+"&fs="+fs+"&ss="+ss);
 	
 %>

@@ -207,7 +207,7 @@ public class BoardDAO {
 			}
 			
 			//내용 출력
-			String sql="SELECT no,name,NVL(email, ' '),subject,regDate,hit,content "
+			String sql="SELECT no,name,NVL(email, ' '),subject,regDate,hit,content,depth "
 						+ "FROM replyBoard WHERE no=?";
 			
 			ps=conn.prepareStatement(sql);
@@ -221,7 +221,8 @@ public class BoardDAO {
 			vo.setSubject(rs.getString(4));
 			vo.setRegDate(rs.getDate(5));
 			vo.setHit(rs.getInt(6));
-			vo.setContent(rs.getString(7));			
+			vo.setContent(rs.getString(7));
+			vo.setDepth(rs.getInt(8));
 			
 			rs.close();
 		}catch(Exception e){
@@ -488,5 +489,67 @@ public class BoardDAO {
 			}
 			disConnection();
 		}
+	}
+	
+	//삭제하기
+	public boolean delete(int no, String pwd){
+		boolean bCheck=false;
+		
+		try{
+			getConnection();
+			//패스워드 체크
+			String sql="Select pwd FROM replyBoard WHERE no=?";
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, no);
+			
+			rs=ps.executeQuery();
+			rs.next();
+			
+			String db_pwd=rs.getString(1);
+			rs.close();
+			
+			if(db_pwd.equals(pwd)){				
+				sql="SELECT root, depth FROM replyBoard WHERE no=?";
+				ps=conn.prepareStatement(sql);
+				ps.setInt(1, no);
+				rs=ps.executeQuery();
+				rs.next();
+				
+				int root=rs.getInt(1);
+				int depth=rs.getInt(2);
+				rs.close();
+				ps.close();
+				
+				//댓글이 달린 글은 삭제 할 수 없음
+				if(depth==0){ // depth 댓글이 없는 일반적인 게시글, 혹은 댓글이 없는 댓글, depth는 직속 답글의 숫자
+					sql="DELETE FROM replyBoard WHERE no=?";  
+					ps=conn.prepareStatement(sql);
+					ps.setInt(1, no);
+					ps.executeUpdate();
+					ps.close();
+					
+					//삭제된 글에 대해서 	
+					if(root!=0){ // DB에서 입력한 글이 아니라 글쓰기로 등록된 글  root는 부모 글의 번호
+						sql="UPDATE replyBoard SET depth=depth-1 WHERE no=?";
+						ps=conn.prepareStatement(sql);
+						ps.setInt(1, root);
+						ps.close();
+					}					
+					bCheck=true;
+				}else{
+					bCheck=false;
+				}
+				
+			}else{
+				bCheck=false;
+			}
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			disConnection();
+		}		
+		
+		return bCheck;
 	}
 }

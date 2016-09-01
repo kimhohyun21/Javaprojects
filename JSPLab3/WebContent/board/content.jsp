@@ -52,9 +52,10 @@
 <body>
 	<%
 		String no=request.getParameter("no");
+		String curPage=request.getParameter("page");
 		String fs=request.getParameter("fs");
 		String ss=request.getParameter("ss");
-		
+		if(curPage==null)curPage="1";
 		if(fs==null)fs="";
 		if(ss==null)ss="";
 		
@@ -114,8 +115,8 @@
 		<table border="0" width="700" id="btable">
 			<tr height="27">
 				<td colspan="4" align="right">
-					<a href="main.jsp?reply=1&no=<%=vo.getNo()%>&fs=<%=fs %>&ss=<%=ss %>"><img src="img/reply.gif" border="0"></a>
-					<a href="main.jsp?update=1&no=<%=vo.getNo()%>&fs=<%=fs %>&ss=<%=ss %>"><img src="img/modify.gif" border="0"></a>
+					<a href="main.jsp?reply=<%=curPage %>&no=<%=vo.getNo()%>&fs=<%=fs %>&ss=<%=ss %>"><img src="img/reply.gif" border="0"></a>
+					<a href="main.jsp?update=<%=curPage %>&no=<%=vo.getNo()%>&fs=<%=fs %>&ss=<%=ss %>"><img src="img/modify.gif" border="0"></a>
 					<a><img src="img/delete.gif" border="0" id="delBtn"></a>
 					<a href="main.jsp?fs=<%=fs %>&ss=<%=ss %>"><img src="img/list.gif" border="0"></a>
 				</td>
@@ -123,7 +124,7 @@
 			<tr height="40" id="del">
 				<td align="right">
 					<span id="print"></span>
-					<form action="delete.jsp" method="post" id="delFrm">
+					<form action="delete.jsp?page=<%=curPage %>&no=<%=vo.getNo()%>&fs=<%=fs %>&ss=<%=ss %>" method="post" id="delFrm">
 						비밀번호 : <input type="password" name="pwd" id="pwd" size="10">
 								<input type="hidden" name="no" value="<%=vo.getNo() %>">
 								<input type="button" value="삭제" id="delButton">
