@@ -32,7 +32,8 @@
 			out.println("<script>history.back();</script>");
 		}	
 	}else{
-		response.sendRedirect("main.jsp?page="+curPage+"&fs="+fs+"&ss="+ss);
+		out.println("<script>alert('삭제되었습니다.');</script>");
+		out.println("<script>location.href='main.jsp?page="+curPage+"&fs="+fs+"&ss="+ss+"'</script>");	
 	}
 
 %>

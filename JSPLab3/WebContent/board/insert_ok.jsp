@@ -7,6 +7,12 @@
 	String subject=request.getParameter("subject").toString();
 	String content=request.getParameter("content").toString();
 	String pwd=request.getParameter("pwd").toString();
+	String curPage=request.getParameter("page");
+	String fs=request.getParameter("fs");
+	String ss=request.getParameter("ss");
+	if(curPage==null)curPage="1";
+	if(fs==null)fs="";
+	if(ss==null)ss="";
 	
 	BoardVO vo=new BoardVO();
 	vo.setName(name);
@@ -18,6 +24,6 @@
 	BoardDAO dao=new BoardDAO();
 	dao.boardInsert(vo);
 	
-	response.sendRedirect("main.jsp");
-
+	out.println("<script>alert('새 글이 등록되었습니다.');</script>");
+	out.println("<script>location.href='main.jsp?page="+curPage+"&fs="+fs+"&ss="+ss+"'</script>");	
 %>

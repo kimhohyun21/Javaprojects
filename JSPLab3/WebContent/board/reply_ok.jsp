@@ -35,6 +35,7 @@
 	vo.setPwd(pwd);	
 	
 	dao.reply(rno, vo);
-	response.sendRedirect("main.jsp?page="+curPage+"&fs="+fs+"&ss="+ss);
 	
+	out.println("<script>alert('답글이 등록되었습니다.');</script>");
+	out.println("<script>location.href='main.jsp?page="+curPage+"&fs="+fs+"&ss="+ss+"'</script>");	
 %>

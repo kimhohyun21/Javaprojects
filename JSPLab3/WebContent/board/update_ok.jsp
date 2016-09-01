@@ -32,6 +32,7 @@
 		out.println("<script>alert('비밀번호가 일치하지 않습니다.');</script>");
 		out.println("<script>history.back();</script>");
 	}else{
-		response.sendRedirect("main.jsp?page="+curPage+"&fs="+fs+"&ss="+ss);
+		out.println("<script>alert('수정되었습니다.');</script>");
+		out.println("<script>location.href='main.jsp?page="+curPage+"&fs="+fs+"&ss="+ss+"'</script>");
 	}
 %>
