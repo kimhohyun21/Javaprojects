@@ -43,17 +43,17 @@ public class BoardDAO {
 	/* 기능
 	 * 
 	 * <답변형 게시판 제작에 필요한 변수>
-	 * 	- group_id(gi)   : 게시물과 답변을 구분해주는 변수
+	 * 	- group_id(gi)   : 게시물과 답변을 묶어주는 변수
 	 * 	- group_step(gs) : 게시물의 답변과 답변에 대한 답변을 구분하기 위해 사용하는 변수
-	 * 	- group_tab(gt)  : 위치를 표기하는 변수
+	 * 	- group_tab(gt)  : 위치를 표기하는 변수 
 	 * 
 	 * 					
 	 * 						gi		gs		gt
 	 * AAAAAAA				2		0		0						
 	 * 	=>KKKKKKK			2		1		1
-	 * 	=>DDDDDDD			2		1		1
-	 * 		=>OOOOOOO		2		2		2
-	 * 		=>CCCCCCC		2		2		2
+	 * 	=>DDDDDDD			2		1 =>2	1
+	 * 		=>OOOOOOO		2		2 =>3	2
+	 * 		=>CCCCCCC		2		3 =>4	2
 	 * 
 	 * BBBBBBB				1		0		0
 	 * 	=>EEEEEEE			1		1		1
@@ -396,7 +396,7 @@ public class BoardDAO {
 	}
 	
 	//답글 달기
-	public void reply(int rno, BoardVO vo){
+	public void reply(int no, BoardVO vo){
 		try{
 			getConnection();
 			conn.setAutoCommit(false); //자동으로 인서트 되지 않게 설정
@@ -427,11 +427,11 @@ public class BoardDAO {
 			String sql="SELECT group_id, group_step, group_tab "
 						+ "FROM replyBoard WHERE no=?";
 			ps=conn.prepareStatement(sql);
-			ps.setInt(1, rno); // rno는 DB 컬럼에서는 root를 사용할 예정 : root는 중간에 삭제 되더라도 연속으로 증가하는 글의 순서 
+			ps.setInt(1, no); 
 			rs=ps.executeQuery();
 			rs.next();
 			
-			//변수 받아오기
+			//선택된 글의 변수 받아오기
 			int gid=rs.getInt(1);
 			int gstep=rs.getInt(2);
 			int gtap=rs.getInt(3);
@@ -445,7 +445,7 @@ public class BoardDAO {
 			
 			ps=conn.prepareStatement(sql);
 			ps.setInt(1, gid);
-			ps.setInt(2, gstep); ///????
+			ps.setInt(2, gstep); 
 			ps.executeUpdate();
 			ps.close();
 			
@@ -463,13 +463,13 @@ public class BoardDAO {
 			ps.setInt(6, gid);
 			ps.setInt(7, gstep+1);
 			ps.setInt(8, gtap+1);
-			ps.setInt(9, rno);
+			ps.setInt(9, no); //답글이 달리는 글의 번호를 root번호로 삽입
 			ps.executeUpdate();
 			ps.close();			
 			
 			sql="UPDATE replyBoard SET depth=depth+1 WHERE no=?";
 			ps=conn.prepareStatement(sql);			
-			ps.setInt(1, rno);
+			ps.setInt(1, no);
 			ps.executeUpdate();
 			
 			conn.commit();
@@ -509,7 +509,7 @@ public class BoardDAO {
 			rs.close();
 			
 			if(db_pwd.equals(pwd)){				
-				sql="SELECT root, depth FROM replyBoard WHERE no=?";
+				sql="SELECT root, depth, group_step, group_id FROM replyBoard WHERE no=?";
 				ps=conn.prepareStatement(sql);
 				ps.setInt(1, no);
 				rs=ps.executeQuery();
@@ -517,6 +517,8 @@ public class BoardDAO {
 				
 				int root=rs.getInt(1);
 				int depth=rs.getInt(2);
+				int gstep=rs.getInt(3);
+				int gid=rs.getInt(4);
 				rs.close();
 				ps.close();
 				
@@ -528,8 +530,19 @@ public class BoardDAO {
 					ps.executeUpdate();
 					ps.close();
 					
+					//삭제된 답글로 인해 앞으로 당겨지는 글의 group_step 값을 감소 시킴
+					sql="UPDATE replyBoard "
+						 + "SET group_step=group_step-1 "
+						 + "WHERE group_id=? AND group_step>?";
+					
+					ps=conn.prepareStatement(sql);
+					ps.setInt(1, gid);
+					ps.setInt(2, gstep);
+					ps.executeUpdate();
+					ps.close();
+					
 					//삭제된 글에 대해서 	
-					if(root!=0){ // DB에서 입력한 글이 아니라 글쓰기로 등록된 글  root는 부모 글의 번호
+					if(root!=0){ // DB에서 입력한 글이 아니라 글쓰기로 등록된 글만 삭제,  root는 부모 글의 번호
 						sql="UPDATE replyBoard SET depth=depth-1 WHERE no=?";
 						ps=conn.prepareStatement(sql);
 						ps.setInt(1, root);

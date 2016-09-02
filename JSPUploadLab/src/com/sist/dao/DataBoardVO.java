@@ -16,10 +16,11 @@ public class DataBoardVO {
 	private int no;
 	private	String name;
 	private String subject;
+	private String content;
 	private String pwd;
 	private Date regDate;
 	private int hit;
-	private String filname;
+	private String filename;
 	private int filesize;
 	
 	public int getNo() {
@@ -40,6 +41,12 @@ public class DataBoardVO {
 	public void setSubject(String subject) {
 		this.subject = subject;
 	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
 	public String getPwd() {
 		return pwd;
 	}
@@ -58,11 +65,11 @@ public class DataBoardVO {
 	public void setHit(int hit) {
 		this.hit = hit;
 	}
-	public String getFilname() {
-		return filname;
+	public String getFilename() {
+		return filename;
 	}
-	public void setFilname(String filname) {
-		this.filname = filname;
+	public void setFilename(String filename) {
+		this.filename = filename;
 	}
 	public int getFilesize() {
 		return filesize;

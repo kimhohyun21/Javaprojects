@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<!-- 
+	#내장객체
+	3) Number : 숫자를 다루기 위한 랩퍼 객체
+		- 리터럴로 표현하는 것이 일반적
+ -->
+<body>
+	<script type="text/javascript">
+		var num1=225;
+		
+		//toString(n) : n진수의 값으로 반환
+		document.writeln(num1.toString(16)+'<br/>'); // 16진수로 반환
+		document.writeln(num1.toString(8)+'<br/>'); // 8진수로 반환
+		
+		var num2=123.45678;
+		//toExponential(n) : 
+		document.writeln(num2.toExponential(3)+'<br/>'); //
+		//toFixed(n) : 소수점 이라 자리수를  
+		docunent.writeln(num2.toFixed(3)+'<br/>');
+		
+	</script>
+</body>
+</html>

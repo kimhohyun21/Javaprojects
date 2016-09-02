@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<!-- 
+	#내장객체
+	1)Array
+		- 배열을 다루기 위한 객체
+		- 배열의 원소에 대한 추가, 삭제, 정렬 기능 제공
+		- new 연산자와 생성자 함수 호출을 이용해 Array객체 생성
+		- 배열 리터럴로 생성하는 것고 많이 사용함
+		- 배열 크기가 자동으로 증가되는 특징
+		- concat(arr) : 연결
+		- join(), slice(), pop(), push(), shift(), unshift(), reverse(), sort(), toString()
+		- length
+ -->
+<body>
+	<script type="text/javascript">
+		var arr1=['정도전', '이성계', '이방원', '이도', '최영'];
+		var arr2=['이순신', '류성룡', '선조', '이인임'];
+		
+		//concat : 배열과 배열을 결합
+		document.writeln(arr1.concat(arr2)+'<br/>');
+		
+		//join(del) : 배열의 원소를 구분 문자열 del로 연결해 문자열을 반환
+		document.writeln(arr1.join('/')+'<br/>');
+		
+		//slice(start[,end]) : 숫자를 파라미터로 가지며, 시작과 끝을 나타내는 인덱스 번호
+		//					   start인덱스에서 end-1인덱스의 원소 배열 생성
+		document.writeln(arr1.slice(1)+'<br/>');
+		document.writeln(arr1.slice(0,2)+'<br/>');
+		
+		//splice(start, cnt[,rep[,....]]): start인덱스에서 cnt개의 원소를 rep,...로 치환.
+		document.writeln(arr1.splice(1,2,'정몽주','최씨')+'<br/>');
+		
+		//pop() : 배열의 끝의 원소를 꺼내어서 배열에서 삭제
+		document.writeln(arr1.pop()+'<br/>');
+		document.writeln(arr1+'<br/>');
+		
+		//push() : 배열끝에 원소 추가
+		document.writeln(arr1.push('오해영')+'<br/>'); // 추가된 전체 개수를 출력함
+		document.writeln(arr1+'<br/>');
+		
+		//toString() : 명시적으로 string으로 변환
+		document.writeln(arr1.toString()+'<br/>');
+		
+	</script>
+</body>
+</html>

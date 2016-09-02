@@ -13,7 +13,7 @@ public class DataBoardDAO {
 	//오라클 연결
 	public DataBoardDAO(){
 		try{
-			Class.forName("oracle.jdbc.driver.DriverManager");
+			Class.forName("oracle.jdbc.driver.OracleDriver");
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -103,5 +103,117 @@ public class DataBoardDAO {
 		
 		return list;
 	}
-	 
+	
+	//전체페이지 확인 
+	public int countTotalPage(){
+		int total=0;
+		
+		try{
+			getConnection();
+			
+			String sql="SELECT CEIL(COUNT(*)/10) FROM dataBoard";
+			ps=conn.prepareStatement(sql);
+			rs=ps.executeQuery();
+			rs.next();
+			total=rs.getInt(1);
+			rs.close();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			disConnection();
+		}
+		
+		return total;
+	}
+	
+	//총 레코드 수 확인 
+	public int countRow(){
+		int total=0;
+		
+		try{
+			getConnection();
+			
+			String sql="SELECT COUNT(*) FROM dataBoard";
+			ps=conn.prepareStatement(sql);
+			rs=ps.executeQuery();
+			rs.next();
+			total=rs.getInt(1);
+			rs.close();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			disConnection();
+		}
+		
+		return total;
+	}
+	
+	//글 입력
+	public void insert(DataBoardVO vo){
+		try{
+			getConnection();
+			
+			String sql="INSERT INTO dataBoard (no, name, subject, content, filename, filesize, pwd) "
+						+ "VALUES(db_no_seq.nextval, ?, ?, ?, ?, ?, ?)";
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, vo.getName());
+			ps.setString(2, vo.getSubject());
+			ps.setString(3, vo.getContent());
+			ps.setString(4, vo.getFilename());
+			ps.setInt(5, vo.getFilesize());
+			ps.setString(6, vo.getPwd());
+			ps.executeUpdate();		
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			disConnection();
+		}
+	}
+	
+	//글 상세 보기
+	public DataBoardVO contentDetail(String no){
+		DataBoardVO vo=new DataBoardVO();
+		
+		try{
+			getConnection();
+			
+			//hit수 증가
+			String sql="UPDATE dataBoard SET hit=hit+1 WHERE no=?";
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, no);
+			ps.executeUpdate();
+			ps.close();
+			System.out.println(sql);
+			//글 불러오기
+			sql="SELECT no, name, subject, content, regDate, hit, filename, filesize "
+			    + "FROM dataBoard WHERE no=?";
+			
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, no);
+			rs=ps.executeQuery();
+			rs.next();
+			
+			vo.setNo(rs.getInt(1));
+			vo.setName(rs.getString(2));
+			vo.setSubject(rs.getString(3));
+			vo.setContent(rs.getString(4));
+			vo.setRegDate(rs.getDate(5));
+			vo.setHit(rs.getInt(6));
+			vo.setFilename(rs.getString(7));
+			vo.setFilesize(rs.getInt(8));
+			rs.close();
+			System.out.println(sql);
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			disConnection();
+		}
+		
+		return vo;
+	}
 }
+
+

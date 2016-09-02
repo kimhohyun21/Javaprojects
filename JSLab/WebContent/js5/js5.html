@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<!-- 
+	#내장객체
+	4)Math
+	
+	5)Date : 날짜
+		- 리터럴 표현이 존재하지 않음 
+		- new 연산자와 생성자 호출을 통해 객체를 생성해야함
+ -->
+<body>
+	<script type="text/javascript">
+		document.writeln(Math.abs(-15)+'<br/>'); //양수 변환
+		document.writeln(Math.max(10, 15)+'<br/>'); //최대값
+		document.writeln(Math.min(-10, 15)+'<br/>'); //최소값
+		document.writeln(Math.random()+'<br/>'); //0~0.99 랜덤값
+		
+		var dat=new Date(2016,0,07,17,10,33,500);
+		document.writeln(dat+'<br/>');
+		document.writeln(dat.getFullYear()+'<br/>');
+		document.writeln(dat.getMonth()+'<br/>'); // 월(0~11)로 인식
+		
+		var dat2=new Date()
+		dat2.setFullYear(2016);
+		dat2.setMonth(11);
+		dat2.setDate(12);
+		dat2.setHours(14);
+		dat2.setMinutes(45);
+		dat2.setSeconds(30);
+		
+		document.writeln(dat2.toLocaleString()+'<br/>'); //지정되지 않는 시간은 지역의 날짜 기준으로 자동 채움
+		document.writeln(dat2.toGMTString()+'<br/>'); //그리니치 표준 시간대
+		document.writeln(dat2.toLocaleDateString()+'<br/>'); //날짜까지 표시
+		document.writeln(dat2.toLocaleTimeString()+'<br/>'); //시간대 표시
+	</script>
+	
+</body>
+</html>

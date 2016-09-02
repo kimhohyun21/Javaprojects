@@ -9,11 +9,6 @@
 	
 	String no=request.getParameter("no");
 	int rno=Integer.parseInt(no);
-	/* vo=dao.contentDetail(no, 2);	
-	int rno=vo.getRoot();
-	System.out.println("re: "+no);
-	System.out.println("re: "+rno); 
-	*/
 	
 	String name=request.getParameter("name");
 	String email=request.getParameter("email");

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<!-- 
+	#자바스크립트 정리
+	
+	1) JS의 주 사용처 : 웹페이지를 동적으로 꾸미는 목적으로 사용 => 서버에서 사용하는 용도로 확장 (node.js)
+	
+	2) 일반적인 JS의 사용 방법 : HTML안에서 사용됨
+	
+	3) JS의 3가지 영역
+		- ECMA (European Computer Manufacturers Associate)
+		- DOM (Document Object Model)
+		- BOM (Browser Object Model) 
+	
+	4) 값(values): 어떤 값을 부여하느냐에 따라 타입이 정해짐
+		- Numbers
+		- boolean      
+		- Strings
+		- null
+		- undefined
+		- Object
+		
+	5) JS는 동적 타입 언어 : 필요할 때마다 자동으로 데이터 타입이 변환됨.
+	
+	6) 객체 (Object)
+		- JS에서 객체는 일종의 HashMap성격이 있음 => 값을 (키 :값) 형태로 부여함 
+		- JS 콘솔에서 [Object]라고 출력되는 것이 객체
+		- 객체 리터럴 => 프로토타입 객체로 Object.prototype을 가짐
+		- 생성자 => 프로토타입 객체로 자신의 .prototype객체를 가짐
+	
+	7) 객체와 함수의 생성
+		- 모든 참조 타입은 생성시 "_proto_" 프로퍼티를 가짐
+			* 참조 타입 : 객체, 배열, 함수
+			* 원시 타입 : 숫자, 문자열, boolean
+			* _proto_ : 해당 인스턴스가 상속받는 객체를 가리킴
+						  => 이 상속받는 객체의 모든 프로퍼티와 메서드를 접근하여 사용가능
+		- 모든 함수 생성시에 "prototype"이라는 프로퍼티를 가짐  
+			* prototype : 자신과 링크된 프로토타입 객체를 prototype으로 가리킴
+						  
+								   상속
+						  |----------------|	
+						  |Object.prototype|
+						  |----------------|
+								  ^	
+		                          |	
+								  |								
+								  .
+					   (다른 상속 받는 객체가 있을 수 있음)
+								  .
+		         함수			  객체(함수의 프로토타입 객체)			
+		|---------|			|-----------|
+		|prototype| ======>	|constructor|
+		|		  | <====== |  _proto_  |
+		|---------|			|-----------|
+		  						  ^	
+								  |
+								  |
+		  					    인스턴스 객체
+							|-----------|
+							|  _proto_	|
+							|		    |
+							|-----------|
+							
+	8) 객체 생성 과정
+		- new 연산자는 빈 객체를 생성함
+		- 생성자 함수는 this 키워드를 통해 전달된 새로운 객체의 생성자 함수 내에 작성된
+		    프로퍼티 혹은 메소드를 추가하는 초기화 작업을 수행
+		- 새로운 객체의 prototype 프로퍼티에 생성자 함수의 prototype 프로퍼티 값이 전달되어
+		    객체와 생성자함수는 동일한 프로토타입 객체를 참조하게 됨
+	
+	9) 프로토타입 체인과 프로토타입 멤버 상속
+		- JS는 프로토타입 기반의 상속 메커니즘을 제공
+		- 객체를 생성하면 객체의 생성자 함수의 프로토타입 객체에 정의된 멤버를 상속
+		- 객체의 생성자 함수의 프로토타입 객체와 Object() 생성자 함수의 프로토타입 객체가 연결되어 있음				
+		- 객체를 거쳐 프로토타입 객체로 멤버를 검색할 수 있는 연결을 프로토타입 체인 (prototype chain)이라 함
+		- 프로토타입 객체가 상위 생성자 함수를 통해서 만들어졌기 때문에 
+		    프로토타입 객체의 constructor프로퍼티는 상위 생성자 함수를 참고하고 있어서
+		    자신의 constructor프로퍼티를 상위 생성자 함수에 대한 하위 생성자 함수로 변경함 
+		
+		
+ -->
+<body>
+	<script type="text/javascript">
+		//프로토타입 체인과 프로토타입 멤버 상속
+		
+		//Car 생성자 함수의 프로토타입 객체 => new 연산자와 Object 생성자 함수를 호출하여 객체를 생성함
+		//프로토타입 객체의 constructor 프로퍼티는 자동으로 Car생성자 함수를 참조함
+		var Car=function(){}; //생성자 함수, 객체
+		Car.prototype={
+			startEngine : function(){
+				document.writeln('시동을 겁니다.....<br/>');
+			},
+			accelerate : function(){
+				document.writeln('속도를 올립니다.....<br/>');
+			},
+			decelerate : function(){
+				document.writeln('속도를 내립니다.....<br/>');
+			},
+			stopEngine : function(){
+				document.writeln('시동을 끕니다.....<br/>');
+			}
+		};
+		
+		//K7 생성자 함수의 프로토타입 객체 => new 연산자와 Object 생성자 함수를 호출하여 객체를 생성함
+		//프로토타입 객체의 constructor 프로퍼티는 자동으로 K7생성자 함수를 참조함
+		var K9=function(){}; //생성자 함수, 객체
+		
+		// K9()생성자 함수의 프로퍼티를 Car()라는 객체를 new 인스턴스로 생성하여 Car의 생성자 함수를 참조하게 함 
+		// ==> Car()생성자 함수의 프로토타입 멤버를 상속받음
+		K9.prototype=new Car(); 
+		
+		//K9()생성자 함수의 constructor 프로퍼티는 Car()생성자 함수를 참조
+		//==> 다시 constructor프로퍼티를 K9()생성자 함수로 변경함.
+		K9.prototype.constructor=K9;
+		
+		K9.prototype.startNavigation=function(){
+			document.writeln('내비게이션 안내를 시작합니다.....<br/>');
+		};
+		K9.prototype.endNavigation=function(){
+			document.writeln('내비게이션 안내를 종료합니다.....<br/>');
+		}
+		
+		var k9=new K9();
+		k9.startEngine();
+		k9.startNavigation();
+		k9.accelerate();
+		k9.decelerate();
+		k9.endNavigation();
+		k9.stopEngine();
+	</script>
+</body>
+</html>
