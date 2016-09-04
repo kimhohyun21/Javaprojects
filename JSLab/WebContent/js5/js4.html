@@ -18,11 +18,15 @@
 		document.writeln(num1.toString(8)+'<br/>'); // 8진수로 반환
 		
 		var num2=123.45678;
-		//toExponential(n) : 
-		document.writeln(num2.toExponential(3)+'<br/>'); //
-		//toFixed(n) : 소수점 이라 자리수를  
-		docunent.writeln(num2.toFixed(3)+'<br/>');
 		
+		//toExponential(n) : 지수형식으로 변환(n은 소수점 이하의 행수) 
+		document.writeln(num2.toExponential(3)+'<br/>'); //(n자리의 소수점 숫자)e+m로 표기 됨. e+m은 10의 m승을 나타냄.
+		//toFixed(n) : 소수점 이하 자리수 n에 맞춰 변환(자리수가 부족하면 0으로 채움) 
+		document.writeln(num2.toFixed(3)+'<br/>');
+		document.writeln(num2.toFixed(7)+'<br/>');
+	    //toPrecision(n) : 전체 유효 자릿수를 n으로 맞춤(자리수가 부족하면 0으로 채움)
+	    document.writeln(num2.toPrecision(10)+'<br/>');   
+	    document.writeln(num2.toPrecision(6)+'<br/>');
 	</script>
 </body>
 </html>

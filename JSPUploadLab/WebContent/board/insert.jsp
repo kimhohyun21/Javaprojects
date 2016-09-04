@@ -6,11 +6,36 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 	<title>글쓰기</title>
 	<style type="text/css">
-		.tdright{
-			text-align:right;
+		#title_img{
+			height: 100px;
+			width: 500px;
 		}
-		.tdcenter{
-			text-align:center;
+		table{
+			border: 0px; 
+			width: 800px;
+			border-collapse: collapse;
+		}
+		#content_table{
+			margin-top: 30px;
+			margin-bottom: 10px;
+			border-top: 1px solid black;
+			border-bottom: 1px solid black;
+			background-color: ivory;
+		}
+		td{
+			padding: 3px;
+			padding-right: 20px;
+			border-bottom: 1px solid black;
+		}
+		.title_td{
+			text-align:right;
+			border-right: 1px solid black;
+			background-color: pink;
+			font-weight: bolder;
+		}
+		#btn_td{
+			border: 0px;
+			text-align: center;
 		}
 	</style>
 	<script type="text/javascript">
@@ -42,12 +67,11 @@
 </head>
 <body>
 	<div align="center">
-		<img src="img/write1.jpg" height="80" width="500">
-		<table border="0" width="800" height="30"></table>
+		<img src="img/write1.jpg" id="title_img">
 		<form action="insert_ok.jsp" method="post" name="infrm" enctype="multipart/form-data">
-			<table border="0" width="800">
+			<table id="content_table">
 				<tr>
-					<td class="tdright" width="30%">
+					<td class="title_td" width="30%">
 						이름
 					</td>
 					<td>
@@ -55,7 +79,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="tdright" width="30%">
+					<td class="title_td" width="30%">
 						제목
 					</td>
 					<td>
@@ -63,7 +87,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="tdright" width="30%">
+					<td class="title_td" width="30%">
 						내용
 					</td>
 					<td>
@@ -71,7 +95,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="tdright" width="30%">
+					<td class="title_td" width="30%">
 						첨부파일
 					</td>
 					<td>
@@ -79,19 +103,21 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="tdright" width="30%">
+					<td class="title_td" width="30%">
 						비밀번호
 					</td>
 					<td>
 						<input type="password" size="12" name="pwd">
 					</td>
-				</tr>
+				</tr>	
+			</table>
+			<table>
 				<tr>
-					<td colspan="2" class="tdcenter">
+					<td id="btn_td">
 						<input type="button" value="글쓰기" onclick="insert()">
 						<input type="reset" value="취소" onclick="javascript:history.back()">
 					</td>
-				</tr>			
+				</tr>		
 			</table>
 		</form>
 	</div>

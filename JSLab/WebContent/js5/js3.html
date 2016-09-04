@@ -17,21 +17,20 @@
 	<script type="text/javascript">
 		var str1="better tomorrow"; 
 		     //   012345678901234
-		//index 반환 값은 무조건 절대 자리 값을 반환(공백 포함), 못 찾으면  -1, 
-		document.writeln(str1.indexOf('t')+'<br>'); // 정방향에서 서칭
-		document.writeln(str1.indexOf('w',20)+'<br>'); // n 자리에서 서칭 
+		//indexOf: 반환 값은 무조건 절대 자리 값을 반환(공백 포함), 못 찾으면  -1
+		document.writeln(str1.indexOf('t')+'<br>');     // 정방향에서 서칭
+		document.writeln(str1.indexOf('w',20)+'<br>');  // n 자리에서 서칭 
 		document.writeln(str1.lastIndexOf('m')+'<br>'); // 역방향에서 서칭
-		document.writeln(str1.indexOf('mo')+'<br>'); 
+		document.writeln(str1.indexOf('mo')+'<br>');    // 2개의 문자열도 간
 		
 		var str2="JavaScript";
-		document.writeln(str2.charAt(4)+'<br>'); // 선택된 index의 문자 반환
-		document.writeln(str2.slice(5,8)+'<br>'); // 
-		document.writeln(str2.substring(5,8)+'<br>'); //
-		document.writeln(str2.substr(5,3)+'<br>'); 
-		document.writeln(str2.split('S')+'<br>'); 
-		document.writeln(str2.concat('프로젝트')+'<br>');
-		document.writeln(str2.length+'<br>'); 
-
+		document.writeln(str2.charAt(4)+'<br>');        // charAt(n) 자리의 index 문자를 반환
+		document.writeln(str2.slice(5,8)+'<br>');       // slice(n,m): n번째자리이후로 m번째자리까지의 문자열 반환
+		document.writeln(str2.substring(5,10)+'<br>');  // substring(n,m): n번째자리이후로 m번째자리까지의 문자열 반환
+		document.writeln(str2.substr(5,4)+'<br>');      // substr(n,m): n번째자리 이후로 m개의 문자열 반환
+		document.writeln(str2.split('Sc')+'<br>');      // split(str): 지정된 문자열을 기준으로 문자열을 분리
+		document.writeln(str2.concat('프로젝트')+'<br>');  // concat(str) : 기존의 문자열에 새로운 문자열을 결합
+		document.writeln(str2.length+'<br>');           // length: 문자열의 길이 반환
 	</script>
 </body>
 </html>

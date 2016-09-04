@@ -128,13 +128,16 @@ public class DataBoardDAO {
 	}
 	
 	//총 레코드 수 확인 
-	public int countRow(){
+	public int countRow(String no){
 		int total=0;
 		
 		try{
+			if(no==null){
+				no="SELECT MAX(no) FROM dataBoard";
+			}
 			getConnection();
 			
-			String sql="SELECT COUNT(*) FROM dataBoard";
+			String sql="SELECT COUNT(no) FROM dataBoard WHERE no BETWEEN 1 AND ("+no+")";
 			ps=conn.prepareStatement(sql);
 			rs=ps.executeQuery();
 			rs.next();
@@ -174,21 +177,23 @@ public class DataBoardDAO {
 	}
 	
 	//글 상세 보기
-	public DataBoardVO contentDetail(String no){
+	public DataBoardVO contentDetail(String no, int type){
 		DataBoardVO vo=new DataBoardVO();
 		
 		try{
 			getConnection();
 			
-			//hit수 증가
-			String sql="UPDATE dataBoard SET hit=hit+1 WHERE no=?";
-			ps=conn.prepareStatement(sql);
-			ps.setString(1, no);
-			ps.executeUpdate();
-			ps.close();
-			System.out.println(sql);
+			if(type==1){
+				//hit수 증가
+				String sql="UPDATE dataBoard SET hit=hit+1 WHERE no=?";
+				ps=conn.prepareStatement(sql);
+				ps.setString(1, no);
+				ps.executeUpdate();
+				ps.close();
+			}
+
 			//글 불러오기
-			sql="SELECT no, name, subject, content, regDate, hit, filename, filesize "
+			String sql="SELECT no, name, subject, content, regDate, hit, filename, filesize "
 			    + "FROM dataBoard WHERE no=?";
 			
 			ps=conn.prepareStatement(sql);
@@ -205,7 +210,7 @@ public class DataBoardDAO {
 			vo.setFilename(rs.getString(7));
 			vo.setFilesize(rs.getInt(8));
 			rs.close();
-			System.out.println(sql);
+
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{
@@ -213,6 +218,47 @@ public class DataBoardDAO {
 		}
 		
 		return vo;
+	}
+	
+	//글 수정하기
+	public boolean update(DataBoardVO vo){
+		boolean bCheck=false;
+		try{
+			getConnection();
+			
+			String sql="SELECT pwd FROM dataBoard WHERE no=?";
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, vo.getNo());
+			rs=ps.executeQuery();
+			rs.next();
+			String db_pwd=rs.getString(1);
+			rs.close();
+			
+			if(!db_pwd.equals(vo.getPwd())){
+				bCheck=false;
+			}else{
+				sql="UPDATE dataBoard "
+						+ "SET name=?, subject=?, content=?, filename=NVL(?,''), filesize=NVL(?,''), pwd=? "
+						+ "WHERE no=?";
+				ps=conn.prepareStatement(sql);
+				ps.setString(1, vo.getName());
+				ps.setString(2, vo.getSubject());
+				ps.setString(3, vo.getContent());
+				ps.setString(4, vo.getFilename());
+				ps.setInt(5, vo.getFilesize());
+				ps.setString(6, vo.getPwd());
+				ps.setInt(7, vo.getNo());
+				ps.executeUpdate();
+				
+				bCheck=true;
+			}			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			disConnection();
+		}
+		
+		return bCheck;
 	}
 }
 

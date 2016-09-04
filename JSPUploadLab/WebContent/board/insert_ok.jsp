@@ -37,5 +37,4 @@
 	//페이지 이동
 	out.println("<script>alert('새 데이터가 등록되었습니다.');</script>");
 	out.println("<script>location.href='list.jsp';</script>");
-
 %>
