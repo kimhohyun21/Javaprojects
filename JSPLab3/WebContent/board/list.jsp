@@ -21,14 +21,17 @@
 	BoardDAO dao=new BoardDAO();
 	List<BoardVO> list=new ArrayList<>();
 	
+	String display="none";
 	if(fs=="" && ss==""){		
 		list=dao.boardListData(curPage);
 		totalPage=dao.boardTotalPage();
 		count=dao.boardRowCount();
+		display="none";
 	}else{
 		list=dao.contentFind(fs, ss, curPage);		
 		totalPage=dao.findTotalPage(fs, ss);
 		count=dao.findRowCount(fs, ss);
+		display="inherit";
 	}
 		
 	int num=count-((curPage*10)-10);
@@ -50,11 +53,14 @@
 			text-decoration: underline;
 			color: green;	
 		}
+		#count{
+			display: <%=display %>;
+		}		
 	</style>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<script type="text/javascript">
-		$(function(){
-			$('#findBtn').click(function(){	
+		$(function(){	
+			$('#findBtn').click(function(){					
 				var ss=$('#ss').val();	
 				
 				$('#print').html("");
@@ -62,16 +68,18 @@
 				if(ss==""){
 					$('#print').html("<font color=red>검색어를 입력하세요.</font>");
 					$('#ss').focus();
-					return;
-				}			
-				$('#ff').submit();
-			})
+					return;					
+				}
+				$('#ff').submit();				
+			})			
 		});
 	</script>
 </head>
 <body>
 	<div align="center">
-		<img src="img/board.jpg" height="80" width="500">
+		<a href="main.jsp">
+			<img src="img/board.jpg" height="80" width="500">
+		</a>
 		<table width="700" border="0" id="insert">
 			<tr>
 				<td align="left" width="30%">

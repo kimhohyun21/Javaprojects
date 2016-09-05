@@ -35,7 +35,16 @@
 		
 		document.writeln('order.name : '+order.name+'<br/>');
 		document.writeln('order.address : '+order.address+'<br/>');
-		document.writeln('order.orderItems: '+order.orderItems+'<br/>');
+		document.writeln('<br/>');
+		
+		for(var i=0;i<order.orderItems.length;i++){
+			for(var prop in order.orderItems[i]){
+				document.writeln(prop+" : "+order.orderItems[i][prop]+'<br/>');
+			}
+			document.writeln('<br/>');
+		}
+			
+		document.writeln('order.sale : '+order.sale+'<br/>');	
 	</script>
 </body>
 </html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<!-- 
+	#웹브라우저
+		1) 정의
+		 	:HTML문서를 읽고 해석(html, javascript)한 후 
+		           그 결과에 스타일(css, image..)을 적용하여 사용자에게 표시해주는 소프트웨어 (DOM)
+				==> 브라우저에서 엔진을 이용해 결과를 랜더링 하여 보여준다. 
+			                  브라우저 별로 랜더링 엔진에 차이가 있음.	
+		2) 웹브라우저 객체
+			: document가 html문서를 나타냄
+			 	==> DOM(Document Object Model): 클라이언트 측 객체 계층구조 트리
+		
+	#현재 윈도우 ------- window 객체
+	        		 Navigation 객체
+					 Location 객체
+					 History 객체
+					 Document 객체 ==> DOM
+					 Screen 객체
+	
+	#HTML DOM
+		1) 주요 nodeType
+			[Interface]          [nodeType 상수] 				[nodeType 값]         
+			- Element			 Node.ELEMENT_NODE				 1 	
+			- Attribute          Node.ATTRIBUTE_NODE			 2
+			- Text				 Node.TEXT_NODE					 3
+			- Comment			 								 8
+			- Document		     Node.DOCUMENT_NODE				 9
+			
+		2) DOM HTML API를 이용한 HTML 문서 요소 접근 및 조작
+			- 문서 내 요소 찾기 
+				= Document.getElementByTagName(tag)
+					: 태그명을 문자열 tag로 전달해 해당 태그들의 NodeList 객체를 반환함
+				= Document.getElementById(id)
+					: id 속성이 같은 유일 노드 객체의 참조를 반환함
+				= Document.getElementByName(name)
+					: name 속성이 같은 요소들의 HTMLCollection 객체를 반환함
+			
+			- 문서 내 새로운 내용을 추가
+				= Document.createElement()
+					: 새로운 Element 객체 생성
+				= Node.innerHTML
+					: HTML 텍스트 문자열을 기술하면 간단히 새로운 내용을 추가할 수 있음
+						==> DOM 표준은 아님
+				= Document.createTextNode()
+					: 새로운 TextNode 객체를 생성함
+				
+ -->
+	<script type="text/javascript">
+		//주어진 노드 객체? 모든 자식 노드 중 노드타입이 엘리먼트인 노드의 이름을 출력
+		function printTags(node){
+			var tags='';
+			//노드 타입이 엘리먼트인지 검사
+			if(node.nodeType == Node.ELEMENT_NODE){
+				//tags변수에 저장
+				tags+=node.nodeName+'<br/>'; //node의 이름 = tag의 이름
+			};
+
+			//자식노드 객체들에 대한 NodeList객체를 저장
+			var children=node.childNodes;
+
+			//NodeList객체의 length 프로퍼티를 이용해 printTags를 재귀호출하여 출력
+			for(var i=0; i<children.length; i++){
+					tags+=printTags(children[i]);
+			};
+			return tags;
+		}
+		/*
+			HTML문서가 파싱되고 외부 컨텐트 로딩이 완료되면, 웹브라우저는 load이벤트를 발생시키는데.
+			이때, load이벤트의 이벤트 핸들러로 등록된 함수가 실행됨.
+			==> id 값이 "result"인 div태그를 찾아 innderHTML 프로퍼티에 html문자열 값을 저장함.
+		*/
+		window.onload=function(){ //.jsp가 실행되면 window.onload를 자동으로 호출
+			var result=document.getElementById('result');
+			result.innerHTML=printTags(document);
+		}
+	</script>
+</head>
+<body>
+	<div id="result">
+	
+	</div>
+</body>
+</html>

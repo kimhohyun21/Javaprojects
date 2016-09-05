@@ -40,7 +40,7 @@
 			$('#delButton').click(function(){
 				var pwd=$('#pwd').val();
 				if(pwd==""){
-					$('#print').html("<font color=red>비밀번호를 입력하세요</font>")
+					$('#print').html("<font color=red>비밀번호를 입력하세요.</font>")
 					$('#pwd').focus();
 					return;
 				}
@@ -126,9 +126,8 @@
 					<span id="print"></span>
 					<form action="delete.jsp?page=<%=curPage %>&no=<%=vo.getNo()%>&fs=<%=fs %>&ss=<%=ss %>" method="post" id="delFrm">
 						비밀번호 : <input type="password" name="pwd" id="pwd" size="10">
-								<input type="hidden" name="no" value="<%=vo.getNo() %>">
 								<input type="button" value="삭제" id="delButton">
-					</form>
+					</form>					
 				</td>
 			</tr>
 		</table>

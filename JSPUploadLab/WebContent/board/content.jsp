@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR" import="java.util.*, com.sist.dao.*"%>
+    pageEncoding="EUC-KR" import="com.sist.dao.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -43,12 +43,47 @@
 			vertical-align: top;
 			text-align: left;		
 		}
-		#btn_td{
+		.btn_td{
 			text-align: right;
 			background-color: white;
 			border: 0px;
 		}
+		a{
+			text-decoration:none;
+			color: black;
+		}
+		a:hover{
+			opacity: 0.3; 
+			filter: alpha(opacity=30);
+		}		
+		#del{
+			display:none;
+		}		
 	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		var i=0;
+		$(function(){
+			$('#delBtn').click(function(){
+				if(i==0){
+					$('#del').show();
+					i=1;
+				}else{
+					$('#del').hide();
+					i=0;
+				}
+			})
+			$('#delButton').click(function(){
+				var pwd=$('#pwd').val();
+				if(pwd==""){
+					$('#print').html('<font color=red>비밀번호를 입력하세요.</font>')
+					$('#pwd').focus();
+					return;
+				}
+				$('#delFrm').submit();
+			})				
+		});
+	</script>
 </head>
 <%
 	request.setCharacterEncoding("EUC-KR");
@@ -103,7 +138,15 @@
 					첨부파일
 				</td>
 				<td colspan="3" class="field_td">
-					<a href="download.jsp?no=<%=vo.getNo() %>"><%=vo.getFilename() %>(<%=vo.getFilesize() %>)</a>
+				<%
+					String filename="파일없음";
+					int filesize=0;
+					if(vo.getFilename()!=null){	
+						filename=vo.getFilename();
+						filesize=vo.getFilesize();
+					};
+				%>
+					<a href="download.jsp?no=<%=vo.getNo() %>"><%=filename %>(<%=filesize %>bytes)</a>
 				</td>
 			</tr>
 			<tr>
@@ -114,10 +157,19 @@
 		</table>
 		<table>
 			<tr>
-				<td id="btn_td">
+				<td class="btn_td">
 					<a href="update.jsp?page=<%=curPage %>&no=<%=no %>"><img src="img/modify.gif"></a>
-					<a href="delete.jsp?page=<%=curPage %>&no=<%=no %>"><img src="img/delete.gif"></a>
+					<a><img src="img/delete.gif" id="delBtn"></a>
 					<a href="list.jsp"><img src="img/list.gif"></a>
+				</td>
+			</tr>
+			<tr id="del">
+				<td class="btn_td">
+				<span id="print"></span>
+					<form action="delete.jsp?page=<%=curPage %>&no=<%=no %>"  method="post" id="delFrm">
+						비밀번호 : <input type="password" name="pwd" id="pwd" size="12">
+								<input type="button" value="삭제" id="delButton">
+					</form>
 				</td>
 			</tr>
 		</table>

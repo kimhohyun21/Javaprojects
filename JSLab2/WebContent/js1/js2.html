@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--
+        #이벤트와 이벤트 핸들러
+            이벤트             이벤트 핸들러                     발생시점                    대상요소
+        ==================================================================================================
+            load                onload              이미지, 문서 로딩이 완료되었을 때        body, img
+            unload              onunload            다른 페이지로 이동할 때                 body
+            abort               onabort             이미지 로딩이 중단 되었을 때            img
+
+            click               onclick             마우스로 클릭할 때
+            dbclick             ondbclick           마우스로 더블클릭할 때
+            mousedown           onmousedown         마우스 버튼을 눌렀을 때
+            mouseup                                 마우스 버튼을 눌렀다가 놓았을때
+            mousemove                               마우스 포인터를 이동했을 때
+            mouseout                                요소로부터 마우스가 벗어났을 때
+            mouseover                               요소 안으로 마우스 포인터가 들어왔을 때
+
+            keypress
+            keydown
+            keyup
+
+            change
+            reset
+            submit
+            blur
+            focus
+            resize
+            scroll
+    -->
+    <script type="text/javascript">
+        //버튼 btnAdd를 클릭했을 때 호출될 함수 정의
+        function add(){
+            //id속성 값이 "siteName", "url", "result"인 엘리먼트를 찾아서 참조함
+            var siteNameElement=document.getElementById('siteName');
+            var urlElement=document.getElementById('url');
+            var resultElement=document.getElementById('result');
+
+            //<a></a> 엘리먼트 생성 ==> anchor 태그를 동적으로 생성
+            var anchorElement=document.createElement("a");
+
+            //<a href="???"></a> : anchor엘리먼트의 속성중 href 생성
+            //urlElement의 값을 대입
+            anchorElement.href=urlElement.value;
+
+            //siteNameElement에 저장된 값으로 텍스트 노드를 생성함
+            var newTextNode=document.createTextNode(siteNameElement.value);
+
+            //<a href="????"></a> 엘리먼트의 자식노드로 newTextNode를 추가함
+            anchorElement.appendChild(newTextNode);
+
+            //<br/>태그 추가
+            var brElement=document.createElement('br');
+
+            //resultElement에 값이 출력되도록 자식노드를 추가
+            resultElement.appendChild(anchorElement);
+            resultElement.appendChild(brElement);
+
+            //입력 필드 초기화
+            siteNameElement.value="";
+            urlElement.value="";
+        };
+        //버튼 btnCancel를 클릭했을 때 호출될 함수 정의
+        function cancel(){
+            var siteNameElement=document.getElementById('siteName');
+            var urlElement=document.getElementById('url');
+            siteNameElement.value="";
+            urlElement.value="";
+        };
+        //onload 핸들러 ==> 문서가 로딩되면 자동으로 호출
+        window.onload=function(){
+            //btnAdd, btnCancel 버튼을 찾아
+            var btnAddElement=document.getElementById('btnAdd');
+            var btnCancelElement=document.getElementById('btnCancel');
+            //click 이벤트에 대해 핸들러 함수를 등록
+            btnAddElement.onclick=add;
+            btnCancelElement.onclick=cancel;
+        };
+    </script>
+</head>
+<body>
+    <form>
+        <label>
+            웹사이트: <br/>
+            <input type="text" id="siteName" size="50"><br/>
+        </label>
+        <label>
+            URL:<br/>
+            <input type="text" id="url" size="50"><br/>
+        </label>
+        <input type="button" id="btnAdd" value="추가">
+        <input type="button" id="btnCancel" value="취소">
+    </form>
+    <div id="result">
+
+    </div>
+</body>
+</html>
