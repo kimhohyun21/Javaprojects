@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR" import="com.sist.dao.*"%>
+    pageEncoding="EUC-KR" import="com.sist.dao.*, java.net.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -53,6 +53,8 @@
 			color: black;
 		}
 		a:hover{
+			text-decoration: underline;
+			color: green;
 			opacity: 0.3; 
 			filter: alpha(opacity=30);
 		}		
@@ -144,9 +146,15 @@
 					if(vo.getFilename()!=null){	
 						filename=vo.getFilename();
 						filesize=vo.getFilesize();
-					};
+				%>		
+						<a href="download.jsp?fn=<%=URLEncoder.encode(filename, "UTF-8") %>"><%=filename %>(<%=filesize %>bytes)</a>
+				<%
+					}else{
 				%>
-					<a href="download.jsp?no=<%=vo.getNo() %>"><%=filename %>(<%=filesize %>bytes)</a>
+						<%=filename %>(<%=filesize %>bytes)
+				<% 
+					}
+				%>
 				</td>
 			</tr>
 			<tr>

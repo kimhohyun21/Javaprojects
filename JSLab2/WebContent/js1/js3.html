@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>이벤트 테스트</title>
+    <!--
+        @이벤트 핸들러 등록
+        @이벤트 리스너는 한개의 HTML요소에서 복수의 이벤트와 연관을 맺을 수 있도록 기능 제공
+           ==> 호환성
+        @이벤트 리스너 등록
+            - addEventListner()
+            - attachEvent()
+    -->
+	<script type="text/javascript">
+             //click 발생시에 수행할 이벤트 핸들러 함수
+        function addText(){
+             var resultElement=document.getElementById('result');
+             resultElement.innerHTML='크로스 브라우징 이벤트 리스너 구현!';
+        }
+        function clearText(){
+            var resultElement=document.getElementById('result');
+            resultElement.innerHTML='';
+        }
+        //load 이벤트 발생기에 수행할 이벤트 핸들러 함수
+        function init(){
+            var btnClickElement=document.getElementById('btnClick');
+            var btnCancelElement=document.getElementById('btnCancel');
+
+            addListener(btnClickElement, 'click', addText);
+            addListener(btnCancelElement, 'click', clearText);
+        }
+        //el : 이벤트가 발생할 HTML 요소
+        //ev : 이벤트
+        //handler: 이벤트 핸들러 함수
+       	function addListener(el,ev,handler) {
+           //FF,CH            
+           if(el.addEventListener){
+               el.addEventListener(ev,handler,false);
+           }else{      //IE
+                el.attachEvent('on'+ev,handler);
+            }
+        }
+
+        addListener(window, 'load', init);
+    </script>
+</head>
+<body>
+    <form>
+        <input type="button" id="btnClick" value="눌러주세요.">
+        <input type="button" id="btnCancel" value="취소">
+        <div id="result">
+
+        </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--
+   #jQuery 핵심 개념
+        - 자바스크립트에서 DOM객체를 질의(Query)해 조작한다는 의미를 강조, 문서 탐색 및 조작을 위한
+          보다 쉬운 Node(노드) 접근 기술을 제공하는 것
+        - HTML DOM과 자바스크립트 사이의 상호 작용을 간단하게 해주는 것이 jQuery의 가장 큰 특징
+        - jQuery는 HTML DOM객체에 접근하기 위해서는 셀렉터(selector) 매커니즘을 사용
+        - CSS셀레터로 문저의 특정 노드를 찾을 수 있음
+  -->
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        div{
+            font-size: 12pt;
+        }
+        .header{
+            color: #000080;
+            font-size: 24pt;
+        }
+        .content{
+            color: #008000;
+        }
+        .footer{
+            color: #800080;
+        }
+    </style>
+    <script src="js/jquery-3.1.0.min.js"></script>
+    <script type="text/javascript">
+      /*  //#jQuery를 쓰기 위한 엔트리 포인트 설정방법
+        //방법1
+        jQuery(document).ready(function(){
+            alert('안녕하세요. jQuery에 오신 것을 환영합니다.');
+        })
+        //방법2
+        jQuery(function(){
+            alert('안녕하세요. jQuery에 오신 것을 두번 환영합니다.');
+        })
+        //방법3 ==> 가장 스탠다드한 방법
+        $(document).ready(function(){
+            alert('안녕하세요, jQuery에 오신 것을 세번 환영합니다.');
+        })
+        //방법4 ==> 실행되는 순서가 랜덤이다.
+        $(function(){
+            alert('안녕하세요, jQuery에 오신 것을 네번 환영합니다.');
+        })*/
+      $(document).ready(function(){
+          $('#header').addClass('header');      // id가 header인 속성을 찾아서 header라는 class를 추가,
+          $('#content').addClass('content');    // html에서 class 속성을 생성하지 않아도 jQuery로 생성할 수 있음
+          $('#footer').addClass('footer');
+      })
+    </script>
+</head>
+<body>
+    <div id="header">
+        <p>jQuery</p>
+    </div>
+    <div id="content">
+        <P>
+            jQuery(제이쿼리)는 브라우저 호환성이 있는 HTML 속 자바스크립트 라이브러리이며 클라이언트 사이드 스크립트 언어를 단순화 할 수 있도록 설계되었다.<br/>
+            존 레식이 2006년 뉴욕 시 바캠프(Barcamp NYC)에서 공식적으로 소개하였다. jQuery는 오늘날 가장 인기있는 자바스크립트 라이브러리 중 하나이다.<br/>
+            jQuery는 MIT 라이선스와 GNU 일반 공중 사용 허가서v2의 듀얼 라이선스를 가진 자유 오픈 소프트웨어이다. jQuery의 문법은 코드 보기, 문서 객체 모델 찾기,<br/>
+            애니메이션 만들기, 이벤트 제어, Ajax 개발을 쉽게 할 수 있도록 디자인되었다. 또한, jQuery는 개발자가 플러그인을 개발할 수 있는 기능을 제공한다.<br/>
+            마이크로소프트와 노키아는 자사 플랫폼에 jQuery를 포함하는 계획을 발표한 바 있다. 마이크로소프트는 비주얼스튜디오의 ASP.NET AJAX 프레임워크와<br/>
+            ASP.NET MVC 프레임워크에 적용했고, 노키아는 자사의 런타임 웹 위젯 개발 플랫폼에 통합하였다. 또한, jQuery는 미디어위키에도 1.16 버전부터 사용되고 있다.<br/>
+        </P>
+    </div>
+    <div id="footer">
+        <p>&copy; 2016 sist</p>
+    </div>
+</body>
+</html>

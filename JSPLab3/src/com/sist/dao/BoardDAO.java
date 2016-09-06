@@ -565,4 +565,5 @@ public class BoardDAO {
 		
 		return bCheck;
 	}
+
 }

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="EUC-KR" import="java.net.*, java.io.*"%>
 <%--  
 	#JSP 정리
 		# 스크립트 태그
@@ -54,3 +54,33 @@
 			    Web Container	
 			JSP ==============> Servlet (Service()): Java Source ===> Class File(.java)
  --%>
+<%
+	request.setCharacterEncoding("EUC-KR");
+	String fn=request.getParameter("fn");
+	response.setHeader("content-Disposition", "attachment;filename="+URLEncoder.encode(fn, "UTF-8"));
+	
+	//다운로드 : 서버 ===> 클라이언트로 파일을 전송
+	try{
+		File file=new File("c:\\download\\"+fn);
+		
+		BufferedInputStream bis=new BufferedInputStream(new FileInputStream(file));	
+		BufferedOutputStream bos=new BufferedOutputStream(response.getOutputStream());
+		
+		byte[] buffer=new byte[1024];
+		int i=0;
+		while((i=bis.read(buffer,0,1024))!=-1){ //read(o, n, m) ==> 파라미터가 3개 일때, o=읽어 올 객체, n=시작크기, m=최대 크기
+			bos.write(buffer, 0, i);
+		}
+		/*
+			out: jsp = servlet으로 변환될 때, 내부적으로 out 객체가 생성
+			기존의 out을 일단 초기화 해야 오류가 없음
+		*/
+		out.clear();
+		out=pageContext.pushBody();
+		bis.close();
+		bos.close();
+		
+	}catch(Exception e){
+		e.printStackTrace();
+	}
+%> 

@@ -127,7 +127,7 @@ public class DataBoardDAO {
 		return total;
 	}
 	
-	//총 레코드 수 확인 
+	//레코드 수 확인 
 	public int countRow(String no){
 		int total=0;
 		
@@ -194,7 +194,7 @@ public class DataBoardDAO {
 
 			//글 불러오기
 			String sql="SELECT no, name, subject, content, regDate, hit, filename, filesize "
-			    + "FROM dataBoard WHERE no=?";
+						+ "FROM dataBoard WHERE no=?";
 			
 			ps=conn.prepareStatement(sql);
 			ps.setString(1, no);
@@ -220,12 +220,75 @@ public class DataBoardDAO {
 		return vo;
 	}
 	
+	//삭제하기
+	public boolean delete(String no, String pwd){
+		boolean bCheck=false;
+		try{
+			getConnection();
+			
+			//DB 패스워드 불러오기
+			String sql="SELECT pwd FROM dataBoard WHERE no=?";
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, no);
+			rs=ps.executeQuery();
+			rs.next();
+			
+			String db_pwd=rs.getString(1);
+			rs.close();
+			
+			//패스워드 검사
+			if(!db_pwd.equals(pwd)){
+				bCheck=false;
+			}else{
+				sql="DELETE FROM dataBoard WHERE no=?";
+				ps=conn.prepareStatement(sql);
+				ps.setString(1, no);
+				ps.executeUpdate();
+				
+				bCheck=true;
+			}			
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			disConnection();
+		}
+		
+		return bCheck;
+	}
+	
+	//파일정보 체크
+	public DataBoardVO fileInfoCheck(String no){
+		DataBoardVO vo=new DataBoardVO();
+		
+		try{
+			getConnection();
+			
+			String sql="SELECT filename, filesize FROM dataBoard WHERE no=?";
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, no);
+			rs=ps.executeQuery();
+			rs.next();
+			
+			vo.setFilename(rs.getString(1));
+			vo.setFilesize(rs.getInt(2));
+			rs.close();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			disConnection();
+		}
+		
+		return vo;
+	}
+	
 	//글 수정하기
 	public boolean update(DataBoardVO vo){
 		boolean bCheck=false;
 		try{
 			getConnection();
-			
+				
 			String sql="SELECT pwd FROM dataBoard WHERE no=?";
 			ps=conn.prepareStatement(sql);
 			ps.setInt(1, vo.getNo());
@@ -233,13 +296,13 @@ public class DataBoardDAO {
 			rs.next();
 			String db_pwd=rs.getString(1);
 			rs.close();
-			
+				
 			if(!db_pwd.equals(vo.getPwd())){
 				bCheck=false;
 			}else{
 				sql="UPDATE dataBoard "
-						+ "SET name=?, subject=?, content=?, filename=NVL(?,''), filesize=NVL(?,''), pwd=? "
-						+ "WHERE no=?";
+					+ "SET name=?, subject=?, content=?, filename=NVL(?,''), filesize=NVL(?,''), pwd=? "
+					+ "WHERE no=?";
 				ps=conn.prepareStatement(sql);
 				ps.setString(1, vo.getName());
 				ps.setString(2, vo.getSubject());
@@ -249,7 +312,7 @@ public class DataBoardDAO {
 				ps.setString(6, vo.getPwd());
 				ps.setInt(7, vo.getNo());
 				ps.executeUpdate();
-				
+					
 				bCheck=true;
 			}			
 		}catch(Exception e){
@@ -257,9 +320,10 @@ public class DataBoardDAO {
 		}finally{
 			disConnection();
 		}
-		
+			
 		return bCheck;
 	}
+		
 }
 
 
