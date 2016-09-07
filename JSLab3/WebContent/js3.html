@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-3.1.0.min.js"></script>
+    <script type="text/javascript">
+       /*
+            $("css 선택자").메서드호출();
+            문제: 문서에서 div태그의 border속성을 모두 "4px solid #f00"으로 변경하라
+        */
+
+       $(document).ready(function(){
+          $("div").css("border","4px solid #f00") ;
+       });
+    </script>
+</head>
+<body>
+    <div align="center">div-data1</div>
+    <div align="center">div-data2</div>
+    <div align="center">div-data3</div>
+    <div align="center">div-data4</div>
+    <p align="center">p-data1</p>
+    <p align="center">p-data2</p>
+    <p align="center">p-data3</p>
+    <p align="center">p-data4</p>
+</body>
+</html>

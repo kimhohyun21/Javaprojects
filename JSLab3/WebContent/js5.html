@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        /*
+            문제: 버튼을 클릭하면 "안녕하세요"라는 메세지가 나오게 자바스크립트로 작성
+         */
+        window.onload=function(){
+          //리스너 등록하기
+            var btn1=window.document.getElementById("btn1");
+
+            //크로스브라우징 처리
+            if(btn1.attachEvent){
+                btn1.attachEvent("onclick", function(){
+                    alert("안녕하세요");
+                });
+            }else{
+                btn1.addEventListener("click", function(){
+                    alert("안녕하세요");
+                }, false);
+            };
+        };
+    </script>
+</head>
+<body>
+    <button id="btn1">버튼 클릭</button>
+</body>
+</html>

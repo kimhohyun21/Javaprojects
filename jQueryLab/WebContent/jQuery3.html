@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        body{
+            font-size: 9pt;
+            font-family: "굴림";
+        }
+        div, p, ul, li{
+            border: 1px #eeeeee solid;
+            margin: 10px;
+        }
+
+        ul{
+            padding: 10px;
+        }
+        li.select{
+            background-color: #cccfff;
+        }
+    </style>
+    <script src="js/jquery-3.1.0.min.js"></script>
+    <script type="text/javascript">
+        /*
+           #셀렉터(selector)
+            1) 정의
+                - 문서내의 노드를 쉽게 식별하고 참조하기 위해 사용하는 기술
+                - CSS셀렉터와 사용 방법이 동일
+                - jQuery가 자체적으로 제공하는 필터도 있음
+
+            2) HTML 요소 접근과 jQuery 객체화
+                - $()함수의 매개변수 값으로 셀렉터를 전달
+                    ==> 이를 해석하여 DOM에서 노드를 찾고 jQuery 객체로 변환해서 반환함
+
+            3) 셀렉터의 종류
+                - 기본(basic)셀렉터
+                    = #id            : id값을 가진 요소를 선택
+                    = .class         : class 속성을 가진 요소를 선택
+                    = element        : 요소를 선택
+                    = sel1.sel2.sel3 : 복수의 셀렉터 중 일치하는 것을 선택
+                    = *              : 모든 셀렉터 선택
+                - 계층셀렉터
+                - 속성셀렉터, 필터 셀렉터
+
+           #태그 이름으로 노드 찾기
+            문제 : 문서에서 test1클래스를 찾아서 border 속성을 "4px solid #f00"으로 변경하라
+         */
+        $(document).ready(function(){
+           $('.test1').css("border", "4px solid #f00");
+        });
+    </script>
+</head>
+<body>
+    <div align="center">
+        <table>
+            <tr>
+                <td>
+                    <div id="samplePage" class="page">
+                        샘플페이지 (div, id=samplePage, class=page)
+                        <div id="header">
+                            헤더영역 (div, id=header)
+                        </div>
+                        <div id="content" class="samplePage-content">
+                            노드찾기
+                            <ul class="menu">
+                                일반 노드 찾기
+                                <li data-value="1">id로 찾기</li>
+                                <li class="select">tag로 찾기</li>
+                                <li data-value="2">class로 찾기</li>
+                                <li class="test1">속성으로 찾기</li>
+                            </ul>
+                            <div class="content-data">
+                                자식 노드 찾기
+                                <p class="test1">1. 모든 자식 노드 찾기</p>
+                                <p>2. 특정 자식 노드 찾기</p>
+                                <p class="test2">3. 마지막 자식 노드 찾기</p>
+                            </div>
+                        </div>
+                        <div id="footer">
+                            푸터 영역
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

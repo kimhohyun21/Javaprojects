@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        body{
+            font-size: 9pt;
+            font-family: "굴림";
+        }
+        div, p, ul, li{
+            border: 1px #eeeeee solid;
+            margin: 10px;
+        }
+
+        ul{
+            padding: 10px;
+        }
+        li.select{
+            background-color: #cccfff;
+        }
+    </style>
+    <script src="js/jquery-3.1.0.min.js"></script>
+    <script type="text/javascript">
+        /*
+            id가 header인 노드를 찾아서 border 속성을 "4px solid #f00"으로 변경하라
+
+             $(document).ready(function(){
+                $('#header').css("border", "4px solid #f00");
+             });
+         */
+
+        //변수에 인스턴스 담기
+        $(document).ready(function(){
+            var $header=$("#header");
+            /*
+                jQuery를 사용하여 변수에 선택자나 인스턴스를 담을 수 있음.
+                구별을 위해 통상적으로 변수명 앞에 $를 붙임.
+                ==> 지정한 변수는 jQuery기능을 그대로 사용할 수 있음
+             */
+            $header.css("border", "4px solid #f00");
+        });
+    </script>
+</head>
+<body>
+    <div align="center">
+        <table>
+            <tr>
+                <td>
+                    <div id="samplePage" class="page">
+                        샘플페이지 (div, id=samplePage, class=page)
+                        <div id="header">
+                            헤더영역 (div, id=header)
+                        </div>
+                        <div id="content" class="samplePage-content">
+                            노드찾기
+                            <ul class="menu">
+                                일반 노드 찾기
+                                <li data-value="1">id로 찾기</li>
+                                <li class="select">tag로 찾기</li>
+                                <li data-value="2">class로 찾기</li>
+                                <li class="test-1">속성으로 찾기</li>
+                            </ul>
+                            <div class="content-data">
+                                자식 노드 찾기
+                                <p class="test1">1. 모든 자식 노드 찾기</p>
+                                <p>2. 특정 자식 노드 찾기</p>
+                                <p class="test2">3. 마지막 자식 노드 찾기</p>
+                            </div>
+                        </div>
+                        <div id="footer">
+                            푸터 영역
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

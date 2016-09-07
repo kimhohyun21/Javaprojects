@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-3.1.0.js"></script>
+    <script type="text/javascript">
+        /*
+            문제 : 메뉴 추가 버튼을 클릭할 때 마다. 신규 메뉴항목을 추가하게 하라
+         */
+        $(document).ready(function(){
+            var count=0;
+            $("#add").click(function(){
+               count++;
+                $("#menu").append("<li>new menu"+count+"</li>");
+            });
+        });
+    </script>
+</head>
+<body>
+    <button id="add">메뉴추가</button>
+    <ul id="menu">
+        <li>메뉴</li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        div{
+            font-size: 12pt;
+            font-weight: bold;
+        }
+        .header{
+            color: #000080;
+            font-size: 24pt;
+        }
+        .content{
+            color: #008000;
+        }
+        .footer {
+            color: #800080;
+            font-size: 14pt;
+        }
+        .evenItem{
+            background-color: #4596CE;
+            color: #FFFFFF;
+        }
+        .oddItem{
+            background-color: #FFF5BA;
+        }
+    </style>
+    <script src="js/jquery-3.1.0.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#header').addClass('header');
+            $('#content').addClass('content');
+            $('#footer').addClass('footer');
+            $('#list > div:nth-child(2n)').addClass('evenItem');
+            $('#list > div:nth-child(2n+1)').addClass('oddItem');
+        });
+    </script>
+</head>
+<body>
+    <div align="center">
+        <table>
+            <tr>
+                <td>
+                    <div id="header">
+                        <p>jQuery Selector</p>
+                    </div>
+
+                    <div id="content">
+                        <div>
+                            <p id="message"></p>
+                        </div>
+                        <div id="list">
+                            <div>JSP</div>
+                            <div>JavaScript</div>
+                            <div>Oracle</div>
+                            <div>Spring</div>
+                            <div>Mybatis</div>
+                        </div>
+                        <div>
+                            <p id="result"></p>
+                        </div>
+                    </div>
+
+                    <div id="footer">
+                        <p>&copy; 2016 SIST</p>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

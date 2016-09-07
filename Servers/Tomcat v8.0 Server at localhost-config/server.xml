@@ -124,7 +124,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="JSPLab3" path="/JSPLab3" reloadable="true" source="org.eclipse.jst.jee.server:JSPLab3"/><Context docBase="JSPUploadLab" path="/JSPUploadLab" reloadable="true" source="org.eclipse.jst.jee.server:JSPUploadLab"/><Context docBase="JSLab" path="/JSLab" reloadable="true" source="org.eclipse.jst.jee.server:JSLab"/><Context docBase="JSPActionTagLab" path="/JSPActionTagLab" reloadable="true" source="org.eclipse.jst.jee.server:JSPActionTagLab"/><Context docBase="JSLab2" path="/JSLab2" reloadable="true" source="org.eclipse.jst.jee.server:JSLab2"/><Context docBase="JSLab3" path="/JSLab3" reloadable="true" source="org.eclipse.jst.jee.server:JSLab3"/></Host>
+      <Context docBase="JSPLab3" path="/JSPLab3" reloadable="true" source="org.eclipse.jst.jee.server:JSPLab3"/><Context docBase="JSPUploadLab" path="/JSPUploadLab" reloadable="true" source="org.eclipse.jst.jee.server:JSPUploadLab"/><Context docBase="JSLab" path="/JSLab" reloadable="true" source="org.eclipse.jst.jee.server:JSLab"/><Context docBase="JSPActionTagLab" path="/JSPActionTagLab" reloadable="true" source="org.eclipse.jst.jee.server:JSPActionTagLab"/><Context docBase="JSLab2" path="/JSLab2" reloadable="true" source="org.eclipse.jst.jee.server:JSLab2"/><Context docBase="JSLab3" path="/JSLab3" reloadable="true" source="org.eclipse.jst.jee.server:JSLab3"/><Context docBase="JSPReviewLab" path="/JSPReviewLab" reloadable="true" source="org.eclipse.jst.jee.server:JSPReviewLab"/></Host>
     </Engine>
   </Service>
 </Server>
