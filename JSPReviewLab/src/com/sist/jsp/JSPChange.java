@@ -4,7 +4,7 @@ public class JSPChange {
 	private static String[] jsp={
 		"default.jsp",
 		"directive.jsp",
-		"script.jsp",
+		"scriptlet.jsp",
 		"request.jsp",
 		"response.jsp",
 		"session.jsp",

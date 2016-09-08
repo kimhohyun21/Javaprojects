@@ -5,65 +5,50 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 	<title>menu</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-	<script type="text/javascript">
-		var i=0;
-		$(function(){
-			$('#objectBtn').click(function(){
-				if(i==0){
-					$('#object_table').show();
-					i=1;
-				}else{
-					$('#object_table').hide();
-					i=0;
-				}
-			});
-		});
-	</script>
 </head>
 <body>
 	<table id="menu_table">
 		<tr>
 			<td class="menu_td">
-				<a href="main.jsp?no=1">지시자</a>
+				<a href="main.jsp?no=1">지시자(directive)</a>
 			</td>
 		</tr>
 		<tr>
 			<td class="menu_td">
-				<a href="main.jsp?no=2">스크립트</a>
+				<a href="main.jsp?no=2">스크립틀릿(scriptlet)</a>
 			</td>
 		</tr>
 		<tr>
 			<td class="menu_td" id="objectBtn">
-				<a>내장객체</a>
+				<a href="main.jsp?no=3&i=1#">내장객체(Object)</a>
 			</td>
 		</tr>
-		<tr>
+		<tr id="subMenu_table">
 			<td>
-				<table id="object_table">
+				<table>
 					<tr>
-						<td class="object_td">
-							<a href="main.jsp?no=3">request</a>
+						<td class="subMenu_td">
+							<a href="main.jsp?no=3&i=1">request</a>
 						</td>
 					</tr>
 					<tr>
-						<td class="object_td">
-							<a href="main.jsp?no=4">response</a>
+						<td class="subMenu_td">
+							<a href="main.jsp?no=4&i=1">response</a>
 						</td>
 					</tr>
 					<tr>
-						<td class="object_td">
-							<a href="main.jsp?no=5">session</a>
+						<td class="subMenu_td">
+							<a href="main.jsp?no=5&i=1">session</a>
 						</td>
 					</tr>
 					<tr>
-						<td class="object_td">
-							<a href="main.jsp?no=6">application</a>
+						<td class="subMenu_td">
+							<a href="main.jsp?no=6&i=1">application</a>
 						</td>
 					</tr>
 					<tr>
-						<td class="object_td">
-							<a href="main.jsp?no=7">pageContext</a>
+						<td class="subMenu_td">
+							<a href="main.jsp?no=7&i=1">pageContext</a>
 						</td>
 					</tr>
 				</table>
@@ -71,12 +56,12 @@
 		</tr>
 		<tr>
 			<td class="menu_td">
-				<a href="main.jsp?no=8">액션 태그</a>
+				<a href="main.jsp?no=8">액션 태그(action tag)</a>
 			</td>
 		</tr>
 		<tr>
 			<td class="menu_td">
-				<a href="main.jsp?no=9">데이터베이스</a>
+				<a href="main.jsp?no=9">데이터베이스(database)</a>
 			</td>
 		</tr>
 	</table>		

@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div align="center">
-		<img src="jsp-development.jpg" alt="mainImg" name="mainImg" width="900" height="270">
+		<img src="jsp-development.jpg" alt="mainImg" name="mainImg" id="mainImg">
 	</div>
 </body>
 </html>
