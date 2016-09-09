@@ -1,6 +1,6 @@
 @CHARSET "EUC-KR";
 #mainImg{
-	 width: 930px; 
+	 width: 1030px; 
 	 padding-top: 42px;
 }
 a{
@@ -8,18 +8,18 @@ a{
 	color: black;	
 }
 a:hover{
-	color: green;
+	color: #85a3f1;
 	cursor: pointer;	
 }
 .a{
-	color: #08088A;
+	color: #251c53;
 }
 table{
 	border-collapse: collapse;		
 }
 #content_table{
-	width: 1200px;
-	height: 700px;
+	width: 1300px;
+	height: 930px;
 }
 #title{
 	border-top: 2px solid black;
@@ -29,13 +29,13 @@ table{
 	font-size: 25pt;
 	font-weight: bolder;
 	font-family: ALGERIAN;
-	background-color: #EFFBEF;
+	background-image: url("img/title.jpg");
 }
 #menu{
 	text-align: center;
 	vertical-align: top; 
 	width: 20%;
-	padding-top: 42px;
+	padding-top: 44px;
 }
 #menu_table{
 	width: 250px;
@@ -55,7 +55,7 @@ table{
 }
 
 .menu_td, .cont_td1, .cont_td2, .cont_td3{
-	border-bottom: 1px dotted black;
+	border-bottom: 1px dotted black;	
 	padding-top: 5px;
 	padding-left: 10px;
 	padding-right: 10px;
@@ -85,9 +85,10 @@ table{
 	text-align: center;
 	vertical-align: top;
 	width: 80%;
+	font-size: 17px;
 }
 .cont_table1, .cont_table2, .cont_table3, .cont_table4{
-	width: 930px;
+	width: 1030px;
 }
 .cont_td1{
 	text-align: center;
@@ -105,5 +106,6 @@ caption{
 	border-bottom: 2px solid black;
 	text-align: center;
 	height: 5%; 
-	background-color: #EFFBEF;
+	font-size: 10pt;
+	background-color: #bfbfbf;
 }

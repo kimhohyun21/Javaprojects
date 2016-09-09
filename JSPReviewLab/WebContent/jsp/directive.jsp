@@ -13,7 +13,7 @@
  			1) page: jsp 파일의 시작, jsp의 정보를 가진다.
  			2) include : 특정 jsp에 다른 jsp를 첨부해서 사용 ==> 조립식
  			3) taglib : jsp에서 사용하는 태그로 된 라이브러리 사용
- 						==> <c:forEach> <c:if>	
+ 						==> <c:forEach> <c:if> 	
  --%>
 <html>
 <head>

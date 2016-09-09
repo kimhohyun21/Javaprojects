@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .tab_Menu{
+            list-style: none;
+            height: 48px;
+        }
+        .tab_Menu li{
+            width:99px;
+            height:40px;
+            background-position-y: 0px;
+            text-indent: -1000px;
+            overflow: hidden;
+            display: inline-block;
+            float: left;  /*셀렉터를 띄우는 위치, 방향 */
+        }
+        .tab_Menu li:hover{
+            background-position-y: -40px;
+        }
+        .tab_Menu li.menuItem1{
+            background-image: url("img/newbtn1.png");
+        }
+        .tab_Menu li.menuItem2{
+            background-image: url("img/newbtn2.png");
+        }
+        .tab_Menu li.menuItem3{
+            background-image: url("img/newbtn3.png");
+        }
+        .tab_Menu li.menuItem4{
+            background-image: url("img/newbtn4.png");
+        }
+        .tab_Menu li.menuItem5{
+            background-image: url("img/newbtn5.png");
+        }
+        .tab_Menu li.menuItem6{
+            background-image: url("img/newbtn6.png");
+        }
+    </style>
+    <script src="../js/jquery-3.1.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+           var $tab_menu=$('ul.tab_Menu li');
+           alert('tab_menu 개수는 '+$tab_menu.length+'개 입니다.')
+        });
+    </script>
+</head>
+<body>
+    <div align="center">
+        <table>
+            <tr>
+                <td>
+                    <ul class="tab_Menu" id="tabMenu">
+                        <li class="menuItem1">
+                            google
+                        </li>
+                        <li class="menuItem2">
+                            facebook
+                        </li>
+                        <li class="menuItem3">
+                            pinterest
+                        </li>
+                        <li class="menuItem4">
+                            twitter
+                        </li>
+                        <li class="menuItem5">
+                            airbnb
+                        </li>
+                        <li class="menuItem6">
+                            path
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

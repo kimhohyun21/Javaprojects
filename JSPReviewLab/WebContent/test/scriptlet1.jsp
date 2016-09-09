@@ -4,11 +4,21 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>default</title>
+<title>scriptlet test</title>
 </head>
 <body>
 	<div align="center">
-		<img src="img/jsp-development.jpg" alt="mainImg" name="mainImg" id="mainImg">
+		<h2>스크립트릿 테스트</h2>
+		<hr>
+		<%	
+			int i;
+			for(i=1;i<10; i++){
+				//out.println(i+"<br/>");
+		%>
+				<%=i %><br/>
+		<% 		
+			}
+		%>
 	</div>
 </body>
 </html>

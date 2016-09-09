@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+    # 노드 찾기
+        1) 셀렉터
+            - 일반 셀렉터 : *, #id, .class, node
+            - 계층 셀렉터 : an, de, p > c, prev + next, prev ~ siblings
+            - 속성 셀렉터 : (attribute) 셀렉터
+                ==> [attr] : attr 속성을 가지는 요소를 선택 Ex) [class]
+                ==> [attr=value] : attr 속성 값이 value인 요소를 선택
+                ==> [attr!=value] : attr 속성 값이 value가 아닌 요소를 선택
+                ==> [attr^=value] : attr 속성 값이 value로 시작하는 요소를 선택
+                ==> [attr$=value] : attr 속성 값이 value로 끝나는 요소를 선택
+                ==> [attr*=value] : attr 속성 값이 value를 포함하는 요소를 선택
+             - 필터 셀렉터
+                ==> animated : 현재 애니메이션 중인 요소를 선택.
+                ==> first : 첫번째 요소를 선택.
+                ==> last : 마지막 요소를 선택.
+                ==> not(selector) : selector에 의해 선택된 요소들 이외의 것을 선택
+                ==> even : 짝수번째의 요소를 선택
+                ==> odd : 홀수번째의 요소를 선택
+                ==> eq(index) : index와 같은 index 요소를 선택
+                ==> gt(index) : index보다 큰 index 요소를 선택
+                ==> lt(index) : index보다 작은 index요소를 선택
+                ==> header : h1, h2, h3...요소를 선택
+-->
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        body{
+            font-size: 9pt;
+            font-family: "굴림";
+        }
+        div, p, ul, li{
+            border: 1px #eeeeee solid;
+            margin: 10px;
+        }
+
+        ul{
+            padding: 10px;
+        }
+        li.select{
+            background-color: #cccfff;
+        }
+    </style>
+    <script src="../js/jquery-3.1.0.min.js"></script>
+    <script type="text/javascript">
+        /*
+         문제 : #samplePage 클래스의 바로 하위 자식 노드 중 test1을 찾아서
+         border 속성을 "4px solid #f00으로 변경하라
+         */
+        $(document).ready(function(){
+            $('#samplePage div').children('.test1').css("border", "4px solid #f00");
+            $('#samplePage').find('.test1').css("border", "4px solid #f00");
+        });
+    </script>
+</head>
+<body>
+<div align="center">
+    <table>
+        <tr>
+            <td>
+                <div id="samplePage" class="page">
+                    샘플페이지 (div, id=samplePage, class=page)
+                    <div id="header">
+                        헤더영역 (div, id=header)
+                    </div>
+                    <div id="content" class="samplePage-content">
+                        노드찾기(div, id=content, class=samplePage-content)
+                        <ul class="menu">
+                            일반 노드 찾기 (ul, class=menu)
+                            <li data-value="1">id로 찾기(li, data-value=1)</li>
+                            <li class="select">tag로 찾기(li, class=select)</li>
+                            <li data-value="2">class로 찾기(li, data-value=2)</li>
+                            <li class="test1">속성으로 찾기(li, class=test1)</li>
+                        </ul>
+                        <div class="content-data">
+                            자식 노드 찾기(div, class=content-data)
+                            <p class="test1">1. 모든 자식 노드 찾기(p, class=test1)</p>
+                            <p>2. 특정 자식 노드 찾기(p)</p>
+                            <p class="test2">3. 마지막 자식 노드 찾기(p, class=test2)</p>
+                        </div>
+                    </div>
+                    <div id="footer">
+                        푸터 영역 (div, id=footer)
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

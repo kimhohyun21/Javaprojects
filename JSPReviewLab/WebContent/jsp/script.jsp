@@ -7,6 +7,8 @@
 			- <%! %> : 선언식 => 멤버변수, 메소드 선언
 			- <%  %> : 스크립틀릿 => 일반자바 코드
 			- <%= %> : 출력 (out.write);
+			*** 
+			*** JSP을 컴파일 하면 ==> 톰캣에 의해 서블릿이 만들어짐
  --%>
 <html>
 <head>
@@ -19,7 +21,7 @@
 			<caption>스크립트(script)의 요소</caption>
 			<tr>
 				<td class="cont_td1">
-					&lt;%! %&gt;
+					&lt;%! %&gt;  <!-- &lt;==> 꺽쇠 열기 &gt; ==> 꺽쇠 닫기 -->
 				</td>
 				<td class="cont_td2">
 					선언식 : (변수, 메소드) => 자바빈
@@ -40,7 +42,15 @@
 				<td class="cont_td2">
 					표현식 : 브라우저에 데이터 출력
 				</td>
-			</tr>						
+			</tr>
+			<tr>
+				<td class="cont_td1">
+					참고
+				</td>
+				<td class="cont_td2">
+					HTML안에 자바코드는 일반 문자열
+				</td>
+			</tr>							
 		</table>
 	</div>
 </body>

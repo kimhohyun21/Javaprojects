@@ -4,11 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>default</title>
+<title>Insert title here</title>
 </head>
 <body>
-	<div align="center">
-		<img src="img/jsp-development.jpg" alt="mainImg" name="mainImg" id="mainImg">
-	</div>
+
 </body>
 </html>

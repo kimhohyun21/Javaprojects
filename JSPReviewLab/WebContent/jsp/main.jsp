@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-	<title>JSP(Model 1) 정리</title>
+	<title>JSP(Model 1) Summary</title>	
 <%
 	request.setCharacterEncoding("EUC-KR");
 
@@ -36,7 +36,7 @@
 	<script src="js/jquery-3.1.0.min.js"></script>
 	<script type="text/javascript">
 		var i=<%=i %>;
-		$(function(){
+		$(document).ready(function(){
 			$('#objectBtn').click(function(){
 				if(i==0){
 					$('#subMenu_table').show();
@@ -54,8 +54,7 @@
 		<table id="content_table">
 			<tr>
 				<td id="title" colspan="2">
-					<a href="
-					main.jsp" class="a">JSP(Model 1) 정리</a>
+					<a href="main.jsp" class="a">JSP(Model 1) Summary</a>
 				</td>
 			</tr>
 			<tr>
