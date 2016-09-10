@@ -13,6 +13,7 @@ a:hover{
 }
 .a{
 	color: #251c53;
+	font-size: 40pt;
 }
 table{
 	border-collapse: collapse;		
@@ -26,7 +27,6 @@ table{
 	border-bottom: 1px dashed gray;
 	text-align: center; 
 	height: 20%;
-	font-size: 25pt;
 	font-weight: bolder;
 	font-family: ALGERIAN;
 	background-image: url("img/title.jpg");

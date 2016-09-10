@@ -4,6 +4,9 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+	<!-- 페이지 전환 부드럽게 -->
+	<META http-equiv="Page-Enter" content="BlendTrans(Duration=0.5)"> 
+	<META http-equiv="Page-exit" content="BlendTrans(Duration=0.5)">
 	<title>JSP(Model 1) 정리</title>
 <%
 	request.setCharacterEncoding("EUC-KR");

@@ -4,6 +4,9 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+	<!-- 페이지 전환 부드럽게 -->
+	<META http-equiv="Page-Enter" content="BlendTrans(Duration=0.5)"> 
+	<META http-equiv="Page-exit" content="BlendTrans(Duration=0.5)">
 	<title>menu</title>
 <%
 	request.setCharacterEncoding("EUC-KR");
@@ -30,14 +33,18 @@
 %>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<script type="text/javascript">
-		var i=<%=i %>;
-		$(function(){
+		var i=<%=i %>;		
+		$(function(){			
 			//마우스 클릭 이벤트
 			$('#object_td').click(function(){
 				if(i==0){
-					location.href='main.jsp?no=3&i=1';
+					$('#subMenu_table').css('display', 'inherit');
+					//페이지 전환효과가 심해서 삭제 location.href='main.jsp?no=3&i=1'; 
+					i=1;
 				}else{
-					location.href='main.jsp?no=3';
+					$('#subMenu_table').css('display', 'none');
+					//페이지 전환효과가 심해서 삭제 location.href='main.jsp?no=3&i=0';
+					i=0;
 				};
 			});
 			
@@ -45,7 +52,7 @@
 			$('#objectBtn').mouseover(function(){
 				if(i==0){
 					$('#subMenu_table').css('display', 'inherit');
-					i=1;
+					i=1;					
 				}else{
 					$('#subMenu_table').css('display', 'none');
 					i=0;
@@ -55,16 +62,19 @@
 	</script>	
 </head>
 <body>
+	<form action="" method="get" id="Frm">
+		<input type="hidden" name="i" value="">
+	</form>
 	<div align="center">
 		<table id="menu_table">
 			<tr>
 				<td class="menu_td">
-					<a href="main.jsp?no=1&i=<%=i %>">지시자(directive)</a>
+					<a href="main.jsp?no=1">지시자(directive)</a> <%-- &i=<%=i %> 파라미터 삭제 --%>
 				</td>
 			</tr>
 			<tr>
 				<td class="menu_td">
-					<a href="main.jsp?no=2&i=<%=i %>">스크립트(script)</a>
+					<a href="main.jsp?no=2">스크립트(script)</a> <%-- &i=<%=i %> 파라미터 삭제 --%>
 				</td>
 			</tr>
 			<tr>
@@ -105,12 +115,12 @@
 			</tr>
 			<tr>
 				<td class="menu_td">
-					<a href="main.jsp?no=8&i=<%=i %>">액션 태그(action tag)</a>
+					<a href="main.jsp?no=8">액션 태그(action tag)</a> <%-- &i=<%=i %> 파라미터 삭제 --%>
 				</td>
 			</tr>
 			<tr>
 				<td class="menu_td">
-					<a href="main.jsp?no=9&i=<%=i %>">데이터베이스(database)</a>
+					<a href="main.jsp?no=9">데이터베이스(database)</a> <%-- &i=<%=i %> 파라미터 삭제 --%>
 				</td>
 			</tr>
 		</table>	
