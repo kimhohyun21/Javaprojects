@@ -51,10 +51,10 @@
 	</script>
 </head>
 <body>
-	<div align="center">
-		<h3>LOGIN</h3>
+	<div id="bg" align="center">
 		<form action="login_ok.jsp" method="post" id="frm">
 			<table id="login_table">
+				<caption>LOGIN</caption>
 				<tr>
 					<th width="25%">
 						ID
@@ -75,7 +75,7 @@
 					<td colspan="2" align="center">
 						<input type="button" value="로그인" id="loginBtn">
 						<input type="reset" value="취소" id="cancelBtn">
-					<td>
+					</td>
 				</tr>
 			</table>
 		</form>

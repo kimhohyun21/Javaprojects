@@ -1,19 +1,88 @@
 @CHARSET "EUC-KR";
-
+body{
+	background: url("img/bg_gray.jpg") fixed;
+}
+#frm{
+	background-image: url("img/diary_login.jpg");
+}
+#diary_bg{
+	background-image: url("img/diary_board.jpg");
+	background-size: 100%;
+}
+#frm, #diary_bg{
+	width: 1200px;
+	height: 630px;
+	box-shadow: 10px 10px 5px gray;
+	position: relative;
+    left: 30px;
+    top: 150px;		
+}
 #login_table{
-	width: 200px;
 	border-collapse: collapse;
-	border-top: 2px solid #333;
-	border-bottom: 2px solid #333;	
+	border-top: 3px solid #333;
+	border-bottom: 3px solid #333;
+	background-color: silver;
+	opacity: 0.9;
+	text-shadow: 2px 2px gray;
+    position: relative;
+    left: 0px;
+    top: 300px; 
+}
+caption{
+	font-weight: bolder;
+	font-size: 1.5em;
+	color: white;
+	margin-bottom: 10px;
 }
 #login_table th, td{
 	margin: 0px;
 	padding: 8px;
-	border-bottom: 1px dotted black;
 	font-size: 11pt;
 	color: black;
 }
 #login_table th{
-	background-color: #999; 
+	background-color: #999;
+	border-bottom: 1px dotted white; 
 	color: #fff;
+}
+#login_table td{
+	border-bottom: 1px dotted black;
+}
+#title_table{
+	border-collapse: collapse;
+	width: 900px;
+	height: 30px;
+	padding: 0px;
+	margin: 0px;
+	position: relative;
+    left: 0px;
+    top: 60px;
+}
+#title_cap, #title_table td{
+	padding: 0px;
+	margin: 0px;
+	color: black;
+}
+#diary_table{
+	border-collapse: collapse;
+	border-top: 2px solid #333;
+	border-bottom: 2px solid #333;
+	background-color: #ffffff;	
+	opacity: 0.8; 
+	width: 900px;
+	height: 450px;
+	position: relative;
+    left: 0px;
+    top: 70px;
+}
+#diary_table th{
+	border-bottom: 2px solid black;
+	background-color: #ae8f86;
+	text-shadow: 1px 1px gray; 
+}
+#diary_table .center_td{
+	text-align: center;
+}
+#diary_table .cont_tr:NTH-CHILD(odd){
+	background-color: #e4a3a3; 
 }

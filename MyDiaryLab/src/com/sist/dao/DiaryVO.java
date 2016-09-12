@@ -1,5 +1,7 @@
 package com.sist.dao;
 
+import java.util.*;
+
 public class DiaryVO {
 	private int no;
 	private String id;
@@ -8,6 +10,7 @@ public class DiaryVO {
 	private int year;
 	private int month;
 	private int day;
+	private Date regDate;
 	
 	public int getNo() {
 		return no;
@@ -51,6 +54,10 @@ public class DiaryVO {
 	public void setDay(int day) {
 		this.day = day;
 	}
-	
-	
+	public Date getRegDate() {
+		return regDate;
+	}
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
+	}	
 }
