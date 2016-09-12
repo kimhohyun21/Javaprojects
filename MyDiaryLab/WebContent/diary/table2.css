@@ -1,0 +1,19 @@
+@CHARSET "EUC-KR";
+
+#login_table{
+	width: 200px;
+	border-collapse: collapse;
+	border-top: 2px solid #333;
+	border-bottom: 2px solid #333;	
+}
+#login_table th, td{
+	margin: 0px;
+	padding: 8px;
+	border-bottom: 1px dotted black;
+	font-size: 11pt;
+	color: black;
+}
+#login_table th{
+	background-color: #999; 
+	color: #fff;
+}
