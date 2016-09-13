@@ -31,13 +31,13 @@ public class MemberDAO {
 			 * 	1) 커넥션을 가져오는 부분을 제외하고는 기존의 코딩 소스와 동일함
 			 * 	2) java파일에서 접근은 new InitialContext()로 Context객체를 확보하고
 			 *     JNDI(Java Naming and Directory Interface) 이름으로 DataSource객체를 참조함
-			 *  3) 앱에서 JNDI 접근은 "java:/comp/env"로 Context객체에 접근한 후
+			 *  3) 앱에서 JNDI 접근은 "java://comp/env"로 Context객체에 접근한 후
 			 *     server.xml에 등록한 JNDI의 이름인 jdbc/oracle로 DataSource객체를 참조함
 			 *  4) Connection객체는 DataSource의 getConnection()메소드를 호출
 			 */
 			
 			Context init=new InitialContext();
-			Context ctx=(Context) init.lookup("java:/comp/env"); 
+			Context ctx=(Context) init.lookup("java://comp/env"); 
 			DataSource ds=(DataSource) ctx.lookup("jdbc/oracle");
 			conn=ds.getConnection();
 			

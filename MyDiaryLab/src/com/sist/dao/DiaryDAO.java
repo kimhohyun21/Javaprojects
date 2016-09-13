@@ -26,7 +26,7 @@ public class DiaryDAO {
 		try{
 			
 			Context init=new InitialContext();
-			Context ctx=(Context) init.lookup("java:/comp/env"); 
+			Context ctx=(Context) init.lookup("java://comp/env"); 
 			DataSource ds=(DataSource) ctx.lookup("jdbc/oracle");
 			conn=ds.getConnection();
 			
@@ -35,45 +35,33 @@ public class DiaryDAO {
 		}
 	}
 	
-	public List<DiaryVO> totalContent(String id, int page){
-		List<DiaryVO> list=new ArrayList<>();
+	//다이어리 일정 개수 카운팅 
+	public int isDate(String id, int year, int month, int day){
+		int count=0;
 		
 		try{
 			getConnection();
 			
-			int rowSize=10;
-			int start=(page*rowSize)-(rowSize-1);
-			int end=(page*rowSize);
-			
-			String sql="SELECT no, id, subject, year, month, day, regDate, num "
-						+ "FROM (SELECT no, id, subject, year, month, day, regDate, rownum as num "
-						+ "FROM (SELECT no, id, subject, year, month, day, regDate "
-						+ "FROM diary WHERE id=? ORDER BY no DESC)) "
-						+ "WHERE num BETWEEN "+start+" AND "+end;
+			String sql="SELECT COUNT(*) FROM diary "
+						+ "WHERE id=? AND year=? AND month=? AND day=?";
 			
 			ps=conn.prepareStatement(sql);
 			ps.setString(1, id);
+			ps.setInt(2, year);
+			ps.setInt(3, month);
+			ps.setInt(4, day);
 			rs=ps.executeQuery();
+			rs.next();
 			
-			while(rs.next()){
-				DiaryVO vo=new DiaryVO();
-				vo.setNo(rs.getInt(1));
-				vo.setId(rs.getString(2));
-				vo.setSubject(rs.getString(3));
-				vo.setYear(rs.getInt(4));
-				vo.setMonth(rs.getInt(5));
-				vo.setDay(rs.getInt(6));
-				vo.setRegDate(rs.getDate(7));
-				
-				list.add(vo);
-			}
+			count=rs.getInt(1);
 			rs.close();
 			
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{
 			disConnection();
-		}		
-		return list;
+		}
+		
+		return count;
 	}
 }

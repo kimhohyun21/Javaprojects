@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        body{
+            font-size: 9pt;
+            font-family: 굴림;
+        }
+        ui, li{
+            border: 2px #c5a9ee solid;
+            margin: 10px;
+        }
+        ul{
+            padding: 10px;
+        }
+        .select{
+            background-color: #ccc;
+        }
+    </style>
+    <script type="text/javascript" src="../js/jquery-3.1.0.min.js"></script>
+    <script type="text/javascript">
+        /*
+            Q2. 추가 버튼을 클릭할 때 마다 신규 메뉴 아이템을 생성하라
+                ul.menu의 첫번째 자식 노드를 추가하라
+         */
+        $(document).ready(function(){
+            var count=0;
+            $('#btnAdd').click(function(){
+               count++;
+                /*
+                    //신규 노드 생성
+                    //1. 신규 노드를 생성함과 동시에 prepend()라는 메소드로 ul.menu의 맨 앞에 추가함
+                    $('ul.menu').prepend('<li>new menu'+count+'</li>');
+                    //2. 신규 노드를 변수로 받아서 prepend()로 추가
+                    var $newItem=$('<li>new menu'+count+'</li>');
+                    $('ul.menu').prepend($newItem);
+                */
+                //3. prependTo()로 추가하기 ==> 추가할 대상이 .prependTo()함수를 호출하여 추가될 대상을 메소드안에 기입
+                var $newItem=$('<li>new menu'+count+'</li>');
+                $($newItem).prependTo('ul.menu');
+            });
+        });
+    </script>
+</head>
+<body>
+   <div align="center">
+       <table width="200">
+           <tr>
+               <td>
+                   <button id="btnAdd">추가</button>
+                   <ul class="menu">
+                       <li>menu1</li>
+                       <li>menu2</li>
+                       <li class="select">menu3</li>
+                       <li>menu4</li>
+                       <li>menu5</li>
+                       <li>menu6</li>
+                   </ul>
+               </td>
+           </tr>
+       </table>
+   </div>
+</body>
+</html>

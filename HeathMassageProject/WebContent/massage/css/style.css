@@ -1,0 +1,297 @@
+body {
+    background: #EEEEEE;
+ color: #444;
+    font: 13px/20px Arial,Helvetica,sans-serif;
+	
+}
+
+#wrapper {
+	width:988px;
+	margin:0 auto;
+	background-image:url(../images/bg.jpg);
+	background-repeat:repeat-y;
+	
+}
+
+a, a:visited {
+    color: #328B91;
+    text-decoration: none;
+}
+a:hover {
+    color: #328B91;
+    text-decoration: underline;
+}
+a img {
+    border: medium none;
+}
+a:focus, a:hover, a:active {
+    outline: medium none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	 color: #328B91;
+    font-family: lobster;
+	  font-weight: normal;
+    line-height: 1.2em;
+    margin: 10px 0 13px;
+	}
+
+h1 {
+	font-size: 32px;
+	line-height:34px;
+	}
+	
+h2 {
+	font-size: 32px;
+	line-height:34px;
+	}
+	
+h2 a, h2 a:visited {
+	color: #444444;
+	text-decoration: none;
+	}
+
+h2 a:hover {
+	color: #CC3300;
+	text-decoration: none;
+	}
+	
+h3 {
+	font-size: 22px;
+	}
+	
+h4 {
+	font-size: 18px;
+	letter-spacing:-1px;
+	border-bottom:1px solid #CCCCCC
+	}
+	
+h5 {
+	font-size: 16px;
+	}
+	
+h6 {
+	font-size: 14px;
+	}
+
+p {
+	margin: 0;
+	padding: 0 0 10px 0;
+	}
+	
+ul {
+	list-style-type: square;
+	margin: 0;
+	padding: 0 0 15px 0;
+	}
+	
+ul li {
+	list-style-type: square;
+	margin: 0 0 0 20px;
+	padding: 0;
+	}
+	
+ul ul {
+	list-style-type: square;
+	margin: 0;
+	padding: 0;
+	}
+
+ol {
+	margin: 0;
+	padding: 0 0 15px 0;
+	}
+	
+ol li {
+	margin: 0 0 0 20px;
+	padding: 0;
+	}
+	
+ol ol {
+	margin: 0;
+	padding: 0;
+	}
+
+
+
+#header {
+    margin: 0 auto;
+    padding: 0;
+}
+#header .inner {
+	
+}
+#logo {
+    float: left;
+    margin: 0;
+    overflow: hidden;
+    padding: 15px 0 0;
+}
+#logo h1 {
+    
+	color: #328B91;
+    font-family:Lobster;
+    font-size: 50px;
+   font-weight: normal;
+    line-height: 38px;
+    margin: 0;
+    padding: 0 0 0 31px;
+}
+#logo h1 a {
+    color: #328B91;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+#logo h1 a:hover {
+    color: #328B91;
+    text-decoration: none;
+}
+#logo #slogan {
+    color: #999999;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: normal;
+    margin: 0;
+    padding: 0 0 0 41px;
+}
+
+/*----------------- nav ------------------*/
+
+#nav ul
+{
+list-style-type:none;
+margin:24px 0 0;
+padding:0;
+text-align:right;
+}
+#nav ul li
+{
+display:inline;
+}
+#nav ul li a:link, #nav ul li a:visited
+{
+color:#328B91;
+font-family:'News Cycle';
+text-align:center;
+padding:8px;
+text-decoration:none;
+text-transform:uppercase;
+}
+#nav ul li a:hover, #nav ul li a:active
+{
+background-color:#328B91;
+color:#FFF;
+}
+
+
+/*----------------------- banner ----------------*/
+#banner {
+	padding-top:15px;
+
+}
+#banner .inner {
+	height:225px;
+	background-image:url(../images/banner-bg.jpg);
+	background-repeat:no-repeat;
+}
+
+#banner .inner h2 {
+      color: #328B91;
+    font-family: Lobster;
+    font-size: 18px;
+	line-height:0px;
+}
+
+#banner #welcome {
+	  
+        border: 1px solid #328B91;
+    color: #333333;
+    padding: 10px;
+    position: absolute;
+    right: 490px;
+    top: 119px;
+    width: 640px;
+}
+#content .inner {
+}
+
+#featured {
+    margin: 5px 0 15px;
+    padding: 15px 0 11px;
+	border-bottom:1px solid #ccc;
+}
+
+#featured a:link, #featured a:visited {
+	    background-color: #328B91;
+    color: #FFFFFF;
+    padding: 5px;
+    text-decoration: none;
+
+}
+
+#featured a:hover {
+	text-decoration:underline;
+
+}
+
+#col1 {
+	
+}
+
+/*-------------- sidebar ------------------*/
+
+#sidebar .inner {
+	 border-left: 1px solid #CCCCCC;
+}
+#latest {
+	margin:0;
+    padding: 10px;
+}
+#sidebar h2 {
+	color:#328B91;
+	padding:10px;
+	margin:0px;
+}
+#sidebar a {
+    text-decoration:underline;
+	font-weight:bold;
+}
+#sidebar a:hover {
+    text-decoration:none;
+}
+
+.pad {
+	margin-bottom:15px;
+}
+
+.date {
+	font-weight:bold;
+	color:#328B91;
+	font-style:italic;
+}
+
+
+
+/*------------------ footer ------------------*/
+
+#footer {
+	margin-top:15px;
+	
+}
+
+#footer .inner {
+	
+
+	font-size:10px;
+	text-align:center;
+	border-top:1px solid #ccc;
+	
+}
+
+#footer .inner a {
+    text-decoration: none;
+}
+#footer .inner a:hover {
+    text-decoration:underline;
+}
