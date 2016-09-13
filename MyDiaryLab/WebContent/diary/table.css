@@ -23,8 +23,11 @@ a:HOVER{
 caption{
 	font-weight: bolder;
 	font-size: 1.5em;
-	color: white;
 	margin-bottom: 10px;
+	text-shadow: 2px 2px 1px gray;: ;
+}
+#option, select, option{
+	font-size: 15px;
 }
 #title_table{
 	border-collapse: collapse;
@@ -36,13 +39,9 @@ caption{
     left: 0px;
     top: 70px;
 }
-#title_cap, #title_table td{
+caption, #title_table td{
 	padding: 0px;
 	margin: 0px;
-	color: black;
-}
-.right_td{
-	text-align: right;
 }
 #diary_table{
 	border-collapse: collapse;
@@ -67,13 +66,13 @@ caption{
 	text-shadow: 1px 1px gray;
 	height: 27px; 
 }
-#diary_table .day_td, .theday_td{
+.day_td, .theday_td{
 	text-align: left;
 	vertical-align: top;
 	border-left: 1px dotted gray; 
 	border-right: 1px dotted gray; 
 }
-#diary_table .theday_td{
+.theday_td{
 	background-color: #e4a3a3;
 	font-weight:bolder; 
 }
@@ -85,6 +84,11 @@ caption{
 }
 #sat{
 	color: blue;
+}
+#alarm{
+	width: 30px;
+	height: 30px;
+	font-size: 10px;
 }
 input[type="submit"]
 input[type="button"]

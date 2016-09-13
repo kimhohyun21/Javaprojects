@@ -71,8 +71,12 @@
 	<div align="center">
 		<form  action="diary.jsp" method="post" id="diary_frm" name="frm">
 			<table id="title_table">
-			<caption id="title_cap"><%=year %>월 <%=month %>월 <%=name %>님의 일정</caption>
-				<tr>
+			<caption>
+				<font color="#570000" size="6em"><%=year %></font>년
+				<font color="#570000" size="6em"><%=month %></font>월 
+				<font color="#570000" size="6em"><%=name %></font>님의 일정
+			</caption>
+				<tr id="option">
 					<td> <!-- 연도 선택하는 옵션 -->
 						<select name="year" onchange="change()">
 						<%
@@ -147,9 +151,9 @@
 				String title="일정이"+count+"개 있습니다.";
 				if(count!=0){
 		%>	
-					<center>
-						<img src="img/diary_alarm.png" width="30" height="30" title="<%=title %>">
-					</center>
+						<center>
+							<img src="img/diary_alarm.png" id="alarm" title="<%=title %>">
+						</center>
 		<%
 				}
 		%>

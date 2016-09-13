@@ -4,14 +4,12 @@ body{
 }
 #frm{
 	background-image: url("img/diary_login.jpg");
-}
-#frm{
 	width: 1200px;
 	height: 630px;
 	box-shadow: 10px 10px 5px gray;
 	position: relative;
     left: 30px;
-    top: 150px;		
+    top: 150px;	
 }
 #login_table{
 	border-collapse: collapse;
