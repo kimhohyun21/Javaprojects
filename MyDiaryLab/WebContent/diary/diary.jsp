@@ -69,7 +69,7 @@
 </head>
 <body>
 	<div align="center">
-		<form  action="diary.jsp" method="post" id="diary_frm" name="frm">
+		<form  action="diary.jsp" method="post" id="frm" name="frm">
 			<table id="title_table">
 			<caption>
 				<font color="#570000" size="6em"><%=year %></font>년
@@ -147,13 +147,12 @@
 					<td class="<%=cls%>">
 						<a href="insert.jsp?year=<%=year %>&month=<%=month %>&day=<%=i %>"><%=i %></a>
 		<%
-				int count=dao.isDate(id, year, month, day);
+				int count=dao.isDate(id, year, month, i);
+				System.out.println(count);
 				String title="일정이"+count+"개 있습니다.";
 				if(count!=0){
 		%>	
-						<center>
-							<img src="img/diary_alarm.png" id="alarm" title="<%=title %>">
-						</center>
+						<img src="img/diary_alarm.png" id="alarm" title="<%=title %>">
 		<%
 				}
 		%>

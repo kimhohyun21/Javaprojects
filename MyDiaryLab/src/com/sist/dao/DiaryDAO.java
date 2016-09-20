@@ -1,5 +1,6 @@
 package com.sist.dao;
 
+import java.security.spec.PSSParameterSpec;
 import java.sql.*;
 import java.util.*;
 
@@ -63,5 +64,29 @@ public class DiaryDAO {
 		}
 		
 		return count;
+	}
+	
+	//일정 등록
+	public void diaryInsert(DiaryVO vo){
+		try{
+			getConnection();
+			
+			String sql="INSERT INTO diary VALUES"
+						+ "((SELECT NVL(MAX(no)+1, 1) FROM diary),?,?,?,?,?,?,SYSDATE)";
+			
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, vo.getId());
+			ps.setString(2, vo.getSubject());
+			ps.setString(3, vo.getMsg());
+			ps.setInt(4, vo.getYear());
+			ps.setInt(5, vo.getMonth());
+			ps.setInt(6, vo.getDay());
+			ps.executeUpdate();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			disConnection();
+		}
 	}
 }
