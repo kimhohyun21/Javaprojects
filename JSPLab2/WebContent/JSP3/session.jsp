@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+	pageEncoding="EUC-KR"%>
 <%--
 	 @JSP 내장 객체 3 : session
     	1) session의 배경
@@ -34,7 +34,7 @@
 <body>
 	<div align="center">
 		<h2>Session Test</h2>
-		<hr/>
+		<hr />
 		<%
 			//세션은 브라우저 실행 후 서버 접속시 생성되어, 일정시간 유지됨
 			//isNew() 메서드를 이용해 최초 세션설정을 확인해보자.
@@ -45,13 +45,12 @@
 				session.setAttribute("login", "김호현");
 			}
 		%>
-		
-		<!-- 세션에 설정된 값은 getAttribute()메서드를 통해 key값을 가져올 수 있음 -->	
-		<%=session.getAttribute("login") %>님 환영합니다.<br/>
-		1.세션 ID: &nbsp;<%=session.getId() %><br/>
-		
+
+		<!-- 세션에 설정된 값은 getAttribute()메서드를 통해 key값을 가져올 수 있음 -->
+		<%=session.getAttribute("login") %>님 환영합니다.<br /> 1.세션 ID: &nbsp;<%=session.getId() %><br />
+
 		<!-- 기본 세션 유지 시간은 1,800초(약 30분), setMaxInactiveInterval()을 이용해 변경 가능-->
-		2.세션유지시간: &nbsp;<%=session.getMaxInactiveInterval() %>			
+		2.세션유지시간: &nbsp;<%=session.getMaxInactiveInterval() %>
 	</div>
 </body>
 </html>

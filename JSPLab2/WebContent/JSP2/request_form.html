@@ -14,61 +14,55 @@
  -->
 <html>
 <head>
-	<meta charset="EUC-KR">
-	<title>Request Test Form</title>
-	<script type="text/javascript">
+<meta charset="EUC-KR">
+<title>Request Test Form</title>
+<script type="text/javascript">
 		document.cookie="test=Okay";
 	</script>
-	<style>
-		h3{
-			text-align:center;
-		}
-		table{			
-			margin:auto; 
-			width:400px;
-			cellspasing:1px						
-		}
-		tr, td{
-			padding:5px
-		}
-	</style>
+<style>
+h3 {
+	text-align: center;
+}
+
+table {
+	margin: auto;
+	width: 400px;
+	cellspasing: 1px
+}
+
+tr, td {
+	padding: 5px
+}
+</style>
 </head>
 <body>
 	<div>
 		<h3>Request Test Form</h3>
-		<hr width="400"/>
+		<hr width="400" />
 		<form action="request_result.jsp" method="post" name="frm">
 			<table border="1">
 				<tr>
 					<td width="30%">이름</td>
-					<td>
-						<input type="text" size="10" name="name">
-					</td>
+					<td><input type="text" size="10" name="name"></td>
 				</tr>
 				<tr>
 					<td width="30%">직업</td>
-					<td>
-						<select name="job">
+					<td><select name="job">
 							<option>프로그래머</option>
 							<option>회사원</option>
 							<option>전문직</option>
 							<option>학생</option>
-						</select>
-					</td>
+					</select></td>
 				</tr>
 				<tr>
 					<td width="30%">관심분야</td>
-					<td>
-						<input type="checkbox" name="interest" value="정치">정치
-						<input type="checkbox" name="interest" value="사회">사회
-						<input type="checkbox" name="interest" value="정보통신">정보통신
-					</td>
+					<td><input type="checkbox" name="interest" value="정치">정치
+						<input type="checkbox" name="interest" value="사회">사회 <input
+						type="checkbox" name="interest" value="정보통신">정보통신</td>
 				</tr>
-				<tr >
-					<td align="center" colspan="2">
-						<input type="submit" value="확인">
-						<input type="reset" value="취소">
-					</td>
+				<tr>
+					<td align="center" colspan="2"><input type="submit" value="확인">
+						<input type="reset" value="취소"></td>
 				</tr>
 			</table>
 		</form>

@@ -1,13 +1,12 @@
 {
-  "ecmaVersion": 6,
   "plugins": {
     "guess-types": {
       
     },
-    "jquery-extension": {
+    "jquery-ui1-12": {
       
     },
-    "jquery-ui1-12": {
+    "jquery-extension": {
       
     },
     "jquery-mobile1.5": {
@@ -17,5 +16,6 @@
   "libs": [
     "ecma5",
     "jquery"
-  ]
+  ],
+  "ecmaVersion": 6
 }

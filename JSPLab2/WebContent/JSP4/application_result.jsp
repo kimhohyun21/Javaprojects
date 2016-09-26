@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+	pageEncoding="EUC-KR"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -10,8 +10,8 @@
 <body>
 	<div align="center">
 		<h3>application Test Result</h3>
-		<hr/>
-		1.username에 설정된 값은 : &nbsp;<%=application.getAttribute("username") %><br/>
+		<hr />
+		1.username에 설정된 값은 : &nbsp;<%=application.getAttribute("username") %><br />
 		<%
 			/* 내답
 			String count=application.getAttribute("count").toString();			

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+	pageEncoding="EUC-KR"%>
 <%--
 	@아파치 톰캣 
 		- 일종의 웹서버 프로그램
@@ -7,8 +7,8 @@
 		- JSP와 서블릿의 컴파일 처리, 실행 가능 
 	  	  ==> JSP실행하기 위해서 반드시 필요	  
  --%>
- 
- <%--
+
+<%--
  	@JSP 내장객체
  		- JSP내에서 별도로 선언하지 않고 사용할 수 있는 객체 ==> 내부적으로 이미 선언이 되어 있음
  		- JSP가 서블릿 형태로 자동변환된 코드(.java)내에 포함되어 있는 
@@ -78,40 +78,37 @@
 						  if(hobby!=null){
 						  	for(int i=0;i<hobby.length;i++){
 					    %>
-							<li><%=hobby[i]%></li>	
+						<li><%=hobby[i]%></li>
 						<%   
 						 	}
 						  }
-						%>		
-					</ul>				
+						%>
+					</ul>
 				</td>
-			</tr>		
+			</tr>
 		</table>
-		<hr width=300/>		
-	</center>	
+		<hr width=300 />
+	</center>
 	<center>
 		<h3>개인 정보 출력</h3>
-		<table border="0" width=300>		
+		<table border="0" width=300>
 			<tr>
-				<td>
-					이름:&nbsp;<%=name %><br/>
-					성별:&nbsp;<%=gender %><br/>
-					전화:&nbsp;<%=tel1+"-"+tel2 %><br/>
-					취미:
+				<td>이름:&nbsp;<%=name %><br /> 성별:&nbsp;<%=gender %><br />
+					전화:&nbsp;<%=tel1+"-"+tel2 %><br /> 취미:
 					<ul>
 						<%
 						 if(hobby!=null){                 //null일 때 에러가 나오지 않게
 							 for(String s : hobby){       //for Each문이 더 효율적이다
 					    %>
-							<li><%=s %></li>	
+						<li><%=s %></li>
 						<%   
 							 }
 						 }
-						%>		
+						%>
 					</ul>
 				</td>
 			</tr>
-		</table>	
-	</center>	
+		</table>
+	</center>
 </body>
 </html>

@@ -10,15 +10,17 @@
     "jshint": {
       
     },
-    "browser-extension": {
+    "jquery-extension": {
       
     },
-    "jquery-extension": {
+    "jquery-ui1-12": {
+      
+    },
+    "jquery-mobile1.5": {
       
     }
   },
   "libs": [
-    "browser",
     "jquery"
   ]
 }

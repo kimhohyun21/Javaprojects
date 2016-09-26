@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+	pageEncoding="EUC-KR"%>
 <%--
 	@JSP 내장객체 5: application
 		1) application의 특징
@@ -33,18 +33,19 @@
 <body>
 	<div align="center">
 		<h2>application Test</h2>
-		<hr/>
-		1.서버 정보 : &nbsp;<%=application.getServerInfo() %><br/>
-		2.서블릿 API버전 정보 : &nbsp;<%=application.getMajorVersion()+"."+application.getMinorVersion() %><br/>
-		3.application.jsp 파일의 실제경로 : &nbsp;<%=application.getRealPath("application.jsp") %><br/>
-		<hr/>
-		setAttribute로 username변수에 "류성룡" 설정<p>
-		<%
+		<hr />
+		1.서버 정보 : &nbsp;<%=application.getServerInfo() %><br /> 2.서블릿 API버전 정보
+		: &nbsp;<%=application.getMajorVersion()+"."+application.getMinorVersion() %><br />
+		3.application.jsp 파일의 실제경로 : &nbsp;<%=application.getRealPath("application.jsp") %><br />
+		<hr />
+		setAttribute로 username변수에 "류성룡" 설정
+		<p>
+			<%
 			application.setAttribute("username", "류성룡");
 			application.setAttribute("count", 1);
 		%>
-		<a href="application_result.jsp">확인하기</a> <!-- 다른 페이지와 저장된 데이터를 공유하여 사용할 수 있는지 확인 -->
-		
+			<a href="application_result.jsp">확인하기</a>
+			<!-- 다른 페이지와 저장된 데이터를 공유하여 사용할 수 있는지 확인 -->
 	</div>
 </body>
 </html>
